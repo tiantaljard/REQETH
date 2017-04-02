@@ -12,22 +12,22 @@ foreach ($_SERVER as $key => $value) {
     $connectstr_dbusername = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
     $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
 }
+
+//If we are not on Azure
+if (!$connectstr_dbhost) {
+    $connectstr_dbhost = 'localhost';
+    $connectstr_dbname = 'reqlocaldb';
+    $connectstr_dbusername = 'root';
+    $connectstr_dbpassword = 'Zppsit0!';
+}
+
 $link = mysqli_connect($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword, $connectstr_dbname);
 
-
-define('DB_SERVER', $connectstr_dbhost);
-define('DB_USERNAME', $connectstr_dbname);
-define('DB_PASSWORD', $connectstr_dbusername);
-define('DB_DATABASE', $connectstr_dbpassword);
-$db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-
 if (!$link) {
-    echo "Error: Una ble to  connect to MySQL." . PHP_EOL;
-    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-    exit;
+//    echo "Error: Una ble to  connect to MySQL." . PHP_EOL;
+  //  echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+    //echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+   exit;
 }
 
 ?>
-
-

@@ -7,14 +7,11 @@
  */
 include("dbConnect.php");
 
-print " dbhost - " . $connectstr_dbhost . "<br>";
-print " dbname- " . $connectstr_dbname . "<br>";
-print " dbusername- " . $connectstr_dbusername . "<br>";
-print " dbpassword- " . $connectstr_dbpassword . "<br>";
+
 
 
 if (empty($_POST["username"]) || empty($_POST["password"])) {
-    echo "Both fields are required.";
+ //   echo "Both fields are required.";
 } else {
 
     $username = $_POST['username'];
@@ -31,15 +28,16 @@ if (empty($_POST["username"]) || empty($_POST["password"])) {
 
     while($row = $result->fetch_array()){
         // print out fields from row of data
-        echo "<p>".$row ['uid']. "</p>";
+//        echo "<p>".$row ['uid']. "</p>";
 
     }
 
     if (mysqli_num_rows($result) == 1) {
-        header("location: xmen.php"); // Redirecting To another Page
+             header("location: xmen.php"); // Redirecting To another Page
     } else {
         echo "Incorrect username or password.";
     }
+
 
     $result->close();
     $link->close();
