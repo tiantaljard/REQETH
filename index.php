@@ -19,7 +19,7 @@
         print " dbpassword- ".$connectstr_dbpassword."<br>";
         ?>
         <p><a href="all.php">All Request for ethical approval of experiment</a></p>
-        <p><a href="xmen.php">All X-MEN 50 Movies</a></p>
+        <p><a href="xmen.php">All X-MEN 50Movies</a></p>
 
     </section>
 
