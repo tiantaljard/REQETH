@@ -20,7 +20,7 @@
         ?>
         <p><a href="all.php">All Request for ethical approval of experiment</a></p>
         <p><a href="xmen.php">All X-MEN Movies</a></p>
-        <p><a href="dbConnect.php">db41Aonnect</a></p>
+        <p><a href="dbConnect.php">db412Aonnect</a></p>
 
     </section>
 
