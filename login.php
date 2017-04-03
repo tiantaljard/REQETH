@@ -1,47 +1,21 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: TianTaljard
- * Date: 12/af03/2017
- * Time: 12:09
- */
-include("dbConnect.php");
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+<h2>User Authentication System </h2><hr>
 
+<h3>Login Form</h3>
 
-
-
-if (empty($_POST["username"]) || empty($_POST["password"])) {
- //   echo "Both fields are required.";
-} else {
-
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    //$sql_query = "SELECT marvelMovieID,yearReleased,title,productionStudio,notes FROM marvelmovies where UPPER(productionStudio) like '%FOX%'; ";
-    //$result = $link->query($sql_query);
-
-    $sql_query = "SELECT uid FROM users WHERE username='$username' and password='$password' ; ";
-    //$result = $link->query($sql_query);
-
-    //$sql = "SELECT uid FROM users WHERE username='$username' and password='$password'";
-    $result = mysqli_query($link, $sql_query);
-
-    while($row = $result->fetch_array()){
-        // print out fields from row of data
-//        echo "<p>".$row ['uid']. "</p>";
-
-    }
-
-    if (mysqli_num_rows($result) == 1) {
-             header("location: xmen.php"); // Redirecting To another Page
-    } else {
-        echo "Incorrect username or password.";
-    }
-
-
-    $result->close();
-    $link->close();
-
-
-}
-?>
+<form method="post" action="">
+    <table>
+        <tr><td>Username:</td> <td><input type="text" value=""></td></tr>
+        <tr><td>Password:</td> <td><input type="password" value=""></td></tr>
+        <tr><td></td><td><input style="float: right;" type="submit" value="Signin"></td></tr>
+    </table>
+</form>
+<p><a href="index.php">Back</a> </p>
+</body>
+</html>

@@ -12,7 +12,7 @@
     <section>
         <h2>List of all Marvel Movies</h2>
         <?
-        include 'dbConnect.php';
+        include 'config/dbConnect.php';
         $sql_query = "SELECT marvelMovieID,yearReleased,title,productionStudio,notes FROM marvelmovies where UPPER(productionStudio) like '%FOX%'; ";
         $result = $link->query($sql_query);
         while($row = $result->fetch_array()){
