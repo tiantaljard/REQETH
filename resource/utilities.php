@@ -1,5 +1,6 @@
 <?php
 /**MM
+ * *MM
  * @param $required_fields_array, n array containing the list of all required fields
  * @return array, containing all errors
  */

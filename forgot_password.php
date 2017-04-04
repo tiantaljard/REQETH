@@ -1,5 +1,6 @@
 <?php
 //add our database connection script MM
+//MM
 include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';
 
