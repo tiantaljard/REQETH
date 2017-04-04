@@ -89,11 +89,11 @@ if(isset($_POST['signupBtn'])){
 <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
 <form method="post" action="">
     <table>
-        <tr><td>First Name:</td> <td><input type="text" value="STU3Frist" name="firstname"></td></tr>
-        <tr><td>Last Name:</td> <td><input type="text" value="STU3Last" name="lastname"></td></tr>
-        <tr><td>Email:</td> <td><input type="text" value="tianSTU3@yahoo.com" name="email"></td></tr>
-        <tr><td>Username:</td> <td><input type="text" value="STU3" name="username"></td></tr>
-        <tr><td>Password:</td> <td><input type="password" value="asdfgh" name="password"></td></tr>
+        <tr><td>First Name:</td> <td><input type="text" value="" name="firstname"></td></tr>
+        <tr><td>Last Name:</td> <td><input type="text" value="" name="lastname"></td></tr>
+        <tr><td>Email:</td> <td><input type="text" value="" name="email"></td></tr>
+        <tr><td>Username:</td> <td><input type="text" value="" name="username"></td></tr>
+        <tr><td>Password:</td> <td><input type="" value="asdfgh" name="password"></td></tr>
         <tr class="hidden" style="display: none;"><td>Accessgroup:</td> <td><input type="text" value="student" name="accessgroup"></td></tr>
 
         <tr><td></td><td><input style="float: right;" type="submit" name="signupBtn" value="Signup"></td></tr>
