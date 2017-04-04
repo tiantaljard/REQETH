@@ -4,7 +4,7 @@
 // Course title:    PHP: Complete Login and Registration System with PHP & MYSQL
 // Instructor:      Osayawe Terry Ogbemudia
 
-//add our database connection script
+//add database connection script
 include_once 'resource/dbConnect.php';
 //include formvalidation functions
 include_once 'resource/utilities.php';
@@ -30,6 +30,7 @@ if(isset($_POST['signupBtn'])){
     $form_errors = array_merge($form_errors, check_email($_POST));
 
     //check if error array is empty, if yes process form data and insert record
+
     if(empty($form_errors)){
         //collect form data and store in variables
         $email = $_POST['email'];
@@ -37,6 +38,8 @@ if(isset($_POST['signupBtn'])){
         $password = $_POST['password'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
+        $accesgroup = $_POST['accessgroup'];
+
 
 
         //hashing the password
@@ -44,14 +47,14 @@ if(isset($_POST['signupBtn'])){
         try{
 
             //create SQL insert statement
-            $sqlInsert = "INSERT INTO users (username, email, password,firstname,lastname, join_date)
-              VALUES (:username, :email, :password,:firstname,:lastname, now())";
+            $sqlInsert = "INSERT INTO users (username, email, password,firstname,lastname, join_date,accessgroup)
+              VALUES (:username, :email, :password,:firstname,:lastname, now(),:accessgroup) ";
 
             //use PDO prepared to sanitize data
             $statement = $db->prepare($sqlInsert);
 
             //add the data into the database
-            $statement->execute(array(':username' => $username, ':email' => $email, ':password' => $hashed_password,':firstname' => $firstname,':lastname' => $lastname ));
+            $statement->execute(array(':username' => $username, ':email' => $email, ':password' => $hashed_password,':firstname' => $firstname,':lastname' => $lastname,':accessgroup' => $accessgroup));
 
             //check if one new row was created
             if($statement->rowCount() == 1){
@@ -75,24 +78,28 @@ if(isset($_POST['signupBtn'])){
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Register Page</title>
+    <title>REQETH Student Registration</title>
 </head>
 <body>
-<h2>User Authentication System </h2><hr>
+<h1>Request for ethical approval of experiment</h1><hr>
 
-<h3>Registration Form</h3>
+<h3>Register new student</h3>
 
 <?php if(isset($result)) echo $result; ?>
 <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
 <form method="post" action="">
     <table>
-        <tr><td>First Name:</td> <td><input type="text" value="" name="firstname"></td></tr>
-        <tr><td>Last Name:</td> <td><input type="text" value="" name="lastname"></td></tr>
-        <tr><td>Email:</td> <td><input type="text" value="" name="email"></td></tr>
-        <tr><td>Username:</td> <td><input type="text" value="" name="username"></td></tr>
-        <tr><td>Password:</td> <td><input type="password" value="" name="password"></td></tr>
+        <tr><td>First Name:</td> <td><input type="text" value="STU3Frist" name="firstname"></td></tr>
+        <tr><td>Last Name:</td> <td><input type="text" value="STU3Last" name="lastname"></td></tr>
+        <tr><td>Email:</td> <td><input type="text" value="tianSTU3@yahoo.com" name="email"></td></tr>
+        <tr><td>Username:</td> <td><input type="text" value="STU3" name="username"></td></tr>
+        <tr><td>Password:</td> <td><input type="password" value="asdfgh" name="password"></td></tr>
+        <tr class="hidden" style="display: none;"><td>Accessgroup:</td> <td><input type="text" value="student" name="accessgroup"></td></tr>
+
         <tr><td></td><td><input style="float: right;" type="submit" name="signupBtn" value="Signup"></td></tr>
     </table>
+
+
 </form>
 <p><a href="index.php">Back</a> </p>
 </body>

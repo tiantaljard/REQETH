@@ -1,7 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: TianTaljard
- * Date: 03/04/2017
- * Time: 12:15
- */
+<?php include_once 'resource/session.php';
+
+session_destroy();
+header('location: index.php');

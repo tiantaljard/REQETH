@@ -1,23 +1,22 @@
+<?php include_once 'resource/session.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Request for ethical approval of experiment</title>
+    <title>Ethical Approval Request</title>
 </head>
 <body>
 <header>
     <h1>Request for ethical approval of experiment</h1>
 </header>
 <main>
-    <!-- Connection to the Database -->
-    <section>
-        <?
-        include 'resource/dbConnect.php';
-        ?>
-    </section>
-    <p>You are currently not signin <a href="login.php">Login</a> Not yet a member? <a href="signup.php">Signup</a> </p>
+    <!-- Check of user is connected-->
+    <?php if(!isset($_SESSION['username'])): ?>
+        <P>You are currently not signin <a href="login.php">Login</a> Not yet a member? <a href="signup.php">Signup</a> </P>
+    <?php else: ?>
+        <p>You are logged in as <?php if(isset($_SESSION['username'])) echo $_SESSION['username']; ?> <a href="logout.php">Logout</a> </p>
+    <?php endif ?>
 
-    <p>You are logged in as {username} <a href="logout.php">Logout</a> </p>
 
 
 

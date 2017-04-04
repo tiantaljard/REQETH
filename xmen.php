@@ -12,7 +12,8 @@
     <section>
         <h2>List of all Marvel Movies</h2>
         <?
-        include 'config/dbConnect.php';
+        include 'config/
+        dbConnect.php';
         $sql_query = "SELECT marvelMovieID,yearReleased,title,productionStudio,notes,CHAR_LENGTH (notes) as llen FROM marvelmovies where UPPER(title) like '%MEN%'; ";
         $result = $link->query($sql_query);
         while($row = $result->fetch_array()){
