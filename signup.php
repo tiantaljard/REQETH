@@ -15,7 +15,7 @@ if(isset($_POST['signupBtn'])){
     $form_errors = array();
 
     //Form validation
-    $required_fields = array('email', 'username', 'password','firstname','lastname');
+    $required_fields = array('firstname','lastname','email','username','password');
 
     //call the function to check empty field and merge the return data into form_error array
     $form_errors = array_merge($form_errors, check_empty_fields($required_fields));
@@ -93,7 +93,7 @@ if(isset($_POST['signupBtn'])){
         <tr><td>Last Name:</td> <td><input type="text" value="" name="lastname"></td></tr>
         <tr><td>Email:</td> <td><input type="text" value="" name="email"></td></tr>
         <tr><td>Username:</td> <td><input type="text" value="" name="username"></td></tr>
-        <tr><td>Password:</td> <td><input type="" value="asdfgh" name="password"></td></tr>
+        <tr><td>Password:</td> <td><input type="" value="" name="password"></td></tr>
         <tr class="hidden" style="display: none;"><td>Accessgroup:</td> <td><input type="text" value="student" name="accessgroup"></td></tr>
 
         <tr><td></td><td><input style="float: right;" type="submit" name="signupBtn" value="Signup"></td></tr>
