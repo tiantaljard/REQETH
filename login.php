@@ -2,7 +2,7 @@
 include_once 'resource/session.php';
 include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';
-
+//M
 if(isset($_POST['loginBtn'])){
     //array to hold errors
     $form_errors = array();

@@ -23,7 +23,7 @@
 
 
 <!--
-    <div class="loginBox">
+    <div class="loginBox"> M
         <h2>Login Form</h2>
         <br><br>
         <form method="post" action="login.php">

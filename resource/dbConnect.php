@@ -1,5 +1,5 @@
 <?php
-//initialize variables to hold connection parameters
+//initialize variables to hold connection parameters M
 $connectstr_dbhost = '';
 $connectstr_dbname = '';
 $connectstr_dbusername = '';
