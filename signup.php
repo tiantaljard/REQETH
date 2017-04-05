@@ -41,7 +41,6 @@ if(isset($_POST['signupBtn'])){
     if(checkDuplicateEntries("users", "email", $email, $db)){
 
         $result = flashMessage("Email is already taken, please try another one");
-        echo $result;
     }
     else if(checkDuplicateEntries("users", "username", $username, $db)){
         $result = flashMessage("Username is already taken, please try another one");
