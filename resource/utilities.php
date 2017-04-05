@@ -77,3 +77,50 @@ function show_errors($form_errors_array){
     $errors .= "</ul></p>";
     return $errors;
 }
+
+
+/**
+ * @param $form_errors_array, the array holding all
+ * errors which we want to loop through
+ * @return string, list containing all error messages
+ */
+
+function flashmessage($message,$passOrFail="Fail"){
+    if ($passOrFail === "Pass"){
+        $data = "<p style='padding:20px; border: 1px solid gray; color: green;'> {$message}</p>";
+    }else {
+        $data = "<p style='padding:20px; border: 1px solid gray; color: red;'>{$message}</p>";
+    }
+    return $data;
+}
+
+/**
+ * @param $page, redirect user to page specified
+ */
+function redirectTo($page){
+    header("Location: {$page}.php");
+}
+
+/**
+ * @param $table, table that we want to search
+ * @param $column_name, the column name
+ * @param $value, the data collected from the form
+ * @param $db, database object
+ * @return bool, returns true if record exist else false
+ */
+function checkDuplicateEntries($table, $column_name, $value, $db){
+    try{
+        $sqlQuery = "SELECT * FROM " .$table. " WHERE " .$column_name."=:$column_name";
+
+        $statement = $db->prepare($sqlQuery);
+        $statement->execute(array(":$column_name" => $value));
+
+        if($row = $statement->fetch()){
+            return true;
+        }
+        return false;
+    }catch (PDOException $ex){
+        //handle exception
+    }
+}
+

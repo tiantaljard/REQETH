@@ -22,8 +22,8 @@ if(isset($_POST['loginBtn'])){
         $statement = $db->prepare($sqlQuery);
         $statement->execute(array(':username' => $user));
 
-        if($statement->rowCount() == 1){
-            while ($row = $statement->fetch()) {
+
+            if ($row = $statement->fetch()) {
 
             $id = $row['id'];
             $hashed_password = $row['password'];
@@ -32,20 +32,19 @@ if(isset($_POST['loginBtn'])){
             if (password_verify($password, $hashed_password)) {
                 $_SESSION['id'] = $id;
                 $_SESSION['username'] = $username;
-                header("location: index.php");
+                redirectTo('index');
             } else {
-                $result = "<p style='padding: 20px; color: red; border: 1px solid gray;'> Invalid  password</p>";
+                $result = flashmessage("Invalid  password");
             }
-        }
     } else {
-            $result = "<p style='padding: 20px; color: red; border: 1px solid gray;'> Invalid  username</p>";
+                $result = flashmessage("Invalid username");
         }
 
     }else{
         if(count($form_errors) == 1){
-            $result = "<p style='color: red;'>There was one error in the form </p>";
+            $result = flashmessage("There was one error in the form");
         }else{
-            $result = "<p style='color: red;'>There were " .count($form_errors). " error in the form </p>";
+            $result = flashmessage("There were " .count($form_errors). " error in the form");
         }
     }
 }

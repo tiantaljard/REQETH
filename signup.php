@@ -29,19 +29,25 @@ if(isset($_POST['signupBtn'])){
     //email validation / merge the return data into form_error array
     $form_errors = array_merge($form_errors, check_email($_POST));
 
+    //collect form data and store in variables
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $accesgroup = $_POST['accessgroup'];
+
+
+    if(checkDuplicateEntries("users", "email", $email, $db)){
+
+        $result = flashMessage("Email is already taken, please try another one");
+        echo $result;
+    }
+    else if(checkDuplicateEntries("users", "username", $username, $db)){
+        $result = flashMessage("Username is already taken, please try another one");
+    }
     //check if error array is empty, if yes process form data and insert record
-
-    if(empty($form_errors)){
-        //collect form data and store in variables
-        $email = $_POST['email'];
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $accesgroup = $_POST['accessgroup'];
-
-
-
+    else if(empty($form_errors)){
         //hashing the password
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         try{
@@ -58,17 +64,17 @@ if(isset($_POST['signupBtn'])){
 
             //check if one new row was created
             if($statement->rowCount() == 1){
-                $result = "<p style='padding:20px; border: 1px solid gray; color: green;'> Registration Successful</p>";
+                $result = flashMessage("Registration Successful", "Pass");
             }
         }catch (PDOException $ex){
-            $result = "<p style='padding:20px; border: 1px solid gray; color: red;'> An error occurred: ".$ex->getMessage()."</p>";
+            $result = flashMessage("An error occued: ".$ex->getMessage());
         }
     }
     else{
         if(count($form_errors) == 1){
-            $result = "<p style='color: red;'> There was 1 error in the form<br>";
+            $result = flashmessage("There was 1 error in the form<br>");
         }else{
-            $result = "<p style='color: red;'> There were " .count($form_errors). " errors in the form <br>";
+            $result = flashmessage("There were " .count($form_errors). " errors in the form <br>");
         }
     }
 
@@ -89,11 +95,11 @@ if(isset($_POST['signupBtn'])){
 <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
 <form method="post" action="">
     <table>
-        <tr><td>First Name:</td> <td><input type="text" value="" name="firstname"></td></tr>
-        <tr><td>Last Name:</td> <td><input type="text" value="" name="lastname"></td></tr>
-        <tr><td>Email:</td> <td><input type="text" value="" name="email"></td></tr>
-        <tr><td>Username:</td> <td><input type="text" value="" name="username"></td></tr>
-        <tr><td>Password:</td> <td><input type="" value="" name="password"></td></tr>
+        <tr><td>First Name:</td> <td><input type="text" value="itan" name="firstname"></td></tr>
+        <tr><td>Last Name:</td> <td><input type="text" value="taljard" name="lastname"></td></tr>
+        <tr><td>Email:</td> <td><input type="text" value="tiantaljard@yahoo.com" name="email"></td></tr>
+        <tr><td>Username:</td> <td><input type="text" value="tiantaljard" name="username"></td></tr>
+        <tr><td>Password:</td> <td><input type="" value="asdfgh" name="password"></td></tr>
         <tr class="hidden" style="display: none;"><td>Accessgroup:</td> <td><input type="text" value="student" name="accessgroup"></td></tr>
 
         <tr><td></td><td><input style="float: right;" type="submit" name="signupBtn" value="Signup"></td></tr>
