@@ -13,24 +13,33 @@
         <h2>List of all Marvel Movies</h2>
         <?
         //M
-        include 'config/
-        dbConnect.php';
+        include 'resource/dbConnect.php';
         $sql_query = "SELECT marvelMovieID,yearReleased,title,productionStudio,notes,CHAR_LENGTH (notes) as llen FROM marvelmovies where UPPER(title) like '%MEN%'; ";
-        $result = $link->query($sql_query);
-        while($row = $result->fetch_array()){
+        $statement = $db->prepare($sql_query);
+        $statement->execute(array());
+
+
+        $result = $statement->fetchAll();
+        //print_r($result);
+
+        foreach ($result as $row)
+        {
+            echo $row['title'] .'  ' .$row['yearReleased'] . "<br>";
+        }
+
             // print out fields from row of data
-            echo "<p>".$row ['marvelMovieID']. " - ". $row ['yearReleased']." - ".$row ['title']." - ".$row ['productionStudio'].$db."</p>";
-            $notes=$row ['notes'];
+         //   echo "<p>".$row ['marvelMovieID']. " - ". $row ['yearReleased']." - ".$row ['title']." - ".$row ['productionStudio'].$db."</p>";
+        //    $notes=$row ['notes'];
          //   $len=$row ['llen'];
          //   $isnull=$row ['isn'];
          //   if ($len>0) {
-            echo "<p>".$row ['marvelMovieID']. " - ". $row ['title']." - ".$row ['productionStudio'].$db."</p>";
+      //      echo "<p>".$row ['marvelMovieID']. " - ". $row ['title']." - ".$row ['productionStudio'].$db."</p>";
        //     }
 
 
-        }
-        $result->close();
-        $link->close();
+        //}
+        //$result->close();
+        //$db->close();
         ?>
 
 

@@ -111,7 +111,6 @@ function redirectTo($page){
 function checkDuplicateEntries($table, $column_name, $value, $db){
     try{
         $sqlQuery = "SELECT * FROM " .$table. " WHERE " .$column_name."=:$column_name";
-
         $statement = $db->prepare($sqlQuery);
         $statement->execute(array(":$column_name" => $value));
 
@@ -123,4 +122,3 @@ function checkDuplicateEntries($table, $column_name, $value, $db){
         //handle exception
     }
 }
-
