@@ -1,4 +1,9 @@
 <?php
+// Code below adapted from online course:
+// site:            https://www.udemy.com
+// Course title:    PHP: Complete Login and Registration System with PHP & MYSQL
+// Instructor:      Osayawe Terry Ogbemudia
+
 $page_title = "E A E R  - Homepage";
 include_once 'partials/parseLogin.php';
 include_once 'partials/header.php';

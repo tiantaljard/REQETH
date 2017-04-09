@@ -1,6 +1,11 @@
 <?php
-/**MM
- * *MM
+// Code below adapted from online course:
+// site:            https://www.udemy.com
+// Course title:    PHP: Complete Login and Registration System with PHP & MYSQL
+// Instructor:      Osayawe Terry Ogbemudia
+
+/**
+ **
  * @param $required_fields_array, n array containing the list of all required fields
  * @return array, containing all errors
  */

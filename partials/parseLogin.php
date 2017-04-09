@@ -1,4 +1,10 @@
 <?php
+// Code below adapted from online course:
+// site:            https://www.udemy.com
+// Course title:    PHP: Complete Login and Registration System with PHP & MYSQL
+// Instructor:      Osayawe Terry Ogbemudia
+
+
 include_once 'resource/session.php';
 include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';
@@ -18,13 +24,17 @@ if(isset($_POST['loginBtn'])){
         $statement = $db->prepare($sqlQuery);
         $statement->execute(array(':username' => $user));
         if ($row = $statement->fetch()) {
-            $id = $row['id'];
+            $id = $row['uid'];
+            $accessgroup = $row['accessgroup'];
             $hashed_password = $row['password'];
             $username = $row['username'];
             if (password_verify($password, $hashed_password)) {
                 $_SESSION['id'] = $id;
                 $_SESSION['username'] = $username;
-                redirectTo('index');
+                $_SESSION['accessgroup'] = $accessgroup;
+
+
+                redirectTo('requestList');
             } else {
                 $result = flashmessage("Invalid  password");
             }
