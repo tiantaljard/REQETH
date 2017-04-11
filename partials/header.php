@@ -32,7 +32,7 @@ include_once 'resource/utilities.php';
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">EAER</a>
+            <a class="navbar-brand" href="index.php">E A E R</a>!
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -45,10 +45,10 @@ include_once 'resource/utilities.php';
                         <li><a href="requestList.php">Requests</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 <?php else: ?>
-                    <li><a href="#about">About</a></li>
+
                     <li><a href="login.php">Login</a></li>
                     <li><a href="signup.php">Sign up</a></li>
-                    <li><a href="#contact">Contact</a></li>
+
                 <?php endif ?>
 
             </ul>

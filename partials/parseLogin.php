@@ -34,6 +34,7 @@ if(isset($_POST['loginBtn'])){
                 $_SESSION['accessgroup'] = $accessgroup;
 
 
+
                 redirectTo('requestList');
             } else {
                 $result = flashmessage("Invalid  password");

@@ -9,6 +9,21 @@
  * @param $required_fields_array, n array containing the list of all required fields
  * @return array, containing all errors
  */
+
+// create and assign value to readonly variable
+$readonly ="readonly";
+$hidden="style=&quot;display: none;&quot";
+
+
+
+if(($_SESSION['accessgroup'])=='admin'){$admingroup='admin';}
+if(($_SESSION['accessgroup'])=='eao'){$eaogroup='eao';}
+if(($_SESSION['accessgroup'])=='student'){$eaogroup='student';}
+if(($_SESSION['accessgroup'])=='eao' || ($_SESSION['accessgroup'])=='admin'){$admineaogroup='admmineao';}
+if(($_SESSION['accessgroup'])=='admin' || ($_SESSION['accessgroup'])=='student'){$adminstudentgroup='admminstudent';}
+if(($_SESSION['accessgroup'])=='eao' || ($_SESSION['accessgroup'])=='student'){$eaostudentgroup='eaostudent';}
+
+
 function check_empty_fields($required_fields_array){
     //initialize an array to store error messages
     $form_errors = array();
