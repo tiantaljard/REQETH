@@ -18,7 +18,7 @@ $hidden="style=&quot;display: none;&quot";
 
 if(($_SESSION['accessgroup'])=='admin'){$admingroup='admin';}
 if(($_SESSION['accessgroup'])=='eao'){$eaogroup='eao';}
-if(($_SESSION['accessgroup'])=='student'){$eaogroup='student';}
+if(($_SESSION['accessgroup'])=='student'){$studentgroup='student';}
 if(($_SESSION['accessgroup'])=='eao' || ($_SESSION['accessgroup'])=='admin'){$admineaogroup='admmineao';}
 if(($_SESSION['accessgroup'])=='admin' || ($_SESSION['accessgroup'])=='student'){$adminstudentgroup='admminstudent';}
 if(($_SESSION['accessgroup'])=='eao' || ($_SESSION['accessgroup'])=='student'){$eaostudentgroup='eaostudent';}

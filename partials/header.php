@@ -19,6 +19,7 @@ include_once 'resource/utilities.php';
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
+    <link href="assets/css/upload.css" rel="stylesheet">
 
 </head>
 <body>

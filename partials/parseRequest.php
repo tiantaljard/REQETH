@@ -78,13 +78,13 @@ else if(isset($_POST['updateProfileBtn'])){
         if(empty($form_errors)){
             try{
                 //create SQL update statement
-                $sqlUpdate = "UPDATE requests SET request =:request,description=:description,requestor=:requestor,ethics =:ethics WHERE request = :request";
+                $sqlUpdate = "UPDATE requests SET request =:request,description=:description,requestor=:requestor,ethics =:ethics, eao1=:eao1,eao2=:eao2 WHERE request = :request";
 
                 //use PDO prepared to sanitize data
                 $statement = $db->prepare($sqlUpdate);
 
                 //update the record in the database
-                $statement->execute(array(':request' => $request,':description' => $description, ':requestor' => $requestor, ':ethics' => $ethics, ':request' => $request));
+                $statement->execute(array(':request' => $request,':description' => $description, ':requestor' => $requestor, ':ethics' => $ethics,':eao1' => $eao1,':eao2' => $eao2 ,':request' => $request));
 
                 if($statement->rowCount() == 1){
                     $result = flashMessage("Update successful","Pass");
@@ -100,20 +100,4 @@ else if(isset($_POST['updateProfileBtn'])){
                 $result = flashMessage("There were " .count($form_errors). " errors in the form <br>");
             }
         }
-}
-
-if(isset($_POST['fileUploadBtn']))
-{
-    echo "whoami:";
-    echo exec('whoami');
-    echo "XXXX";
-    $file = rand(1000,100000)."-".$_FILES['file']['name'];
-    $file_loc = $_FILES['file']['tmp_name'];
-    $file_size = $_FILES['file']['size'];
-    $file_type = $_FILES['file']['type'];
-    $folder="uploads/";
-
-    move_uploaded_file($file_loc,$folder.$file);
-    //$sql="INSERT INTO uploads(request,file,type,size) VALUES('$file','$file_type','$file_size')";
-
 }

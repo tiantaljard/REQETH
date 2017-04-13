@@ -2,10 +2,17 @@
 $page_title = "E A E R  - Homepage";
 include_once 'partials/header.php';
 include_once 'partials/parseUserList.php';
-
-
 ?>
+
+
+
 <div class="container">
+
+    <?php if(!isset($admingroup)): ?>
+        <p class="lead">You are not authorized to view this page <a href="login.php">Login</a>
+            Not yet a member? <a href="signup.php">Signup</a> </p>
+    <?php else: ?>
+
     <p>
         <?php
         print "<table style='padding: 15px; text-align: left; width: 80%;'>";
@@ -33,6 +40,7 @@ include_once 'partials/parseUserList.php';
 
         ?>
     </p>
+    <?php endif ?>
 </div>
 <?php include_once 'partials/footer.php'; ?>
 </body>

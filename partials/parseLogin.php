@@ -12,9 +12,10 @@ include_once 'resource/utilities.php';
 if(isset($_POST['loginBtn'])){
     //array to hold errors
     $form_errors = array();
-//validate
+    //validate
     $required_fields = array('username', 'password');
     $form_errors = array_merge($form_errors, check_empty_fields($required_fields));
+
     if(empty($form_errors)) {
         //collect form data
         $user = $_POST['username'];

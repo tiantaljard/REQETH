@@ -17,7 +17,8 @@ $accessgroup = $_SESSION['accessgroup'];
     $sql_query = "select * from users; ";
     $statement = $db->prepare($sql_query);
     $statement->execute(array());
+    $result = $statement->fetchAll();
 }
 
-$result = $statement->fetchAll();
+
 ?>

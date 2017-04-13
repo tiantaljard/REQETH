@@ -6,16 +6,16 @@ include 'partials/parseProfile.php';
 
 <div class="container">
     <section class="col col-lg-7">
-        <h2>Edit User Profile: <?php echo $username ?>  </h2><hr>
+        <h2>Edit User Profile: <?php echo $headerusername  ?>  </h2><hr>
         <div>
             <?php if(isset($result)) echo $result; ?>
             <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
         </div>
         <div class="clearfix"></div>
         <php echo ($_SESSION['username']) echo ($_SESSION['accessgroup']) ; </php>
-        <?php if(!isset($_SESSION['username']) && ($_SESSION['accessgroup'])=='admin' ):?>
+        <?php if((!isset($_SESSION['username']) && ($_SESSION['accessgroup'])=='admin')||!isset($_GET['urlid']) ):?>
             <P class="lead">You are not authorized to view this page <a href="login.php">Login</a>
-                Not yet a member? <a href="signup.php">Signup</a> </P>
+                Not yet registered? <a href="signup.php">Signup</a> </P>
 
         <?php else: ?>
             <form method="post" action="" enctype="multipart/form-data">
@@ -46,14 +46,16 @@ include 'partials/parseProfile.php';
                 <div class="form-group">
                     <input type="hidden" name="username" value="<?php if(isset($username)) echo $username; ?>" class="form-control" id="username">
                 </div>
-                <!--<input type="hidden" name="token" value="<?php /*if(function_exists('_token')) echo _token(); */?>">-->
+
                 <button type="submit" name="updateProfileBtn" class="btn btn-primary pull-right">
                     Update Profile</button> <br />
             </form>
 
-        <?php endif ?>
+
     </section>
     <p><a href="usersList.php">User List</a> </p>
+
+    <?php endif ?>
 </div>
 <?php include_once 'partials/footer.php'; ?>
 </body>

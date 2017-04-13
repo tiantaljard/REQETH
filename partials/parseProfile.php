@@ -20,6 +20,7 @@ if((isset($_SESSION['id'])) && !isset($_POST['updateProfileBtn'])){
     while($rs = $statement->fetch()){
         $profileid =$rs['uid'];
         $username = $rs['username'];
+        $headerusername = $rs['username'];
         $firstname = $rs['firstname'];
         $lastname = $rs['lastname'];
         $accessgroup = $rs['description'];

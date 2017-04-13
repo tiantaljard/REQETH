@@ -12,14 +12,14 @@ include_once 'partials/parseProfile.php';
 <div class="container">
     <div >
         <h1>User Info</h1>
-        <?php if(!isset($_SESSION['username'])  && (($_SESSION['accessgroup'])=='adm')  ): ?>
+        <?php if((!isset($_SESSION['username'])  && (($_SESSION['accessgroup'])=='adm') )||!isset($_GET['urlid'])  ): ?>
             <P class="lead">You are not authorized to view this page <a href="login.php">Login</a>
-                Not yet a member? <a href="signup.php">Signup</a> </P>
+                Not yet registered? <a href="signup.php">Signup</a> </P>
         <?php else: ?>
             <section class="col col-lg-7">
 
                 <table class="table table-bordered table-condensed">
-                    <tr><th style="width: 20%;">Username:</th><td><?php if(isset($username)) echo $username; ?></td></tr>
+                    <tr><th style="width: 20%;">Username:</th><td><?php if(isset($headerusername)) echo $username; ?></td></tr>
                     <tr><th>First Name:</th><td><?php if(isset($firstname)) echo $firstname; ?></td></tr>
                     <tr><th>Last Name:</th><td><?php if(isset($lastname)) echo $lastname; ?></td></tr>
                     <tr><th>Email:</th><td><?php if(isset($email)) echo $email; ?></td></tr>
