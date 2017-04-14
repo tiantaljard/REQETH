@@ -5,6 +5,7 @@ include 'partials/parseRequest.php';
 include 'partials/parseUpload.php';
 ?>
 
+
 <div class="container">
 
 
@@ -32,17 +33,18 @@ include 'partials/parseUpload.php';
                         <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
                         <input name="userfile" type="file" id="userfile">
                     </td>
+
                     <td width="80"><input name="upload" type="submit" class="box" id="upload" value=" Upload "></td>
                 </tr>
             </table>
         </form
 
-
-
+        <br>
         <br>
         <?php
         $request = $request * 3;
         $urlid = base64_encode("649{$request}");
+
         echo "<p><a href='editrequest.php?urlid=$urlid'>Edit Request</a></p>";
         ?>
         <p><a href="requestList.php">Request List</a></p>
@@ -51,34 +53,43 @@ include 'partials/parseUpload.php';
     <?php endif ?>
 </div>
 
+
 <div class="container">
-    <table width="80%" border="1">
-        <tr>
-            <td>File Name</td>
-            <td>File Type</td>
-            <td>File Size(KB)</td>
-            <td>View</td>
-        </tr>
+
+    <?php if (isset($displayheaders)): ?>
+        <p>
         <?php
-        foreach ($sqlresult as $row)
-        {
+        print "<table style='padding: 15px; text-align: left; width: 50%;'>";
+        print " <tr> ";
+        print " <th>File Name</th> ";
+
+        print " <th>File Size</th> ";
+
+        foreach ($sqlresult as $row) {
+
+
+            echo "<tr>";
             ?>
-            <tr>
-                <td><?php echo $row['name'] ?></td>
-                <td><?php echo $row['type'] ?></td>
-                <td><?php echo $row['size'] ?></td>
-                <td><a href="uploads/<?php echo $row['file'] ?>" target="_blank">Get file</a></td>
-            </tr>
+            <td><a href="uploads/<?php echo $row['file'] ?>" target="_blank"><?php echo $row['name'] ?></a></td>
             <?php
+
+            echo "<td>" . $row['size'] . "</td>";
+
+          echo '<td>  <form action="" method="post">
+                      <input type="hidden" value="'.$row['id'].'" name="delreqdocid">
+                      <input type="submit" value="Delete">
+                 </form>
+            </td>';
+
+
+            echo "</tr>";
         }
+        print "</table> ";
+
         ?>
-    </table>
-
+        </p>
+    <?php endif ?>
 </div>
-
-
-
-
 
 
 <?php include_once 'partials/footer.php'; ?>

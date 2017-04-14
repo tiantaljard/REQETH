@@ -6,6 +6,8 @@
 // site:            https://www.udemy.com
 // Course title:    PHP: Complete Login and Registration System with PHP & MYSQL
 // Instructor:      Osayawe Terry Ogbemudia
+// https://teamtreehouse.com/community/deleting-individual-sql-table-rows-via-php
+
 //add database connection script
 include_once 'resource/dbConnect.php';
 //include formvalidation functions
@@ -17,23 +19,22 @@ $statement->execute(array(':requestid' => $requestid));
 $sqlresult = $statement->fetchAll();
 
 if ($statement->rowCount() > 0) {
-    $displayheaders="displayFUheaders";
-}
+    $displayheaders = "displayFUheaders";
+} else $displayheaders =null;
 
-if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0){
+if (isset($_POST['upload']) && $_FILES['userfile']['size'] > 0) {
     //array to hold errors
     $form_errors = array();
     if (empty($form_errors)) {
         $file = rand(1000, 100000) . "-" . $_FILES['userfile']['name'];
         $file_name = $_FILES['userfile']['name'];
         $file_loc = $_FILES['userfile']['tmp_name'];
-        $content=addslashes (file_get_contents($_FILES['userfile']['tmp_name']));
+        $content = addslashes(file_get_contents($_FILES['userfile']['tmp_name']));
         $file_size = $_FILES['userfile']['size'];
         $file_type = $_FILES['userfile']['type'];
         $folder = "uploads/";
-        echo $folder;
-        if(!get_magic_quotes_gpc())
-        {
+
+        if (!get_magic_quotes_gpc()) {
             $file_name = addslashes($file_name);
         }
         if (move_uploaded_file($file_loc, $folder . $file)) {
@@ -41,17 +42,18 @@ if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0){
                 //create SQL insert statement
                 $sqlInsert = "INSERT INTO uploads(request,file,name,type,size,fileloc,content) VALUES(:request,:file,:filename,:file_type,:file_size,:file_loc,:content)";
                 //use PDO prepared to sanitize data
-                $statement = $db->prepare($sqlInsert);
+                $insStatement = $db->prepare($sqlInsert);
                 //add the data into the database
-                $statement->execute(array(':request' => $requestid, ':file' => $file, ':filename' => $file_name, ':file_type' => $file_type, ':file_size' => $file_size,':file_loc' => $file_loc, ':content' => $content));
+                $insStatement->execute(array(':request' => $requestid, ':file' => $file, ':filename' => $file_name, ':file_type' => $file_type, ':file_size' => $file_size, ':file_loc' => $file_loc, ':content' => $content));
                 //check if one new row was created
-                if ($statement->rowCount() == 1) {
+                if ($insStatement->rowCount() == 1) {
 
                     $sql_query = "select * from uploads where request=:requestid; ";
                     $statement = $db->prepare($sql_query);
                     $statement->execute(array(':requestid' => $requestid));
                     $sqlresult = $statement->fetchAll();
-                    $result = flashMessage("File uploaded successfully: ".$file_name, "Pass");
+
+                    $result = flashMessage("File uploaded successfully: " . $file_name, "Pass");
                 }
             } catch (PDOException $ex) {
                 $result = flashMessage("An error occued: " . $ex->getMessage());
@@ -67,4 +69,39 @@ if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0){
         }
     }
 }//}
+
+if (isset($_POST['delreqdocid'])) {
+    $form_errors = array();
+
+    $delreqdocid = $_POST['delreqdocid'];
+  ;
+
+
+    try {
+        $sql_del = "delete from uploads where id=:id and request=:request" ;
+
+        $delstatement = $db->prepare($sql_del);
+        $delstatement->execute(array(':id' => $delreqdocid,':request' => $requestid));
+
+
+        if ($delstatement->rowCount() == 1) {
+
+            $sql_query = "select * from uploads where request=:requestid; ";
+            $statement = $db->prepare($sql_query);
+            $statement->execute(array(':requestid' => $requestid));
+            $sqlresult = $statement->fetchAll();
+
+            if ($statement->rowCount() > 0) {
+                $displayheaders = "displayFUheaders";
+            } else $displayheaders =null;
+
+            $result = flashMessage("File deleted  successfully: " . $file_name, "Pass");
+        }
+    } catch (PDOException $ex) {
+        $result = flashMessage("An error occued: " . $ex->getMessage());
+    }
+
+}
+
+
 ?>
