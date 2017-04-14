@@ -13,14 +13,14 @@ include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';
 
 
-/*
+
 $sql_query = "select * from uploads where request=:requestid; ";
 $statement = $db->prepare($sql_query);
 $statement->execute(array(':requestid' => $requestid));
 $result = $statement->fetchAll();
 if ($statement->rowCount() > 0) {
     $displayheaders="displayFUheaders";
-}*/
+}
 
 
 
