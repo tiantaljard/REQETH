@@ -17,6 +17,8 @@ $sql_query = "select * from uploads where request=:requestid; ";
 $statement = $db->prepare($sql_query);
 $statement->execute(array(':requestid' => $requestid));
 $result = $statement->fetchAll();
+
+
 if ($statement->rowCount() > 0) {
     $displayheaders="displayFUheaders";
 }
@@ -41,11 +43,11 @@ if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0){
         if (move_uploaded_file($file_loc, $folder . $file)) {
             try {
                 //create SQL insert statement
-                $sqlInsert = "INSERT INTO uploads(request,file,name,type,size,content) VALUES(:request,:file,:filename,:file_type,:file_size,:content)";
+                $sqlInsert = "INSERT INTO uploads(request,file,name,type,size,fileloc,content) VALUES(:request,:file,:filename,:file_type,:file_size,:file_loc,:content)";
                 //use PDO prepared to sanitize data
                 $statement = $db->prepare($sqlInsert);
                 //add the data into the database
-                $statement->execute(array(':request' => $requestid, ':file' => $file, ':filename' => $file_name, ':file_type' => $file_type, ':file_size' => $file_size, ':content' => $content));
+                $statement->execute(array(':request' => $requestid, ':file' => $file, ':filename' => $file_name, ':file_type' => $file_type, ':file_size' => $file_size,':file_loc' => $file_loc, ':content' => $content));
 
                 //check if one new row was created
                 if ($statement->rowCount() == 1) {
