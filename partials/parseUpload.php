@@ -40,8 +40,10 @@ if (isset($_POST['upload'])) {
         $tmpName  = $_FILES['userfile']['tmp_name'];
         $file_loc = $_FILES['userfile']['tmp_name'];
 
-   //     echo $tmpName."<br>";
-     //   echo $file_loc."<br>";
+        $userfiletmp=addslashes (file_get_contents($_FILES['userfile']['tmp_name']));
+
+        echo $userfiletmp."<br>";echo $tmpName."<br>";
+
 
         $file_size = $_FILES['userfile']['size'];
         $file_type = $_FILES['userfile']['type'];
