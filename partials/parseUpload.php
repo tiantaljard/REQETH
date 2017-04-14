@@ -6,18 +6,15 @@
 // site:            https://www.udemy.com
 // Course title:    PHP: Complete Login and Registration System with PHP & MYSQL
 // Instructor:      Osayawe Terry Ogbemudia
-
 //add database connection script
 include_once 'resource/dbConnect.php';
 //include formvalidation functions
 include_once 'resource/utilities.php';
 
-
 $sql_query = "select * from uploads where request=:requestid; ";
 $statement = $db->prepare($sql_query);
 $statement->execute(array(':requestid' => $requestid));
-$result = $statement->fetchAll();
-
+$sqlresult = $statement->fetchAll();
 
 if ($statement->rowCount() > 0) {
     $displayheaders="displayFUheaders";
@@ -34,7 +31,6 @@ if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0){
         $file_size = $_FILES['userfile']['size'];
         $file_type = $_FILES['userfile']['type'];
         $folder = "uploads/";
-
         echo $folder;
         if(!get_magic_quotes_gpc())
         {
@@ -48,14 +44,16 @@ if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0){
                 $statement = $db->prepare($sqlInsert);
                 //add the data into the database
                 $statement->execute(array(':request' => $requestid, ':file' => $file, ':filename' => $file_name, ':file_type' => $file_type, ':file_size' => $file_size,':file_loc' => $file_loc, ':content' => $content));
-
                 //check if one new row was created
                 if ($statement->rowCount() == 1) {
+
+                    $sql_query = "select * from uploads where request=:requestid; ";
+                    $statement = $db->prepare($sql_query);
+                    $statement->execute(array(':requestid' => $requestid));
+                    $sqlresult = $statement->fetchAll();
                     $result = flashMessage("File uploaded successfully: ".$file_name, "Pass");
                 }
             } catch (PDOException $ex) {
-
-
                 $result = flashMessage("An error occued: " . $ex->getMessage());
             }
         } else {
@@ -67,7 +65,6 @@ if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0){
         } else {
             $result = flashmessage("There were " . count($form_errors) . " errors in the form <br>");
         }
-
     }
 }//}
 ?>

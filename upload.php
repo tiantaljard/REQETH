@@ -3,7 +3,6 @@ $page_title = "E A E R - Upload Document";
 include_once 'partials/header.php';
 include 'partials/parseRequest.php';
 include 'partials/parseUpload.php';
-
 ?>
 
 <div class="container">
@@ -61,7 +60,7 @@ include 'partials/parseUpload.php';
             <td>View</td>
         </tr>
         <?php
-        foreach ($result as $row)
+        foreach ($sqlresult as $row)
         {
             ?>
             <tr>
@@ -74,8 +73,6 @@ include 'partials/parseUpload.php';
         }
         ?>
     </table>
-
-
 
 </div>
 
