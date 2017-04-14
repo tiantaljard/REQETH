@@ -39,19 +39,15 @@ if (isset($_POST['upload'])) {
         $file_name = $_FILES['userfile']['name'];
         $tmpName  = $_FILES['userfile']['tmp_name'];
         $file_loc = $_FILES['userfile']['tmp_name'];
-
         $userfiletmp=addslashes (file_get_contents($_FILES['userfile']['tmp_name']));
-
-        echo $userfiletmp."<br>";echo $tmpName."<br>";
-
 
         $file_size = $_FILES['userfile']['size'];
         $file_type = $_FILES['userfile']['type'];
         $folder = "uploads/";
-       /* $fp      = fopen($tmpName, 'r');
-        $content = fread($fp, $file_size($tmpName));
-        $content = addslashes($content);
-        fclose($fp);*/
+
+        $content =$userfiletmp;
+
+        echo $folder;
 
         if(!get_magic_quotes_gpc())
         {
