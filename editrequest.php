@@ -1,5 +1,5 @@
 <?php
-$page_title = "E A E R - Edit Request";
+$page_title = "E A E R - Edit A Request";
 include_once 'partials/header.php';
 include 'partials/parseRequest.php';
 
