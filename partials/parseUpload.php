@@ -27,17 +27,16 @@ if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0){
     if (empty($form_errors)) {
         $file = rand(1000, 100000) . "-" . $_FILES['userfile']['name'];
         $file_name = $_FILES['userfile']['name'];
-        $tmpName  = $_FILES['userfile']['tmp_name'];
         $file_loc = $_FILES['userfile']['tmp_name'];
-        $userfiletmp=addslashes (file_get_contents($_FILES['userfile']['tmp_name']));
+        $content=addslashes (file_get_contents($_FILES['userfile']['tmp_name']));
         $file_size = $_FILES['userfile']['size'];
         $file_type = $_FILES['userfile']['type'];
         $folder = "uploads/";
-        $content =$userfiletmp;
+
         echo $folder;
         if(!get_magic_quotes_gpc())
         {
-            $fileName = addslashes($fileName);
+            $file_name = addslashes($file_name);
         }
         if (move_uploaded_file($file_loc, $folder . $file)) {
             try {
