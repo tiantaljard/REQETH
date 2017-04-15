@@ -15,7 +15,7 @@ include_once 'resource/utilities.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title><?php if (isset($page_title)) echo $page_title; ?></title>
+    <title><?php if(isset($page_title)) echo $page_title; ?></title>
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
@@ -27,8 +27,7 @@ include_once 'resource/utilities.php';
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -40,16 +39,14 @@ include_once 'resource/utilities.php';
             <ul class="nav navbar-nav">
 
                 <li><a href="index.php">Home</a></li>
-                <?php if ((isset($_SESSION['username']))): ?>
-                    <?php if (($_SESSION['accessgroup']) == 'admin'): ?>
-                        <li><a href="usersList.php">User Admin</a></li>
+                <?php if((isset($_SESSION['username']))): ?>
+                    <?php if(($_SESSION['accessgroup'])=='admin'): ?>
+                    <li><a href="usersList.php">User Admin</a></li>
                     <?php endif ?>
-                    <li><a href="requestList.php">Requests</a></li>
-                    <?php if (($_SESSION['accessgroup']) == 'student'): ?>
-                        <li><a href="newrequest.php">New Request</a></li>
-                    <?php endif ?>
+                        <li><a href="requestList.php">Requests</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 <?php else: ?>
+
                     <li><a href="login.php">Login</a></li>
                     <li><a href="signup.php">Sign up</a></li>
 

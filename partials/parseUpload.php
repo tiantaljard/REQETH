@@ -53,10 +53,6 @@ if (isset($_POST['upload']) && $_FILES['userfile']['size'] > 0) {
                     $statement->execute(array(':requestid' => $requestid));
                     $sqlresult = $statement->fetchAll();
 
-                    if ($statement->rowCount() > 0) {
-                        $displayheaders = "displayFUheaders";
-                    } else $displayheaders =null;
-
                     $result = flashMessage("File uploaded successfully: " . $file_name, "Pass");
                 }
             } catch (PDOException $ex) {

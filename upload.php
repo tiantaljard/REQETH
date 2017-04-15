@@ -10,7 +10,7 @@ include 'partials/parseUpload.php';
 
 
     <section class="col col-lg-7">
-        <h2>Manage Documents for : <?php echo $description ?>  </h2>
+        <h2>Upload Documents for : <?php echo $description ?>  </h2>
         <hr>
 
         <div>
