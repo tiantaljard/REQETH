@@ -29,7 +29,7 @@ if ($accessgroup == "student") {
 } else if
 ($accessgroup == "eao"
 ) {
-    echo $username;
+
     $sql_query = "select * from users, requests 
       where username=requestor and status='assigned' 
       and (eao1=:username or eao2=:username) and not exists (select 1 from comments where comments.username=:username and status='Approve' and comments.request=requests.request); ";
