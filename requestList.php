@@ -23,7 +23,7 @@ include_once 'partials/parseRequestList.php';
         print " <th>1st EAO</th> ";
         print " <th>2nd EAO</th> ";
         print " </tr> ";
-        foreach ($result as $row) {
+        foreach ($accessresult as $row) {
             $rowrequestid =$row['request'];
             $rowrequestid = $rowrequestid*3;
             $urlid = base64_encode("649{$rowrequestid}");

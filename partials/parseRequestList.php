@@ -10,33 +10,35 @@ include_once 'resource/utilities.php';
 include 'resource/dbConnect.php';
 
 
-
-
-$username  = $_SESSION['username'];
+$username = $_SESSION['username'];
 $accessgroup = $_SESSION['accessgroup'];
 
 
-
-if($accessgroup=="student") {
+if ($accessgroup == "student") {
     $sql_query = "select * from users, requests where username=requestor and username=:username; ";
     $statement = $db->prepare($sql_query);
     $statement->execute(array(':username' => $username));
-    $result = $statement->fetchAll();
-}
-else if
-($accessgroup=="admin"){
-    $sql_query = "select * from users, requests where username=requestor and (eao1 is null or eao2 is null) and status='submit'; ";
+    $accessresult = $statement->fetchAll();
+} else if
+($accessgroup == "admin"
+) {
+    $sql_query = "select * from users, requests where username=requestor  and (eao1 is null or eao2 is null) and status='submit'; ";
     $statement = $db->prepare($sql_query);
     $statement->execute(array());
-    $result = $statement->fetchAll();
-}
-else if
-($accessgroup=="eao") {
-    $sql_query = "select * from users, requests where username=requestor and (eao1=:username or eao2=:username) and status='assigned'; ";
+    $accessresult = $statement->fetchAll();
+} else if
+($accessgroup == "eao"
+) {
+    echo $username;
+    $sql_query = "select * from users, requests 
+      where username=requestor and status='assigned' 
+      and (eao1=:username or eao2=:username) and not exists (select 1 from comments where comments.username=:username and status='Approve' and comments.request=requests.request); ";
     $statement = $db->prepare($sql_query);
     $statement->execute(array(':username' => $username));
-    $result = $statement->fetchAll();
+    $accessresult = $statement->fetchAll();
 }
+
+
 
 
 ?>
