@@ -32,7 +32,7 @@ include_once 'partials/parseRequestList.php';
             echo "<td>" . $row['description'] . "</td>";
             echo "<td>" . $row['firstname'] ." ". $row['lastname'] . "</td>";
             echo "<td>" . $row['status'] . "</td>";
-            echo "<td>" . $row['date submitted'] . "</td>";
+            echo "<td>" . $row['submitdate'] . "</td>";
             echo "<td>" . $row['eao1'] . "</td>";
             echo "<td>" . $row['eao2'] . "</td>";
             echo "</tr>";
