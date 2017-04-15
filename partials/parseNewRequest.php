@@ -45,7 +45,7 @@ if (isset($_POST['insertRequestBtn'])) {
                 $rowrequestid =$row['request'];
                 $rowrequestid = $rowrequestid*3;
                 $urlid = base64_encode("649{$rowrequestid}");
-                header("Location: editRequest.php");
+                header("Location: editRequest.php?$urlid");
                 //$result = flashMessage("Insert successful", "Pass");
             }
         } catch (PDOException $ex) {
