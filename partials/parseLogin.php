@@ -3,8 +3,6 @@
 // site:            https://www.udemy.com
 // Course title:    PHP: Complete Login and Registration System with PHP & MYSQL
 // Instructor:      Osayawe Terry Ogbemudia
-
-
 include_once 'resource/session.php';
 include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';
@@ -33,9 +31,6 @@ if(isset($_POST['loginBtn'])){
                 $_SESSION['id'] = $id;
                 $_SESSION['username'] = $username;
                 $_SESSION['accessgroup'] = $accessgroup;
-
-
-
                 redirectTo('requestList');
             } else {
                 $result = flashmessage("Invalid  password");

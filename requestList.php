@@ -2,10 +2,14 @@
 $page_title = "E A E R  - Homepage";
 include_once 'partials/header.php';
 include_once 'partials/parseRequestList.php';
-
-
 ?>
 <div class="container">
+
+    <div>
+        <?php if (isset($result)) echo $result; ?>
+        <?php if (!empty($form_errors)) echo show_errors($form_errors); ?>
+    </div>
+    <div class="clearfix"></div>
 
     <?php if(!isset($_SESSION['username'])): ?>
         <p class="lead">You are not authorized to view this page <a href="login.php">Login</a>
@@ -23,6 +27,7 @@ include_once 'partials/parseRequestList.php';
         print " <th>1st EAO</th> ";
         print " <th>2nd EAO</th> ";
         print " </tr> ";
+        if ($statement->rowCount() > 0) {
         foreach ($accessresult as $row) {
             $rowrequestid =$row['request'];
             $rowrequestid = $rowrequestid*3;
@@ -36,7 +41,10 @@ include_once 'partials/parseRequestList.php';
             echo "<td>" . $row['eao1'] . "</td>";
             echo "<td>" . $row['eao2'] . "</td>";
             echo "</tr>";
-        }print "</table> ";
+        }
+        } else $noRecords ="No requests exists that meets the criteria to be included in this list";
+        print "</table> ";
+        echo "<br><br>".$noRecords;
 
         ?>
     </p>

@@ -12,11 +12,15 @@ include 'partials/parseRequest.php';
             <?php if (!empty($form_errors)) echo show_errors($form_errors); ?>
         </div>
         <div class="clearfix"></div>
+
         <?php if (!isset($_SESSION['username']) || !isset($_GET['urlid'])): ?>
+
+
             <P class="lead">You are not authorized to view this page <a href="login.php">Login</a>
                 Not yet registered? <a href="signup.php">Signup</a></P>
         <?php else: ?>
         <form method="post" action="" enctype="multipart/form-data">
+
             <div class="form-group">
                 <label for="requestField">Request</label>
                 <input <? if (isset($request)) echo $readonly; ?> type="text" name="request"
@@ -31,16 +35,27 @@ include 'partials/parseRequest.php';
             </div>
             <div class="form-group">
                 <label for="requestorField">Requestor</label>
-                <input <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="requestor"
+                <input <?  echo $readonly; ?> type="text" name="requestor"
                                                                         class="form-control" id="requestorField"
-                                                                        value="<?php if (isset($requestor)) echo $requestor; ?>">
+                                                                        value="<?php echo $firstname." ".$lastname; ?>">
             </div>
             <div class="form-group">
                 <label for="statusField">Status</label>
-                <input <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="status"
+                <input <?  echo $readonly; ?> type="text" name="status"
                                                                         class="form-control" id="statusField"
                                                                         value="<?php if (isset($status)) echo $status; ?>">
             </div>
+            <div class="form-group" <?php if (isset($admineaogroup)){ ?>style="display:none"<?php } ?>
+                <label for="statusUpdateField">Route Subbmission</label>
+                <select class="form-control" name="status" id="statusUpdateField"
+                        value="<?php if (isset($accessgroup)) echo $accessgroup; ?>" class="form-control"
+                        id="statusUpdateField">
+                        <option></option>
+                        <option>submit</option>
+                        <option>prepare</option>
+                    </select>
+                </div>
+
             <div class="form-group">
                 <label for="ethicsField">Ethics</label>
                 <input <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="ethics"
@@ -76,11 +91,15 @@ include 'partials/parseRequest.php';
                     <option>More Info Required</option>
                 </select>
             </div>
+
+
             <button type="submit" name="updateRequestBtn" class="btn btn-primary pull-right">
                 Update Request Record
             </button>
             <br/>
         </form>
+
+
 
 
         <div class="container">
@@ -101,7 +120,7 @@ include 'partials/parseRequest.php';
                     echo "<td>" . $row['commentdate'] . "</td>";
                     echo "<td>" . $row['status'] . "</td>";
 /*                    echo '<td>
-                            <form action="" method="post"> 
+                            <form action="" method="post">
                             <input type="hidden" value="' . $row['uid'] . '" name="delreqcommentid">
                             <input type="submit" value="Delete">
                             </form>

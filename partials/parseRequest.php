@@ -7,8 +7,20 @@ include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';;
 
 $username = $_SESSION['username'];
+//echo $_SESSION['urlid']."what what".$_SESSION[username];
 
-if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn'])) {
+if ((isset($_SESSION['id'])) && isset($_SESSION['urlid']) && !isset($_POST['updateRequestBtn']) ) {
+    $url_encoded_id = $_SESSION['urlid'];
+    $decode_id = base64_decode($url_encoded_id);
+    $request_id_array = explode("649", $decode_id);
+    $requestid = $request_id_array[1];
+    $newrequestid = $requestid / 3;
+
+
+}
+
+
+if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn']) ) {
 
     $url_encoded_id = $_GET['urlid'];
     $decode_id = base64_decode($url_encoded_id);
@@ -16,7 +28,7 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn'])) {
     $requestid = $request_id_array[1];
     $requestid = $requestid / 3;
 
-    $sqlQuery = "SELECT * FROM requests WHERE request = :request";
+    $sqlQuery = "SELECT * FROM requests, users  WHERE username =requestor and request = :request";
     $statement = $db->prepare($sqlQuery);
     $statement->execute(array(':request' => $requestid));
     while ($rs = $statement->fetch()) {
@@ -27,6 +39,8 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn'])) {
         $ethics = $rs['ethics'];
         $eao1 = $rs['eao1'];
         $eao2 = $rs['eao2'];
+        $firstname = $rs['firstname'];
+        $lastname = $rs['lastname'];
     }
 
     $sql_commentquery = "select * from comments where request=:request; ";
@@ -78,17 +92,18 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn'])) {
     $eaoComment = $_POST['eaocomment'];
     $eaoStatus = $_POST['eaostatus'];
 
+
     if (empty($form_errors)) {
         if (isset($adminstudentgroup)) {
             try {
                 //create SQL update statement
-                $sqlUpdate = "UPDATE requests SET request =:request,description=:description,requestor=:requestor,ethics =:ethics, eao1=:eao1,eao2=:eao2 WHERE request = :request";
+                $sqlUpdate = "UPDATE requests SET request =:request,description=:description,requestor=:requestor,status=:status,ethics =:ethics, eao1=:eao1,eao2=:eao2 WHERE request = :request";
 
                 //use PDO prepared to sanitize data
                 $updatestatement = $db->prepare($sqlUpdate);
 
                 //update the record in the database
-                $updatestatement->execute(array(':request' => $request, ':description' => $description, ':requestor' => $requestor, ':ethics' => $ethics, ':eao1' => $eao1, ':eao2' => $eao2, ':request' => $request));
+                $updatestatement->execute(array(':request' => $request, ':description' => $description, ':requestor' => $requestor,':status' => $status, ':ethics' => $ethics, ':eao1' => $eao1, ':eao2' => $eao2, ':request' => $request));
 
                 if ($updatestatement->rowCount() == 1) {
                     $result = flashMessage("Update successful", "Pass");

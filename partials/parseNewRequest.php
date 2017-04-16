@@ -6,6 +6,8 @@
 include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';
 
+$formaction='action=""';
+
 $username = $_SESSION['username'];
 if (isset($_POST['insertRequestBtn'])) {
     //process the form
@@ -28,6 +30,7 @@ if (isset($_POST['insertRequestBtn'])) {
     $description = $_POST['description'];
     $requestor = $_SESSION['username'];
     $ethics = $_POST['ethics'];
+    $status="prepare";
 
     if (empty($form_errors)) {
         try {
@@ -41,12 +44,18 @@ if (isset($_POST['insertRequestBtn'])) {
             $statementReqIns->execute(array(':description' => $description, ':requestor' => $requestor, ':ethics' => $ethics));
 
             if ($statementReqIns->rowCount() == 1) {
-                $request = $db->lastInsertId();
-                $rowrequestid =$row['request'];
-                $rowrequestid = $rowrequestid*3;
-                $urlid = base64_encode("649{$rowrequestid}");
-                header("Location: editRequest.php?$urlid");
-                //$result = flashMessage("Insert successful", "Pass");
+                $rowrequestid = $db->lastInsertId();
+                $requestid = $db->lastInsertId();
+
+                //$rowrequestid =$row['request'];
+                $rowrequestURLid = $rowrequestid*3;
+                $urlid = base64_encode("649{$rowrequestURLid}");
+                $_SESSION['urlid'] = $urlid;
+
+                $result = flashMessage("Insert successful", "Pass");
+
+
+
             }
         } catch (PDOException $ex) {
             $result = flashMessage("An error occurred in : " . $ex->getMessage());
@@ -57,5 +66,7 @@ if (isset($_POST['insertRequestBtn'])) {
         } else {
             $result = flashMessage("There were " . count($form_errors) . " errors in the form <br>");
         }
+
     }
 }
+?>
