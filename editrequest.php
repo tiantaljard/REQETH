@@ -135,27 +135,21 @@ include 'partials/parseUpload.php';
                     <option>More Info Required</option>
                 </select>
             </div>
-            <div>
-            <form method="post" enctype="multipart/form-data">
-                <table width="350" border="0" cellpadding="1" cellspacing="1" class="box">
-                    <tr>
-                        <td width="246">
-                            <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-                            <input name="userfile" type="file" id="userfile">
-                        </td>
-
-                        <td width="80"><input name="upload" type="submit" class="box" id="upload" value=" Upload "></td>
-                    </tr>
-                </table>
-            </form
+            <div class="form-group" <?php if (isset($admineaogroup)){ ?>style="display:none"<?php } ?>>
+                <label for="fileUploadField">Upload Supporting Documents</label>
+                <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+                <input name="userfile" type="file" id="fileUploadField">
             </div>
+
             <button type="submit" name="updateRequestBtn" class="btn btn-primary pull-right">
                 Update Request Record
-            </button>
+
+            </div>
+            <br/>
+            <br/>
             <br/>
         </form>
     </div>
-
 
 
         <div class="container">
@@ -196,25 +190,21 @@ include 'partials/parseUpload.php';
     <div class="container">
 
         <?php if (isset($displayheaders)): ?>
+
+
             <p>
             <?php
             print "<table style='padding: 15px; text-align: left; width: 50%;'>";
             print " <tr> ";
             print " <th>File Name</th> ";
-
             print " <th>File Size</th> ";
-
-            foreach ($sqlresult as $row) {
-
-
+            foreach ($uploaddocsqlresult as $row) {
                 echo "<tr>";
-                ?>
+                    ?>
                 <td><a href="uploads/<?php echo $row['file'] ?>" target="_blank"><?php echo $row['name'] ?></a></td>
-                <?php
-
+                    <?php
                 echo "<td>" . $row['size'] . "</td>";
-
-                if (!isset($admineaogroup))
+                    if (!isset($admineaogroup))
                 echo '<td>  <form action="" method="post">
                       <input type="hidden" value="'.$row['id'].'" name="delreqdocid">
                       <input type="submit" value="Delete">
@@ -227,6 +217,7 @@ include 'partials/parseUpload.php';
             print "</table> ";
 
             ?>
+
             </p>
         <?php endif ?>
     </div>

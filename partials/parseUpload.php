@@ -13,16 +13,16 @@ include_once 'resource/dbConnect.php';
 //include formvalidation functions
 include_once 'resource/utilities.php';
 
-$sql_query = "select * from uploads where request=:requestid; ";
-$statement = $db->prepare($sql_query);
-$statement->execute(array(':requestid' => $requestid));
-$sqlresult = $statement->fetchAll();
+$sql_uploaddocquery = "select * from uploads where request=:requestid; ";
+$uploaddocstatement = $db->prepare($sql_uploaddocquery);
+$uploaddocstatement->execute(array(':requestid' => $requestid));
+$uploaddocsqlresult = $uploaddocstatement->fetchAll();
 
-if ($statement->rowCount() > 0) {
+if ($uploaddocstatement->rowCount() > 0) {
     $displayheaders = "displayFUheaders";
 } else $displayheaders =null;
 
-if (isset($_POST['upload']) && $_FILES['userfile']['size'] > 0) {
+if ((isset($_POST['uploadDocBtn']) || isset($_POST['updateRequestBtn']) )&& $_FILES['userfile']['size'] > 0) {
     //array to hold errors
     $form_errors = array();
     if (empty($form_errors)) {
@@ -48,16 +48,28 @@ if (isset($_POST['upload']) && $_FILES['userfile']['size'] > 0) {
                 //check if one new row was created
                 if ($insStatement->rowCount() == 1) {
 
-                    $sql_query = "select * from uploads where request=:requestid; ";
-                    $statement = $db->prepare($sql_query);
-                    $statement->execute(array(':requestid' => $requestid));
-                    $sqlresult = $statement->fetchAll();
+                    $sql_uploaddocquery = "select * from uploads where request=:requestid; ";
+                    $uploaddocstatement = $db->prepare($sql_uploaddocquery);
+                    $uploaddocstatement->execute(array(':requestid' => $requestid));
+                    $uploaddocsqlresult = $uploaddocstatement->fetchAll();
 
-                    if ($statement->rowCount() > 0) {
+                    if ($uploaddocstatement->rowCount() > 0) {
                         $displayheaders = "displayFUheaders";
                     } else $displayheaders =null;
-
                     $result = flashMessage("File uploaded successfully: " . $file_name, "Pass");
+
+
+
+                    $sql_commentquery = "select * from comments where request=:request; ";
+                    $commentstatement = $db->prepare($sql_commentquery);
+                    $commentstatement->execute(array(':request' => $request));
+                    $sqlcommentresult = $commentstatement->fetchAll();
+
+                    if ($commentstatement->rowCount() > 0) {
+                        $displaycommentheaders = "displayCUheaders";
+                    } else $displaycommentheaders =null;
+
+
                 }
             } catch (PDOException $ex) {
                 $result = flashMessage("An error occued: " . $ex->getMessage());

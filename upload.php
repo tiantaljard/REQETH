@@ -34,7 +34,7 @@ include 'partials/parseUpload.php';
                         <input name="userfile" type="file" id="userfile">
                     </td>
 
-                    <td width="80"><input name="upload" type="submit" class="box" id="upload" value=" Upload "></td>
+                    <td width="80"><input name="uploadDocBtn" type="submit" class="box" id="upload" value=" Upload "></td>
                 </tr>
             </table>
         </form
