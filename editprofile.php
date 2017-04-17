@@ -35,8 +35,19 @@ include 'partials/parseProfile.php';
                 </div>
 
                 <div class="form-group">
-                <label for="accessgroupField">Access Group</label>
-                <select class="form-control" name="accessgroup" id="accessgroupField" value="<?php if(isset($accessgroup)) echo $accessgroup; ?>" class="form-control" id="accessgroupField">
+                    <label for="accessgroupField">Access Group</label>
+                    <input <? echo $readonly; ?> type="text" name="accessgroup"
+                                                 class="form-control" id="accessgroupField"
+                                                 value="<?php if (isset($accessgroup)) echo $accessgroup; ?>">
+                    <input  type="hidden" name="accessgroup"
+                            class="form-control" id="accessgroupField"
+                            value="<?php if (isset($accessgroup)) echo $accessgroup; ?>">
+                </div>
+
+                <div class="form-group">
+                <label for="accessgroupUpdateField">Update Access Group</label>
+                <select class="form-control" name="accessgroupUpdate" id="accessgroupUpdateField" value="<?php if(isset($accessgroupUpdate)) echo $accessgroupUpdate; ?>" class="form-control" id="accessgroupField">
+                    <option></option>
                     <option>student</option>
                     <option>eao</option>
                     <option>admin</option>
@@ -51,9 +62,10 @@ include 'partials/parseProfile.php';
                     Update Profile</button> <br />
             </form>
 
+        <p><a href="usersList.php">User List</a> </p>
 
     </section>
-    <p><a href="usersList.php">User List</a> </p>
+
 
     <?php endif ?>
 </div>

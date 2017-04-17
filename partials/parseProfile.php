@@ -64,6 +64,9 @@ else if(isset($_POST['updateProfileBtn'])){
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $accessgroup = $_POST['accessgroup'];
+        $accessgroupUpdate=$_POST['accessgroupUpdate'];
+        if ( strlen (  $_POST['accessgroupUpdate'] ) >2 ) {$accessgroup=$_POST['accessgroupUpdate'] ;}
+
         $username =$_POST['username'];
 
 

@@ -78,7 +78,7 @@ if (isset($_POST['delreqdocid'])) {
     $form_errors = array();
 
     $delreqdocid = $_POST['delreqdocid'];
-  ;
+
 
 
     try {

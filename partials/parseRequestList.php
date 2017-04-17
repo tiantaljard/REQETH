@@ -21,7 +21,7 @@ if ($accessgroup == "student") {
     $accessresult = $statement->fetchAll();
 
 } else if ($accessgroup == "admin") {
-    $sql_query = "select * from users, requests where username=requestor  and (eao1 is null or eao2 is null) and status='submit'; ";
+    $sql_query = "select * from users, requests where username=requestor  and ((eao1 IS NULL  or eao1 =' ' or eao1='unassigned') or (eao2 IS NULL  or eao2 =' ' or eao2='unassigned')) and status='submit'; ";
     $statement = $db->prepare($sql_query);
     $statement->execute(array());
     $accessresult = $statement->fetchAll();
