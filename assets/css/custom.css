@@ -54,3 +54,67 @@ body{
     outline: 1px dotted #000;
     outline: -webkit-focus-ring-color auto 5px;
 }
+
+.commentlist {
+   width: 50%;
+}
+.commentlist td{
+    padding: 10px;
+}
+
+.commentlist th{
+    padding: 10px;
+}
+
+.doculist {
+    width: 50%;
+}
+.doculist td{
+    padding: 10px;
+}
+
+.doculist th{
+    padding: 10px;
+}
+
+.requestlist {
+    width: 80%;
+}
+.requestlist td{
+    padding: 10px;
+}
+
+.requestlist th{
+    padding: 10px;
+}
+
+
+h2.commentheader {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+h2.docuheader {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+span.username {
+    font-weight: bold;
+}
+
+span.commentdate {
+     color: gray;
+ }
+
+.commentholder {
+ margin: 20px 10px 20px 10px;
+}
+
+textarea#eaoCommentField {
+    height: 100px;
+}
+
+textarea#ethicsField {
+    height: 100px;
+}

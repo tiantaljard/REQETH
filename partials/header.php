@@ -37,7 +37,7 @@ include_once 'resource/utilities.php';
             <a class="navbar-brand" href="index.php">E A E R</a>!
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav"><i class="hide"><?php echo guard(); ?></i>
 
                 <li><a href="index.php">Home</a></li>
                 <?php if ((isset($_SESSION['username']))): ?>

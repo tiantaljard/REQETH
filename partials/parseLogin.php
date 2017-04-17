@@ -31,6 +31,12 @@ if(isset($_POST['loginBtn'])){
                 $_SESSION['id'] = $id;
                 $_SESSION['username'] = $username;
                 $_SESSION['accessgroup'] = $accessgroup;
+
+                $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+                $_SESSION['last_active'] = time();
+                $_SESSION['fingerprint'] = $fingerprint;
+
+
                 redirectTo('requestList');
             } else {
                 $result = flashmessage("Invalid  password");

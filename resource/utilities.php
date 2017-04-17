@@ -142,3 +142,36 @@ function checkDuplicateEntries($table, $column_name, $value, $db){
         //handle exception
     }
 }
+
+function guard(){
+
+    $isValid = true;
+    $inactive = 60 * 15; //15 mins
+    $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+
+    if((isset($_SESSION['fingerprint']) && $_SESSION['fingerprint'] != $fingerprint)){
+        $isValid = false;
+        signout();
+    }else if((isset($_SESSION['last_active']) && (time() - $_SESSION['last_active']) > $inactive) && $_SESSION['username']){
+        $isValid = false;
+        signout();
+    }else{
+        $_SESSION['last_active'] = time();
+    }
+
+    return $isValid;
+}
+
+function _token(){
+    $randonToken = base64_encode(openssl_random_pseudo_bytes(32));
+    return $_SESSION['token'] = $randonToken;
+}
+
+function validate_token($requestToken){
+    if(isset($_SESSION['token']) && $requestToken === $_SESSION['token']){
+        unset($_SESSION['token']);
+        return true;
+    }
+
+    return false;
+}

@@ -17,7 +17,7 @@ include_once 'partials/parseRequestList.php';
     <?php else: ?>
     <p>
         <?php
-        print "<table style='padding: 15px; text-align: left; width: 80%;'>";
+        print "<table class='requestlist'>";
         print " <tr> ";
         print " <th>Request#</th> ";
         print " <th>Description</th> ";

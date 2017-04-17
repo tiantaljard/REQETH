@@ -67,9 +67,9 @@ include 'partials/parseUpload.php';
 
             <div class="form-group">
                 <label for="ethicsField">Ethics</label>
-                <input <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="ethics"
+                <textarea <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="ethics"
                                                                         class="form-control" id="ethicsField"
-                                                                        value="<?php if (isset($ethics)) echo $ethics; ?>">
+                                                                        value="<?php if (isset($ethics)) echo $ethics; ?>"></textarea>
             </div>
             <div class="form-group" <?php if (isset($eaogroup)){ ?>style="display:none"<?php } ?> >
                 <label for="eao1Field">1st EAO</label>
@@ -120,9 +120,9 @@ include 'partials/parseUpload.php';
 
             <div class="form-group" <?php if (isset($adminstudentgroup)){ ?>style="display:none"<?php } ?>>
                 <label for="eaoCommentField">Leave Comment</label>
-                <input type="text" name="eaocomment"
+                <textarea type="text" name="eaocomment"
                        class="form-control" id="eaoCommentField"
-                       value="">
+                          value=""></textarea>
             </div>
             <div class="form-group" <?php if (isset($adminstudentgroup)){ ?>style="display:none"<?php } ?>>
                 <label for="eaoStatusField">Route Subbmission</label>
@@ -156,32 +156,28 @@ include 'partials/parseUpload.php';
             <?php if (isset($displaycommentheaders)): ?>
                 <p>
                 <?php
-                print "<table style='padding: 15px; text-align: left; width: 50%;'>";
-                print " <tr> ";
-                print " <th>EAO</th> ";
-                print " <th>Comment</th> ";
-                print " <th>Comment Date</th> ";
-                print " <th>EAO Request Routing</th> ";
+                print "<H2 class='commentheader'>EAO Comments</H2>";
 
                 foreach ($sqlcommentresult as $row) {
-                    echo "<tr>";
-                    echo "<td>" . $row['username'] . "</td>";
-                    echo "<td>" . $row['comment'] . "</td>";
-                    echo "<td>" . $row['commentdate'] . "</td>";
-                    echo "<td>" . $row['status'] . "</td>";
+                    print "<div class='commentholder'";
+                    echo "<P class='eao'><span class='username'> " . $row['username'] . "</span>";
+                    echo "<span class='commentdate'> " . $row['commentdate'] . "</span></p>";
+                    echo "<P class='eaorouting'> Status: " . $row['status'] . "</P>";
+                    echo "<P class='comment'> " . $row['comment'] . "</P>";
+
+
                 if (isset($eaogroup))
-                    echo '<td>
+                    echo '
                             <form action="" method="post">
                             <input type="hidden" value="' . $row['uid'] . '" name="delreqcommentid">
                             <input type="submit" value="Delete">
                             </form>
-                         </td>';
+                ';
+                    print "</div>";
 
 
-
-                    echo "</tr>";
                 }
-                print "</table> ";
+
                 ?>
                 </p>
             <?php endif ?>
@@ -194,7 +190,8 @@ include 'partials/parseUpload.php';
 
             <p>
             <?php
-            print "<table style='padding: 15px; text-align: left; width: 50%;'>";
+            print "<H2 class='docuheader'>Documents</H2>";
+            print "<table class='doculist'>";
             print " <tr> ";
             print " <th>File Name</th> ";
             print " <th>File Size</th> ";
