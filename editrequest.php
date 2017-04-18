@@ -17,19 +17,19 @@ include 'partials/parseUpload.php';
         <?php if (!isset($_SESSION['username']) || !isset($_GET['urlid'])): ?>
 
 
-            <P class="lead">You are not authorized to view this page <a href="login.php">Login</a>
+            <P class="lead">You are not authorized to view this page. Please follow the correct procedure. <br>  <a href="login.php">Login</a>
                 Not yet registered? <a href="signup.php">Signup</a></P>
         <?php else: ?>
         <form method="post" action="" enctype="multipart/form-data">
 
             <div class="form-group">
-                <label for="requestField">Request</label>
+                <label for="requestField">Request: </label>
                 <input <? if (isset($request)) echo $readonly; ?> type="text" name="request"
                                                                   value="<?php if (isset($request)) echo $request; ?>"
                                                                   class="form-control" id="requestField">
             </div>
             <div class="form-group">
-                <label for="flnameField">Requestor</label>
+                <label for="flnameField">Requestor:</label>
                 <input <? echo $readonly; ?> type="text" name="flname"
                                                                         class="form-control" id="flnameField"
                                                                         value="<?php if (isset($flname)) echo $flname; ?>">
@@ -39,7 +39,7 @@ include 'partials/parseUpload.php';
             </div>
 
             <div class="form-group">
-                <label for="statusField">Status</label>
+                <label for="statusField">Status:</label>
                 <input <? echo $readonly; ?> type="text" name="status"
                                                                         class="form-control" id="statusField"
                                                                         value="<?php if (isset($status)) echo $status; ?>">
@@ -68,9 +68,9 @@ include 'partials/parseUpload.php';
             <div class="form-group">
                 <label for="ethicsField">Ethics</label>
                 <textarea <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="ethics"
-                                                                        class="form-control" id="ethicsField"
-                                                                        value="<?php if (isset($ethics)) echo $ethics; ?>"></textarea>
+                                                                           class="form-control" id="ethicsField"><?php if (isset($ethics)) echo $ethics; ?></textarea>
             </div>
+
             <div class="form-group" <?php if (isset($eaogroup)){ ?>style="display:none"<?php } ?> >
                 <label for="eao1Field">1st EAO</label>
                 <input <?  echo $readonly; ?> type="text" name="eao1"
@@ -140,7 +140,7 @@ include 'partials/parseUpload.php';
                 <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
                 <input name="userfile" type="file" id="fileUploadField">
             </div>
-
+            <input type="hidden" name="token" value="<?php if(function_exists('_token')) echo _token(); ?>">
             <button type="submit" name="updateRequestBtn" class="btn btn-primary pull-right">
                 Update Request Record
 
@@ -223,13 +223,7 @@ include 'partials/parseUpload.php';
     <?php
     $request = $request * 3;
     $urlid = base64_encode("649{$request}");
-    echo "<p><a href='upload.php?urlid=$urlid'>Upload Doc</a></p>";
     ?>
-
-
-
-
-    <p><a href="requestList.php">Request List</a></p>
 
 <?php endif ?>
 

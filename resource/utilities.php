@@ -143,10 +143,20 @@ function checkDuplicateEntries($table, $column_name, $value, $db){
     }
 }
 
+function signout(){
+    unset($_SESSION['username']);
+    unset($_SESSION['id']);
+
+    session_destroy();
+
+    redirectTo('index');
+}
+
+
 function guard(){
 
     $isValid = true;
-    $inactive = 60 * 15; //15 mins
+    $inactive = 60 * 5; //5 min
     $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
 
     if((isset($_SESSION['fingerprint']) && $_SESSION['fingerprint'] != $fingerprint)){

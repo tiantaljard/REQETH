@@ -15,6 +15,7 @@ include_once 'partials/parseRequestList.php';
         <p class="lead">You are not authorized to view this page <a href="login.php">Login</a>
             Not yet registered? <a href="signup.php">Signup</a> </p>
     <?php else: ?>
+
     <p>
         <?php
         print "<table class='requestlist'>";

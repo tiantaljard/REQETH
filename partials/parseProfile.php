@@ -6,37 +6,48 @@
 include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';
 
-if((isset($_SESSION['id'])) && !isset($_POST['updateProfileBtn'])){
-    $url_encoded_id = $_GET['urlid'];
-    $decode_id = base64_decode($url_encoded_id);
-    $user_id_array = explode("649",$decode_id);
-    $userprofile = $user_id_array[1];
-    $userprofile =$userprofile/3;
+if ((isset($_SESSION['id'], $_POST['token'])) && !isset($_POST['updateProfileBtn'])) {
 
-    $sqlQuery = "SELECT * FROM users WHERE uid = :uid";
-    $statement = $db->prepare($sqlQuery);
-    $statement->execute(array(':uid' => $userprofile));
-
-    while($rs = $statement->fetch()){
-        $profileid =$rs['uid'];
-        $username = $rs['username'];
-        $headerusername = $rs['username'];
-        $firstname = $rs['firstname'];
-        $lastname = $rs['lastname'];
-        $accessgroup = $rs['description'];
-        $email = $rs['email'];
+    if (validate_token($_POST['token'])) {
 
 
+        $url_encoded_id = $_GET['urlid'];
+        $decode_id = base64_decode($url_encoded_id);
+        $user_id_array = explode("649", $decode_id);
+        $userprofile = $user_id_array[1];
+        $userprofile = $userprofile / 3;
+
+        $sqlQuery = "SELECT * FROM users WHERE uid = :uid";
+        $statement = $db->prepare($sqlQuery);
+        $statement->execute(array(':uid' => $userprofile));
+
+        while ($rs = $statement->fetch()) {
+            $profileid = $rs['uid'];
+            $username = $rs['username'];
+            $headerusername = $rs['username'];
+            $firstname = $rs['firstname'];
+            $lastname = $rs['lastname'];
+            $accessgroup = $rs['description'];
+            $email = $rs['email'];
+
+
+        }
+    } else {
+        $result = "<script type='text/javascript'>
+                      swal('Error','This request originates from an unknown source, posible attack'
+                      ,'error');
+                      </script>";
     }
 
-}
-else if(isset($_POST['updateProfileBtn'])){
+} else if (isset($_POST['updateProfileBtn'], $_POST['token'])) {
 
-    $url_encoded_id = $_GET['urlid'];
-    $decode_id = base64_decode($url_encoded_id);
-    $user_id_array = explode("649",$decode_id);
-    $userprofile = $user_id_array[1];
-    $userprofile =$userprofile/3;
+    if (validate_token($_POST['token'])) {
+
+        $url_encoded_id = $_GET['urlid'];
+        $decode_id = base64_decode($url_encoded_id);
+        $user_id_array = explode("649", $decode_id);
+        $userprofile = $user_id_array[1];
+        $userprofile = $userprofile / 3;
 
 
         //process the form
@@ -44,7 +55,7 @@ else if(isset($_POST['updateProfileBtn'])){
         $form_errors = array();
 
         //Form validation
-        $required_fields = array('email','accessgroup','firstname','lastname');
+        $required_fields = array('email', 'accessgroup', 'firstname', 'lastname');
 
         //call the function to check empty field and merge the return data into form_error array
         $form_errors = array_merge($form_errors, check_empty_fields($required_fields));
@@ -64,15 +75,16 @@ else if(isset($_POST['updateProfileBtn'])){
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $accessgroup = $_POST['accessgroup'];
-        $accessgroupUpdate=$_POST['accessgroupUpdate'];
-        if ( strlen (  $_POST['accessgroupUpdate'] ) >2 ) {$accessgroup=$_POST['accessgroupUpdate'] ;}
+        $accessgroupUpdate = $_POST['accessgroupUpdate'];
+        if (strlen($_POST['accessgroupUpdate']) > 2) {
+            $accessgroup = $_POST['accessgroupUpdate'];
+        }
 
-        $username =$_POST['username'];
+        $username = $_POST['username'];
 
 
-
-        if(empty($form_errors)){
-            try{
+        if (empty($form_errors)) {
+            try {
                 //create SQL update statement
                 $sqlUpdate = "UPDATE users SET firstname =:firstname,lastname=:lastname,accessgroup=:accessgroup,email =:email WHERE uid =:id";
 
@@ -80,22 +92,27 @@ else if(isset($_POST['updateProfileBtn'])){
                 $statement = $db->prepare($sqlUpdate);
 
                 //update the record in the database
-                $statement->execute(array(':firstname' => $firstname,':lastname' => $lastname, ':accessgroup' => $accessgroup, ':email' => $email, ':id' => $userprofile));
+                $statement->execute(array(':firstname' => $firstname, ':lastname' => $lastname, ':accessgroup' => $accessgroup, ':email' => $email, ':id' => $userprofile));
 
-                if($statement->rowCount() == 1){
-                    $result = flashMessage("Update successful","Pass");
+                if ($statement->rowCount() == 1) {
+                    $result = flashMessage("Update successful", "Pass");
                 }
-            }catch (PDOException $ex){
-                $result = flashMessage("An error occurred in : " .$ex->getMessage());
+            } catch (PDOException $ex) {
+                $result = flashMessage("An error occurred in : " . $ex->getMessage());
             }
-        }
-        else{
-            if(count($form_errors) ==1){
+        } else {
+            if (count($form_errors) == 1) {
                 $result = flashMessage("There was 1 error in the form<br>");
-            }else{
-                $result = flashMessage("There were " .count($form_errors). " errors in the form <br>");
+            } else {
+                $result = flashMessage("There were " . count($form_errors) . " errors in the form <br>");
             }
         }
-
+    } else {
+        $result = "<script type='text/javascript'>
+                      swal('Error','This request originates from an unknown source, posible attack'
+                      ,'error');
+                      </script>";
+    }
 
 }
+?>

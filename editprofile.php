@@ -57,7 +57,7 @@ include 'partials/parseProfile.php';
                 <div class="form-group">
                     <input type="hidden" name="username" value="<?php if(isset($username)) echo $username; ?>" class="form-control" id="username">
                 </div>
-
+                <input type="hidden" name="token" value="<?php if(function_exists('_token')) echo _token(); ?>">
                 <button type="submit" name="updateProfileBtn" class="btn btn-primary pull-right">
                     Update Profile</button> <br />
             </form>

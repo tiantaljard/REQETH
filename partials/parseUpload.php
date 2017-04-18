@@ -118,6 +118,4 @@ if (isset($_POST['delreqdocid'])) {
     }
 
 }
-
-
 ?>

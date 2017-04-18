@@ -37,6 +37,7 @@ include_once 'partials/header.php';
             </div>
 
             <div >
+                <input type="hidden" name="token" value="<?php if(function_exists('_token')) echo _token(); ?>">
                 <button type="submit" name="passwordResetBtn" class="btn btn-primary pull-right">Reset Password</button>
                 <p><a href="index.php">Back</a> </p>
 

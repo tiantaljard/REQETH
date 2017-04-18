@@ -44,13 +44,13 @@ include 'partials/parseNewRequest.php';
                                                                        class="form-control" id="statusField"
                                                                        value="<?php if (isset($status)) echo $status; ?>">
             </div>
-            <div class="form-group">
+            <div class="form-group" >
                 <label for="ethicsField">Ethics</label>
-                <input <? if (isset($rowrequestid)) echo $readonly; ?> type="text" name="ethics"
-                                                                       class="form-control" id="ethicsField"
-                                                                       value="<?php if (isset($ethics)) echo $ethics; ?>">
+                <textarea <? if (isset($rowrequestid)) echo $readonly; ?> type="text" name="ethics"
+                                                                           class="form-control" id="ethicsField"><?php if (isset($ethics)) echo $ethics; ?></textarea>
             </div>
 
+            <input type="hidden" name="token" value="<?php if(function_exists('_token')) echo _token(); ?>">
             <button type="submit" name="insertRequestBtn" class="btn btn-primary pull-right"
                     <?php if (isset($rowrequestid)){ ?>style="display:none"<?php } ?>>
                 Insert Ethics Request Record
@@ -69,9 +69,6 @@ include 'partials/parseNewRequest.php';
 
 </div>
 
-    <div>
-        <p><a href="requestList.php">Request List</a></p>
-    </div>
 <?php endif ?>
 </section>
 </div>

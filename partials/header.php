@@ -20,6 +20,8 @@ include_once 'resource/utilities.php';
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/upload.css" rel="stylesheet">
+    <script src="js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
 
 </head>
 <body>
@@ -37,7 +39,7 @@ include_once 'resource/utilities.php';
             <a class="navbar-brand" href="index.php">E A E R</a>!
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav"><i class="hide"><?php echo guard(); ?></i>
+            <ul class="nav navbar-nav"><<i class="hide"><?php echo guard(); ?></i>
 
                 <li><a href="index.php">Home</a></li>
                 <?php if ((isset($_SESSION['username']))): ?>

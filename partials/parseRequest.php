@@ -195,3 +195,5 @@ if ((isset($_SESSION['id'])) && isset($_POST['delreqcommentid']) ) {
 
 
 }
+?>
+
