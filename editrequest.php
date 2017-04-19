@@ -1,6 +1,6 @@
 <?php
 $page_title = "E A E R - Edit Request";
-include_once 'partials/header.php';
+include 'partials/header.php';
 include 'partials/parseRequest.php';
 include 'partials/parseUpload.php';
 ?>

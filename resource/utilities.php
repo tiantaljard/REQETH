@@ -16,12 +16,15 @@ $hidden="style=&quot;display: none;&quot";
 
 
 
-if(($_SESSION['accessgroup'])=='admin'){$admingroup='admin';}
-if(($_SESSION['accessgroup'])=='eao'){$eaogroup='eao';}
-if(($_SESSION['accessgroup'])=='student'){$studentgroup='student';}
-if(($_SESSION['accessgroup'])=='eao' || ($_SESSION['accessgroup'])=='admin'){$admineaogroup='admmineao';}
-if(($_SESSION['accessgroup'])=='admin' || ($_SESSION['accessgroup'])=='student'){$adminstudentgroup='admminstudent';}
-if(($_SESSION['accessgroup'])=='eao' || ($_SESSION['accessgroup'])=='student'){$eaostudentgroup='eaostudent';}
+if (isset($_SESSION['accessgroup'])) {
+    if (($_SESSION['accessgroup'])=='admin'){$admingroup='admin';}
+    if(($_SESSION['accessgroup'])=='eao'){$eaogroup='eao';}
+    if(($_SESSION['accessgroup'])=='student'){$studentgroup='student';}
+    if(($_SESSION['accessgroup'])=='eao' || ($_SESSION['accessgroup'])=='admin'){$admineaogroup='admmineao';}
+    if(($_SESSION['accessgroup'])=='admin' || ($_SESSION['accessgroup'])=='student'){$adminstudentgroup='admminstudent';}
+    if(($_SESSION['accessgroup'])=='eao' || ($_SESSION['accessgroup'])=='student'){$eaostudentgroup='eaostudent';}
+}
+
 
 
 function check_empty_fields($required_fields_array){
@@ -142,23 +145,16 @@ function checkDuplicateEntries($table, $column_name, $value, $db){
         //handle exception
     }
 }
-
 function signout(){
     unset($_SESSION['username']);
     unset($_SESSION['id']);
-
     session_destroy();
-
     redirectTo('index');
 }
-
-
 function guard(){
-
     $isValid = true;
-    $inactive = 60 * 5; //5 min
+    $inactive = 60 * 15; //5 min
     $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
-
     if((isset($_SESSION['fingerprint']) && $_SESSION['fingerprint'] != $fingerprint)){
         $isValid = false;
         signout();
@@ -168,20 +164,21 @@ function guard(){
     }else{
         $_SESSION['last_active'] = time();
     }
-
     return $isValid;
 }
-
 function _token(){
     $randonToken = base64_encode(openssl_random_pseudo_bytes(32));
+    //$randonToken = md5(uniqid(rand(), true))." md5";
+
     return $_SESSION['token'] = $randonToken;
 }
-
 function validate_token($requestToken){
     if(isset($_SESSION['token']) && $requestToken === $_SESSION['token']){
         unset($_SESSION['token']);
+
         return true;
     }
 
     return false;
 }
+?>

@@ -34,6 +34,7 @@ if (isset($_POST['insertRequestBtn'], $_POST['token'])) {
         $ethics = $_POST['ethics'];
         $status = "prepare";
 
+
         if (empty($form_errors)) {
             try {
                 //create SQL update statement
@@ -53,10 +54,10 @@ if (isset($_POST['insertRequestBtn'], $_POST['token'])) {
                     $rowrequestURLid = $rowrequestid * 3;
                     $urlid = base64_encode("649{$rowrequestURLid}");
                     $_SESSION['urlid'] = $urlid;
+
+                    ///true/false
                     $result = flashMessage("Insert successful", "Pass");
-                   // header("Location: editrequest.php?urlid=$urlid");
-
-
+                    // header("Location: editrequest.php?urlid=$urlid");
                 }
             } catch (PDOException $ex) {
                 $result = flashMessage("An error occurred in : " . $ex->getMessage());

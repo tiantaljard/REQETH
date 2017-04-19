@@ -2,10 +2,9 @@
 // Code below adapted from online course:
 // site:            https://www.udemy.com
 // Course title:    PHP: Complete Login and Registration System with PHP & MYSQL
-// Instructor:      Osayawe Terry Ogbemudia
-
+// Instructor:      Osayawe Terry Ogbemudi
 $page_title = "E A E R  - Forgot Password";
-include_once 'partials/parseForget_pasword.php';
+include_once 'partials/parseforgotpasword.php';
 include_once 'partials/header.php';
 ?>
 
@@ -19,7 +18,6 @@ include_once 'partials/header.php';
 
         <div class="clearfix"></div>
         <form action="" method="post">
-
             <div class="form-group">
                 <label for="emailField">Email</label>
                 <input type="text" class="form-control" name="email" id="emailField" placeholder="Email">
@@ -37,9 +35,21 @@ include_once 'partials/header.php';
             </div>
 
             <div >
+
                 <input type="hidden" name="token" value="<?php if(function_exists('_token')) echo _token(); ?>">
+                <?php $_POST['token']=$_SESSION['token'];
+                /*
+                echo var_dump($_SESSION);
+                echo "<br> after SESSIOSN";
+                echo "<br>";
+                echo var_dump($_POST);
+                echo "<br> after POST";
+                echo "<br>";
+                 */?>
+
+
                 <button type="submit" name="passwordResetBtn" class="btn btn-primary pull-right">Reset Password</button>
-                <p><a href="index.php">Back</a> </p>
+                <p><a href="index.php">Home</a> </p>
 
             </div>
         </form>
@@ -47,4 +57,3 @@ include_once 'partials/header.php';
 </div>
 </body>
 </html>
-

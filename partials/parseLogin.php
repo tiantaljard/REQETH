@@ -58,7 +58,6 @@ if(isset($_POST['loginBtn'], $_POST['token'])) {
                       swal('Error','This request originates from an unknown source, posible attack'
                       ,'error');
                       </script>";
-
     }
 }
 ?>
