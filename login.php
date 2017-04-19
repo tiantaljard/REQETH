@@ -35,7 +35,7 @@ include_once 'partials/header.php';
 
                 <input type="hidden" name="token" value="<?php if (function_exists('_token')) echo _token(); ?>">
                 <button type="submit" name="loginBtn" class="btn btn-primary pull-right">Sign in</button>
-                <p><a href="index.php">Back</a></p>
+
             </div>
         </form>
 
