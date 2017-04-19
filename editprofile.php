@@ -2,6 +2,7 @@
 $page_title = "E A E R - Edit Profile";
 include_once 'partials/header.php';
 include 'partials/parseProfile.php';
+
 ?>
 
 <div class="container">
@@ -13,8 +14,7 @@ include 'partials/parseProfile.php';
             <?php if (!empty($form_errors)) echo show_errors($form_errors); ?>
         </div>
         <div class="clearfix"></div>
-        <php echo ($_SESSION[
-        'username']) echo ($_SESSION['accessgroup']) ; </php>
+
         <?php if ((!isset($_SESSION['username']) && ($_SESSION['accessgroup']) == 'admin') || !isset($_GET['urlid'])): ?>
             <P class="lead">You are not authorized to view this page <a href="login.php">Login</a>
                 Not yet registered? <a href="signup.php">Signup</a></P>
@@ -53,7 +53,7 @@ include 'partials/parseProfile.php';
                 <label for="accessgroupUpdateField">Update Access Group</label>
                 <select class="form-control" name="accessgroupUpdate" id="accessgroupUpdateField"
                         value="<?php if (isset($accessgroupUpdate)) echo $accessgroupUpdate; ?>" class="form-control"
-                        id="accessgroupField">
+                        id="accessgroupUpdateField">
                     <option></option>
                     <option>student</option>
                     <option>eao</option>
@@ -72,7 +72,7 @@ include 'partials/parseProfile.php';
             <br/>
         </form>
 
-        <p><a href="usersList.php">User List</a></p>
+
 
     </section>
 

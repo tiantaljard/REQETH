@@ -6,9 +6,10 @@
 include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';
 
-if ((isset($_SESSION['id'], $_POST['token'])) && !isset($_POST['updateProfileBtn'])) {
 
-    if (validate_token($_POST['token'])) {
+if ((isset($_SESSION['id'])) && !isset($_POST['updateProfileBtn'])) {
+
+
 
 
         $url_encoded_id = $_GET['urlid'];
@@ -27,17 +28,12 @@ if ((isset($_SESSION['id'], $_POST['token'])) && !isset($_POST['updateProfileBtn
             $headerusername = $rs['username'];
             $firstname = $rs['firstname'];
             $lastname = $rs['lastname'];
-            $accessgroup = $rs['description'];
+            $accessgroup = $rs['accessgroup'];
             $email = $rs['email'];
 
 
         }
-    } else {
-        $result = "<script type='text/javascript'>
-                      swal('Error','This request originates from an unknown source, posible attack'
-                      ,'error');
-                      </script>";
-    }
+
 
 } else if (isset($_POST['updateProfileBtn'], $_POST['token'])) {
 

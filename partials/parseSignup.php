@@ -52,13 +52,13 @@ if (isset($_POST['signupBtn'])) {
 
             //create SQL insert statement
             $sqlInsert = "INSERT INTO users (username, email, password,firstname,lastname, join_date,accessgroup)
-              VALUES (:username, :email, :password,:firstname,:lastname, now(),:accessgroup) ";
+              VALUES (:username, :email, :password,:firstname,:lastname, now(),'student') ";
 
             //use PDO prepared to sanitize data
             $statement = $db->prepare($sqlInsert);
 
             //add the data into the database
-            $statement->execute(array(':username' => $username, ':email' => $email, ':password' => $hashed_password, ':firstname' => $firstname, ':lastname' => $lastname, ':accessgroup' => $accessgroup));
+            $statement->execute(array(':username' => $username, ':email' => $email, ':password' => $hashed_password, ':firstname' => $firstname, ':lastname' => $lastname));
 
             //check if one new row was created
             if ($statement->rowCount() == 1) {
