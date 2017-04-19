@@ -32,7 +32,7 @@ include_once 'partials/header.php';
             </div>
 
             <div class="form-group">
-                <label for="passwordConfirmField">Password</label>
+                <label for="passwordConfirmField">Confirm Password</label>
                 <input type="password" name="confirm_password" class="form-control" id="passwordConfirmField"
                        placeholder="Confirm New Password">
             </div>
