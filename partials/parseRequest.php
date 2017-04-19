@@ -27,7 +27,7 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn'])) {
     $requestid = $request_id_array[1];
     $requestid = $requestid / 3;
 
-    $sqlQuery = "SELECT *, CONCAT(firstname, ' ', lastname) AS flname  FROM requests, users  WHERE username =requestor and request = :request";
+    $sqlQuery = "SELECT *, CONCAT(firstname, ' ', lastname) AS flname  FROM requests, users  WHERE username =requestor and request = :request orderby username";
     $statement = $db->prepare($sqlQuery);
     $statement->execute(array(':request' => $requestid));
     while ($rs = $statement->fetch()) {
