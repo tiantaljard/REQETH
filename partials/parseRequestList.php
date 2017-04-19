@@ -48,7 +48,7 @@ if ($accessgroup == "student") {
     $statement->execute(array());
     $accessresult = $statement->fetchAll();
 
-} else if ($accessgroup == "eao"){
+} else if ($accessgroup == "eao") {
     $sql_query = "select u.*,requests.*,
       u1.username as u1username ,
       u1.firstname as e1firstname ,

@@ -10,18 +10,18 @@ include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';
 
 //process the form
-if(isset($_POST['signupBtn'])){
+if (isset($_POST['signupBtn'])) {
     //initialize an array to store any error message from the form
     $form_errors = array();
 
     //Form validation
-    $required_fields = array('firstname','lastname','email','username','password');
+    $required_fields = array('firstname', 'lastname', 'email', 'username', 'password');
 
     //call the function to check empty field and merge the return data into form_error array
     $form_errors = array_merge($form_errors, check_empty_fields($required_fields));
 
     //Fields that requires checking for minimum length
-    $fields_to_check_length = array('username' => 4, 'password' => 6, 'firstname'=>3,'lastname'=>3);
+    $fields_to_check_length = array('username' => 4, 'password' => 6, 'firstname' => 3, 'lastname' => 3);
 
     //call the function to check minimum required length and merge the return data into form_error array
     $form_errors = array_merge($form_errors, check_min_length($fields_to_check_length));
@@ -38,18 +38,16 @@ if(isset($_POST['signupBtn'])){
     $accessgroup = $_POST['accessgroup'];
 
 
-    if(checkDuplicateEntries("users", "email", $email, $db)){
+    if (checkDuplicateEntries("users", "email", $email, $db)) {
 
         $result = flashMessage("Email is used on an existing acount, please us existing login or use diffrent email");
-    }
-    else if(checkDuplicateEntries("users", "username", $username, $db)){
+    } else if (checkDuplicateEntries("users", "username", $username, $db)) {
         $result = flashMessage("Email is used on an existing acount, please us existing login or use diffrent email");
-    }
-    //check if error array is empty, if yes process form data and insert record
-    else if(empty($form_errors)){
+    } //check if error array is empty, if yes process form data and insert record
+    else if (empty($form_errors)) {
         //hashing the password
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        try{
+        try {
 
             //create SQL insert statement
             $sqlInsert = "INSERT INTO users (username, email, password,firstname,lastname, join_date,accessgroup)
@@ -59,21 +57,20 @@ if(isset($_POST['signupBtn'])){
             $statement = $db->prepare($sqlInsert);
 
             //add the data into the database
-            $statement->execute(array(':username' => $username, ':email' => $email, ':password' => $hashed_password,':firstname' => $firstname,':lastname' => $lastname,':accessgroup' => $accessgroup));
+            $statement->execute(array(':username' => $username, ':email' => $email, ':password' => $hashed_password, ':firstname' => $firstname, ':lastname' => $lastname, ':accessgroup' => $accessgroup));
 
             //check if one new row was created
-            if($statement->rowCount() == 1){
+            if ($statement->rowCount() == 1) {
                 $result = flashMessage("Registration completed. <a href='login.php'>You can login here</a>", "Pass");
             }
-        }catch (PDOException $ex){
-            $result = flashMessage("An error occued: ".$ex->getMessage());
+        } catch (PDOException $ex) {
+            $result = flashMessage("An error occued: " . $ex->getMessage());
         }
-    }
-    else{
-        if(count($form_errors) == 1){
+    } else {
+        if (count($form_errors) == 1) {
             $result = flashmessage("There was 1 error in the form<br>");
-        }else{
-            $result = flashmessage("There were " .count($form_errors). " errors in the form <br>");
+        } else {
+            $result = flashmessage("There were " . count($form_errors) . " errors in the form <br>");
         }
     }
 

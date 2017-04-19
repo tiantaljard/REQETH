@@ -10,7 +10,7 @@ include_once 'resource/utilities.php';;
 $username = $_SESSION['username'];
 //echo $_SESSION['urlid']."what what".$_SESSION[username];
 
-if ((isset($_SESSION['id'])) && isset($_SESSION['urlid']) && !isset($_POST['updateRequestBtn']) ) {
+if ((isset($_SESSION['id'])) && isset($_SESSION['urlid']) && !isset($_POST['updateRequestBtn'])) {
     $url_encoded_id = $_SESSION['urlid'];
     $decode_id = base64_decode($url_encoded_id);
     $request_id_array = explode("649", $decode_id);
@@ -19,7 +19,7 @@ if ((isset($_SESSION['id'])) && isset($_SESSION['urlid']) && !isset($_POST['upda
 }
 
 
-if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn']) ) {
+if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn'])) {
 
     $url_encoded_id = $_GET['urlid'];
     $decode_id = base64_decode($url_encoded_id);
@@ -40,7 +40,7 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn']) ) {
         $eao2 = $rs['eao2'];
         $firstname = $rs['firstname'];
         $lastname = $rs['lastname'];
-        $flname= $rs['flname'];
+        $flname = $rs['flname'];
     }
 
     $sql_commentquery = "select * from comments where request=:request; ";
@@ -49,7 +49,7 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn']) ) {
     $sqlcommentresult = $commentstatement->fetchAll();
     if ($commentstatement->rowCount() > 0) {
         $displaycommentheaders = "displayCUheaders";
-    } else $displaycommentheaders =null;
+    } else $displaycommentheaders = null;
 
 } else if (isset($_POST['updateRequestBtn'])) {
 
@@ -87,29 +87,37 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn']) ) {
     $requestor = $_POST['requestor'];
     // set status to new status for student status update
     $status = $_POST['status'];
-    $statusUpdate=$_POST['statusUpdate'];
-    if ( strlen (  $_POST['statusUpdate'] ) >2 ) {$status=$_POST['statusUpdate'] ;}
+    $statusUpdate = $_POST['statusUpdate'];
+    if (strlen($_POST['statusUpdate']) > 2) {
+        $status = $_POST['statusUpdate'];
+    }
     // set ea01 for updated ea01
     $eao1 = $_POST['eao1'];
-    if ( strlen (  $_POST['assignEao1'] ) >2 ) {$eao1=$_POST['assignEao1'] ;}
+    if (strlen($_POST['assignEao1']) > 2) {
+        $eao1 = $_POST['assignEao1'];
+    }
     // set ea02 for updated ea02
     $eao2 = $_POST['eao2'];
-    if ( strlen (  $_POST['assignEao2'] ) >2 ) {$eao2=$_POST['assignEao2'] ;}
+    if (strlen($_POST['assignEao2']) > 2) {
+        $eao2 = $_POST['assignEao2'];
+    }
 
 
     // update status to assigned if EAO1 and EAO2 are assigned by the admin
-    if ((isset($admingroup)) && $status=='submit' &&  strlen (  $eao1 ) >2  && strlen (  $eao2 ) >2 && $eao1!='unassigned' && $eao2!='unassigned')
-    {$status='assigned';}
+    if ((isset($admingroup)) && $status == 'submit' && strlen($eao1) > 2 && strlen($eao2) > 2 && $eao1 != 'unassigned' && $eao2 != 'unassigned') {
+        $status = 'assigned';
+    }
 
 
-    if ((isset($admingroup)) && $status=='assigned' && ($eao1=='unassigned' || $eao2=='unassigned'  ))
-    {$status='submit'; }
+    if ((isset($admingroup)) && $status == 'assigned' && ($eao1 == 'unassigned' || $eao2 == 'unassigned')) {
+        $status = 'submit';
+    }
 
 
     $ethics = $_POST['ethics'];
     $eaoComment = $_POST['eaocomment'];
     $eaoStatus = $_POST['eaostatus'];
-    $flname=$_POST['flname'];
+    $flname = $_POST['flname'];
 
 
     if (empty($form_errors)) {
@@ -117,11 +125,11 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn']) ) {
             try {
                 //create SQL update statement
                 $sqlUpdate = "UPDATE requests SET description=:description,status=:status,ethics =:ethics,eao1=:eao1,eao2=:eao2 WHERE request = :request";
-                    //use PDO prepared to sanitize data
-                    $updatestatement = $db->prepare($sqlUpdate);
-                    //update the record in the database
+                //use PDO prepared to sanitize data
+                $updatestatement = $db->prepare($sqlUpdate);
+                //update the record in the database
 
-                    $updatestatement->execute(array( ':description' => $description,':status' => $status, ':ethics' => $ethics, ':eao1' => $eao1, ':eao2' => $eao2, ':request' => $request));
+                $updatestatement->execute(array(':description' => $description, ':status' => $status, ':ethics' => $ethics, ':eao1' => $eao1, ':eao2' => $eao2, ':request' => $request));
 
                 if ($updatestatement->rowCount() == 1) {
 
@@ -138,7 +146,7 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn']) ) {
                 //use PDO prepared to sanitize data
                 $insStatement = $db->prepare($sqlInsert);
                 //add the data into the database
-                $insStatement->execute(array(':username' => $username,':request' => $request,':comment' => $eaoComment,  ':status' => $eaoStatus));
+                $insStatement->execute(array(':username' => $username, ':request' => $request, ':comment' => $eaoComment, ':status' => $eaoStatus));
                 //check if one new row was created
                 if ($insStatement->rowCount() == 1) {
 
@@ -149,7 +157,7 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn']) ) {
 
                     if ($commentstatement->rowCount() > 0) {
                         $displaycommentheaders = "displayCUheaders";
-                    } else $displaycommentheaders =null;
+                    } else $displaycommentheaders = null;
 
                     $result = flashMessage("Comments saved successfully: ", "Pass");
                 }
@@ -165,7 +173,7 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn']) ) {
         }
     }
 }
-if ((isset($_SESSION['id'])) && isset($_POST['delreqcommentid']) ) {
+if ((isset($_SESSION['id'])) && isset($_POST['delreqcommentid'])) {
     $form_errors = array();
 
     $delreqcommentid = $_POST['delreqcommentid'];
@@ -175,7 +183,7 @@ if ((isset($_SESSION['id'])) && isset($_POST['delreqcommentid']) ) {
         //use PDO prepared to sanitize data
         $delcomStatement = $db->prepare($sqlcomdel);
         //add the data into the database
-        $delcomStatement->execute(array(':request' => $request,':uid' => $delreqcommentid));
+        $delcomStatement->execute(array(':request' => $request, ':uid' => $delreqcommentid));
         //check if one new row was created
         if ($delcomStatement->rowCount() == 1) {
 
@@ -186,7 +194,7 @@ if ((isset($_SESSION['id'])) && isset($_POST['delreqcommentid']) ) {
 
             if ($commentstatement->rowCount() > 0) {
                 $displaycommentheaders = "displayCUheaders";
-            } else $displaycommentheaders =null;
+            } else $displaycommentheaders = null;
 
             $result = flashMessage("Comment delete successfully: ", "Pass");
         }

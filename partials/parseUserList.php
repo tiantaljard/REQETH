@@ -9,11 +9,12 @@ include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';
 
 include 'resource/dbConnect.php';
-$username  = $_SESSION['username'];
+$username = $_SESSION['username'];
 $accessgroup = $_SESSION['accessgroup'];
 
- if
-($accessgroup=="admin"){
+if
+($accessgroup == "admin"
+) {
     $sql_query = "select * from users; ";
     $statement = $db->prepare($sql_query);
     $statement->execute(array());

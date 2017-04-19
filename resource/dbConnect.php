@@ -27,7 +27,7 @@ if (!$connectstr_dbhost) {
 // Build strings for creating PHP Database Object - PDO
 $dsn = "mysql:host=$connectstr_dbhost; dbname=$connectstr_dbname";
 $password = $connectstr_dbpassword;
-$username= $connectstr_dbusername;
+$username = $connectstr_dbusername;
 
 // Code below to create PDO class from online course:
 // site:            https://www.udemy.com
@@ -35,7 +35,7 @@ $username= $connectstr_dbusername;
 // Instructor:      Osayawe Terry Ogbemudia
 // ..
 
-try{
+try {
     //create an instance of the PDO class with the required parameters
     $db = new PDO($dsn, $username, $password);
 
@@ -45,7 +45,7 @@ try{
     //display success message
     //echo "Connected to the register database";
 
-}catch (PDOException $ex){
+} catch (PDOException $ex) {
     //display error message
-    echo "Connection failed ".$ex->getMessage();
+    echo "Connection failed " . $ex->getMessage();
 }

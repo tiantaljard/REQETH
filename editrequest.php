@@ -17,7 +17,8 @@ include 'partials/parseUpload.php';
         <?php if (!isset($_SESSION['username']) || !isset($_GET['urlid'])): ?>
 
 
-            <P class="lead">You are not authorized to view this page. Please follow the correct procedure. <br>  <a href="login.php">Login</a>
+            <P class="lead">You are not authorized to view this page. Please follow the correct procedure. <br> <a
+                        href="login.php">Login</a>
                 Not yet registered? <a href="signup.php">Signup</a></P>
         <?php else: ?>
         <form method="post" action="" enctype="multipart/form-data">
@@ -31,21 +32,21 @@ include 'partials/parseUpload.php';
             <div class="form-group">
                 <label for="flnameField">Requestor:</label>
                 <input <? echo $readonly; ?> type="text" name="flname"
-                                                                        class="form-control" id="flnameField"
-                                                                        value="<?php if (isset($flname)) echo $flname; ?>">
-                <input  type="hidden" name="flname"
-                                                                        class="form-control" id="flnameField"
-                                                                        value="<?php if (isset($flname)) echo $flname; ?>">
+                                             class="form-control" id="flnameField"
+                                             value="<?php if (isset($flname)) echo $flname; ?>">
+                <input type="hidden" name="flname"
+                       class="form-control" id="flnameField"
+                       value="<?php if (isset($flname)) echo $flname; ?>">
             </div>
 
             <div class="form-group">
                 <label for="statusField">Status:</label>
                 <input <? echo $readonly; ?> type="text" name="status"
-                                                                        class="form-control" id="statusField"
-                                                                        value="<?php if (isset($status)) echo $status; ?>">
-                <input  type="hidden" name="status"
-                                                                        class="form-control" id="statusField"
-                                                                        value="<?php if (isset($status)) echo $status; ?>">
+                                             class="form-control" id="statusField"
+                                             value="<?php if (isset($status)) echo $status; ?>">
+                <input type="hidden" name="status"
+                       class="form-control" id="statusField"
+                       value="<?php if (isset($status)) echo $status; ?>">
             </div>
 
             <div class="form-group" <?php if (isset($admineaogroup)){ ?>style="display:none"<?php } ?>>
@@ -53,40 +54,42 @@ include 'partials/parseUpload.php';
                 <select class="form-control" name="statusUpdate" id="statusUpdateField"
                         value="<?php if (isset($statusUpdate)) echo $statusUpdate; ?>" class="form-control"
                         id="statusUpdateField">
-                        <option></option>
-                        <option>submit</option>
-                        <option>prepare</option>
-                    </select>
-                </div>
+                    <option></option>
+                    <option>submit</option>
+                    <option>prepare</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="descriptionField">Experiment Description</label>
                 <textarea <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="description"
-                                                                           class="form-control" id="descriptionField"><?php if (isset($description)) echo $description; ?></textarea>
+                                                                           class="form-control"
+                                                                           id="descriptionField"><?php if (isset($description)) echo $description; ?></textarea>
             </div>
 
             <div class="form-group">
                 <label for="ethicsField">Ethics</label>
                 <textarea <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="ethics"
-                                                                           class="form-control" id="ethicsField"><?php if (isset($ethics)) echo $ethics; ?></textarea>
+                                                                           class="form-control"
+                                                                           id="ethicsField"><?php if (isset($ethics)) echo $ethics; ?></textarea>
             </div>
 
             <div class="form-group" <?php if (isset($eaogroup)){ ?>style="display:none"<?php } ?> >
                 <label for="eao1Field">1st EAO</label>
-                <input <?  echo $readonly; ?> type="text" name="eao1"
-                                                                        class="form-control" id="eao1Field"
-                                                                        value="<?php if (isset($eao1)) echo $eao1; ?>">
-                <input  type="hidden" name="eao1"
-                                                                        class="form-control" id="eao1Field"
-                                                                        value="<?php if (isset($eao1)) echo $eao1; ?>">
+                <input <? echo $readonly; ?> type="text" name="eao1"
+                                             class="form-control" id="eao1Field"
+                                             value="<?php if (isset($eao1)) echo $eao1; ?>">
+                <input type="hidden" name="eao1"
+                       class="form-control" id="eao1Field"
+                       value="<?php if (isset($eao1)) echo $eao1; ?>">
             </div>
             <div class="form-group" <?php if (isset($eaogroup)){ ?>style="display:none"<?php } ?> >
                 <label for="eao2Field">2nd EAO</label>
-                <input <?  echo $readonly; ?> type="text" name="eao2"
-                                                                        class="form-control" id="eao2Field"
-                                                                        value="<?php if (isset($eao2)) echo $eao2; ?>">
-                <input  type="hidden" name="eao2"
-                                                                        class="form-control" id="eao2Field"
-                                                                        value="<?php if (isset($eao2)) echo $eao2; ?>">
+                <input <? echo $readonly; ?> type="text" name="eao2"
+                                             class="form-control" id="eao2Field"
+                                             value="<?php if (isset($eao2)) echo $eao2; ?>">
+                <input type="hidden" name="eao2"
+                       class="form-control" id="eao2Field"
+                       value="<?php if (isset($eao2)) echo $eao2; ?>">
             </div>
             <div class="form-group" <?php if (isset($eaostudentgroup)){ ?>style="display:none"<?php } ?>>
                 <label for="assignEao1Field">Assign 1st EAO</label>
@@ -120,7 +123,7 @@ include 'partials/parseUpload.php';
             <div class="form-group" <?php if (isset($adminstudentgroup)){ ?>style="display:none"<?php } ?>>
                 <label for="eaoCommentField">Leave Comment</label>
                 <textarea type="text" name="eaocomment"
-                       class="form-control" id="eaoCommentField"
+                          class="form-control" id="eaoCommentField"
                           value=""></textarea>
             </div>
             <div class="form-group" <?php if (isset($adminstudentgroup)){ ?>style="display:none"<?php } ?>>
@@ -139,21 +142,21 @@ include 'partials/parseUpload.php';
                 <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
                 <input name="userfile" type="file" id="fileUploadField">
             </div>
-            <input type="hidden" name="token" value="<?php if(function_exists('_token')) echo _token(); ?>">
+            <input type="hidden" name="token" value="<?php if (function_exists('_token')) echo _token(); ?>">
             <button type="submit" name="updateRequestBtn" class="btn btn-primary pull-right">
                 Update Request Record
 
-            </div>
-            <br/>
-            <br/>
-            <br/>
-        </form>
     </div>
+    <br/>
+    <br/>
+    <br/>
+    </form>
+</div>
 
 
-        <div class="container">
-            <?php if (isset($displaycommentheaders)): ?>
-                <p>
+    <div class="container">
+        <?php if (isset($displaycommentheaders)): ?>
+            <p>
                 <?php
                 print "<H2 class='commentheader'>EAO Comments</H2>";
 
@@ -165,8 +168,8 @@ include 'partials/parseUpload.php';
                     echo "<P class='comment'> " . $row['comment'] . "</P>";
 
 
-                if (isset($eaogroup))
-                    echo '
+                    if (isset($eaogroup))
+                        echo '
                             <form action="" method="post">
                             <input type="hidden" value="' . $row['uid'] . '" name="delreqcommentid">
                             <input type="submit" value="Delete">
@@ -178,9 +181,9 @@ include 'partials/parseUpload.php';
                 }
 
                 ?>
-                </p>
-            <?php endif ?>
-        </div>
+            </p>
+        <?php endif ?>
+    </div>
 
     <div class="container">
 
@@ -196,14 +199,14 @@ include 'partials/parseUpload.php';
             print " <th>File Size</th> ";
             foreach ($uploaddocsqlresult as $row) {
                 echo "<tr>";
-                    ?>
+                ?>
                 <td><a href="uploads/<?php echo $row['file'] ?>" target="_blank"><?php echo $row['name'] ?></a></td>
-                    <?php
+                <?php
                 echo "<td>" . $row['size'] . "</td>";
-                    if (!isset($admineaogroup))
-                echo '<td>  <form action="" method="post">
-                      <input type="hidden" value="'.$row['id'].'" name="delreqdocid">
-                      <input type="hidden" value="'.$row['file'].'" name="filefile">
+                if (!isset($admineaogroup))
+                    echo '<td>  <form action="" method="post">
+                      <input type="hidden" value="' . $row['id'] . '" name="delreqdocid">
+                      <input type="hidden" value="' . $row['file'] . '" name="filefile">
                       <input type="submit" value="Delete">
                  </form>
             </td>';
@@ -219,11 +222,11 @@ include 'partials/parseUpload.php';
         <?php endif ?>
     </div>
 
-        <div class="form-group" <?php if (isset($admineaogroup)){ ?>style="display:none"<?php } ?>
-    <?php
-    $request = $request * 3;
-    $urlid = base64_encode("649{$request}");
-    ?>
+<div class="form-group" <?php if (isset($admineaogroup)) { ?>style="display:none"<?php } ?>
+<?php
+$request = $request * 3;
+$urlid = base64_encode("649{$request}");
+?>
 
 <?php endif ?>
 

@@ -28,7 +28,8 @@ include 'partials/parseNewRequest.php';
             <div class="form-group">
                 <label for="descriptionField">Experiment Description</label>
                 <textarea <? if (isset($rowrequestid)) echo $readonly; ?> type="text" name="description"
-                                                                           class="form-control" id="descriptionField"><?php if (isset($description)) echo $description; ?></textarea>
+                                                                          class="form-control"
+                                                                          id="descriptionField"><?php if (isset($description)) echo $description; ?></textarea>
             </div>
             <div class="form-group" <?php if (!isset($rowrequestid)){ ?>style="display:none"<?php } ?>>
                 <label for="requestorField">Requestor</label>
@@ -42,13 +43,14 @@ include 'partials/parseNewRequest.php';
                                                                        class="form-control" id="statusField"
                                                                        value="<?php if (isset($status)) echo $status; ?>">
             </div>
-            <div class="form-group" >
+            <div class="form-group">
                 <label for="ethicsField">Ethics</label>
                 <textarea <? if (isset($rowrequestid)) echo $readonly; ?> type="text" name="ethics"
-                                                                           class="form-control" id="ethicsField"><?php if (isset($ethics)) echo $ethics; ?></textarea>
+                                                                          class="form-control"
+                                                                          id="ethicsField"><?php if (isset($ethics)) echo $ethics; ?></textarea>
             </div>
 
-            <input type="hidden" name="token" value="<?php if(function_exists('_token')) echo _token(); ?>">
+            <input type="hidden" name="token" value="<?php if (function_exists('_token')) echo _token(); ?>">
             <button type="submit" name="insertRequestBtn" class="btn btn-primary pull-right"
                     <?php if (isset($rowrequestid)){ ?>style="display:none"<?php } ?>>
                 Insert Ethics Request Record

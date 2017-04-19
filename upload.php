@@ -34,7 +34,8 @@ include 'partials/parseUpload.php';
                         <input name="userfile" type="file" id="userfile">
                     </td>
 
-                    <td width="80"><input name="uploadDocBtn" type="submit" class="box" id="upload" value=" Upload "></td>
+                    <td width="80"><input name="uploadDocBtn" type="submit" class="box" id="upload" value=" Upload ">
+                    </td>
                 </tr>
             </table>
         </form
@@ -75,8 +76,8 @@ include 'partials/parseUpload.php';
 
             echo "<td>" . $row['size'] . "</td>";
 
-          echo '<td>  <form action="" method="post">
-                      <input type="hidden" value="'.$row['id'].'" name="delreqdocid">
+            echo '<td>  <form action="" method="post">
+                      <input type="hidden" value="' . $row['id'] . '" name="delreqdocid">
                       <input type="submit" value="Delete">
                  </form>
             </td>';

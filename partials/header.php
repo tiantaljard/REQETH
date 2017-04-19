@@ -15,7 +15,7 @@ include_once 'resource/utilities.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-   <title><?php if (isset($page_title)) echo $page_title; ?></title>
+    <title><?php if (isset($page_title)) echo $page_title; ?></title>
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">

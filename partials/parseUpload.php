@@ -20,9 +20,9 @@ $uploaddocsqlresult = $uploaddocstatement->fetchAll();
 
 if ($uploaddocstatement->rowCount() > 0) {
     $displayheaders = "displayFUheaders";
-} else $displayheaders =null;
+} else $displayheaders = null;
 
-if ((isset($_POST['uploadDocBtn']) || isset($_POST['updateRequestBtn']) )&& $_FILES['userfile']['size'] > 0) {
+if ((isset($_POST['uploadDocBtn']) || isset($_POST['updateRequestBtn'])) && $_FILES['userfile']['size'] > 0) {
     //array to hold errors
     $form_errors = array();
     if (empty($form_errors)) {
@@ -55,9 +55,8 @@ if ((isset($_POST['uploadDocBtn']) || isset($_POST['updateRequestBtn']) )&& $_FI
 
                     if ($uploaddocstatement->rowCount() > 0) {
                         $displayheaders = "displayFUheaders";
-                    } else $displayheaders =null;
+                    } else $displayheaders = null;
                     $result = flashMessage("File uploaded successfully: " . $file_name, "Pass");
-
 
 
                     $sql_commentquery = "select * from comments where request=:request; ";
@@ -67,7 +66,7 @@ if ((isset($_POST['uploadDocBtn']) || isset($_POST['updateRequestBtn']) )&& $_FI
 
                     if ($commentstatement->rowCount() > 0) {
                         $displaycommentheaders = "displayCUheaders";
-                    } else $displaycommentheaders =null;
+                    } else $displaycommentheaders = null;
 
 
                 }
@@ -92,12 +91,11 @@ if (isset($_POST['delreqdocid'])) {
     $delreqdocid = $_POST['delreqdocid'];
 
 
-
     try {
-        $sql_del = "delete from uploads where id=:id and request=:request" ;
+        $sql_del = "delete from uploads where id=:id and request=:request";
 
         $delstatement = $db->prepare($sql_del);
-        $delstatement->execute(array(':id' => $delreqdocid,':request' => $requestid));
+        $delstatement->execute(array(':id' => $delreqdocid, ':request' => $requestid));
 
 
         if ($delstatement->rowCount() == 1) {
@@ -109,15 +107,15 @@ if (isset($_POST['delreqdocid'])) {
 
             if ($statement->rowCount() > 0) {
                 $displayheaders = "displayFUheaders";
-            } else $displayheaders =null;
+            } else $displayheaders = null;
 
             $result = flashMessage("File deleted  successfully: " . $file_name, "Pass");
-            $filetoDelete="uploads/".$_POST['filefile'];
+            $filetoDelete = "uploads/" . $_POST['filefile'];
 
             //delete the physical file
             if (unlink($filetoDelete)) {
-                $filedelted='true';
-            } else $filedelted='false';
+                $filedelted = 'true';
+            } else $filedelted = 'false';
 
         }
     } catch (PDOException $ex) {

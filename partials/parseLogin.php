@@ -7,7 +7,7 @@ include_once 'resource/session.php';
 include_once 'resource/dbConnect.php';
 include_once 'resource/utilities.php';
 //M
-if(isset($_POST['loginBtn'], $_POST['token'])) {
+if (isset($_POST['loginBtn'], $_POST['token'])) {
 
     if (validate_token($_POST['token'])) {
 
