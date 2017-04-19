@@ -14,7 +14,7 @@ include_once 'partials/parseUserList.php';
 
         <p>
             <?php
-            print "<table style='padding: 15px; text-align: left; width: 80%;'>";
+            print "<table class='requestlist'>";
             print " <tr> ";
             print " <th>Username</th> ";
             print " <th>First Name</th> ";
