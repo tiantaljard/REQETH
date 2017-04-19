@@ -46,8 +46,8 @@ include_once 'partials/header.php';
                        placeholder="access group" value="student">
             </div>
             <input type="hidden" name="token" value="<?php if (function_exists('_token')) echo _token(); ?>">
-            <button type="submit" name="signupBtn" class="btn btn-primary pull-right">Signup</button>
-            <p><a href="index.php">Back</a></p>
+            <button type="submit" name="signupBtn" class="btn btn-primary pull-right">GO!</button>
+
         </form>
     </section>
 

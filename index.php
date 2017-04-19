@@ -17,8 +17,8 @@ include_once 'partials/header.php';
             <P class="lead">You are currently not signed <a href="login.php">Login</a> Not registered yet? <a
                         href="signup.php">Signup</a></P>
         <?php else: ?>
-            <p class="lead">You are logged in as <?php if (isset($_SESSION['username'])) echo $_SESSION['username']; ?>
-                <a href="logout.php">Logout</a></p>
+            <p class="lead"><?php if (isset($_SESSION['loginfirstname'])) echo $_SESSION['loginfirstname']."  ".$_SESSION['loginlastname']; ?> are logged in as <?php if (isset($_SESSION['username'])) echo $_SESSION['username']; ?>
+                with '<?php if (isset($_SESSION['accessgroup'])) echo $_SESSION['accessgroup']; ?>' access.  <a href="logout.php">Logout</a></p>
         <?php endif ?>
     </div>
 </div>

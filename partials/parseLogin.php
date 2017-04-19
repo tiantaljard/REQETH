@@ -30,9 +30,13 @@ if (isset($_POST['loginBtn'], $_POST['token'])) {
                 $accessgroup = $row['accessgroup'];
                 $hashed_password = $row['password'];
                 $username = $row['username'];
+                $loginfirstname = $row['firstname'];
+                $loginlastname = $row['lastname'];
                 if (password_verify($password, $hashed_password)) {
                     $_SESSION['id'] = $id;
                     $_SESSION['username'] = $username;
+                    $_SESSION['loginfirstname'] = $loginfirstname;
+                    $_SESSION['loginlastname'] = $loginlastname;
                     $_SESSION['accessgroup'] = $accessgroup;
 
                     $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
