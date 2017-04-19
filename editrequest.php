@@ -59,10 +59,9 @@ include 'partials/parseUpload.php';
                     </select>
                 </div>
             <div class="form-group">
-                <label for="descriptionField">Description</label>
-                <input <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="description"
-                                                                value="<?php if (isset($description)) echo $description; ?>"
-                                                                class="form-control" id="descriptionField">
+                <label for="descriptionField">Experiment Description</label>
+                <textarea <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="description"
+                                                                           class="form-control" id="descriptionField"><?php if (isset($description)) echo $description; ?></textarea>
             </div>
 
             <div class="form-group">
@@ -190,7 +189,7 @@ include 'partials/parseUpload.php';
 
             <p>
             <?php
-            print "<H2 class='docuheader'>Documents</H2>";
+            print "<H2 class='docuheader'>Supporting Documents</H2>";
             print "<table class='doculist'>";
             print " <tr> ";
             print " <th>File Name</th> ";
@@ -204,6 +203,7 @@ include 'partials/parseUpload.php';
                     if (!isset($admineaogroup))
                 echo '<td>  <form action="" method="post">
                       <input type="hidden" value="'.$row['id'].'" name="delreqdocid">
+                      <input type="hidden" value="'.$row['file'].'" name="filefile">
                       <input type="submit" value="Delete">
                  </form>
             </td>';

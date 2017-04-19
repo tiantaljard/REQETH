@@ -25,12 +25,10 @@ include 'partials/parseNewRequest.php';
                                                                        value="<?php if (isset($rowrequestid)) echo $rowrequestid; ?>"
                                                                        class="form-control" id="requestField">
             </div>
-
             <div class="form-group">
-                <label for="descriptionField">Description</label>
-                <input <? if (isset($rowrequestid)) echo $readonly; ?> type="text" name="description"
-                                                                       value="<?php if (isset($description)) echo $description; ?>"
-                                                                       class="form-control" id="descriptionField">
+                <label for="descriptionField">Experiment Description</label>
+                <textarea <? if (isset($rowrequestid)) echo $readonly; ?> type="text" name="description"
+                                                                           class="form-control" id="descriptionField"><?php if (isset($description)) echo $description; ?></textarea>
             </div>
             <div class="form-group" <?php if (!isset($rowrequestid)){ ?>style="display:none"<?php } ?>>
                 <label for="requestorField">Requestor</label>

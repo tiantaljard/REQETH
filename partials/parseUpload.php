@@ -112,6 +112,13 @@ if (isset($_POST['delreqdocid'])) {
             } else $displayheaders =null;
 
             $result = flashMessage("File deleted  successfully: " . $file_name, "Pass");
+            $filetoDelete="uploads/".$_POST['filefile'];
+
+            //delete the physical file
+            if (unlink($filetoDelete)) {
+                $filedelted='true';
+            } else $filedelted='false';
+
         }
     } catch (PDOException $ex) {
         $result = flashMessage("An error occued: " . $ex->getMessage());

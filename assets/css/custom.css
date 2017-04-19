@@ -78,16 +78,34 @@ body{
 }
 
 .requestlist {
-    width: 80%;
+    width: 100%;
 }
 .requestlist td{
     padding: 10px;
 }
 
 .requestlist th{
-    padding: 10px;
+    padding: 15px;
+}
+.requestlist th{
+    text-align: center;
 }
 
+
+.requestlist  tr:nth-child(even) {
+    background-color: #e5e5e5;
+}
+.reqlistTRID {
+    text-align: center;
+    text-decoration-color: blue ;
+    font-size: large;
+}
+.reqlistStatus {
+    text-align: center;
+    color: darkslategray;
+    text-transform: uppercase;
+    font-size: smaller;
+}
 
 h2.commentheader {
     padding-left: 10px;
@@ -118,3 +136,4 @@ textarea#eaoCommentField {
 textarea#ethicsField {
     height: 100px;
 }
+
