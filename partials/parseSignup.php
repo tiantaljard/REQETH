@@ -41,8 +41,9 @@ if (isset($_POST['signupBtn'])) {
     if (checkDuplicateEntries("users", "email", $email, $db)) {
 
         $result = flashMessage("Email is used on an existing acount, please us existing login or use diffrent email");
-    } else if (checkDuplicateEntries("users", "username", $username, $db)) {
-        $result = flashMessage("Email is used on an existing acount, please us existing login or use diffrent email");
+    }
+    else if (checkDuplicateEntries("users", "username", $username, $db)) {
+        $result = flashMessage("Username is used on an existing acount, please us existing login or use diffrent username");
     } //check if error array is empty, if yes process form data and insert record
     else if (empty($form_errors)) {
         //hashing the password
