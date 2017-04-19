@@ -15,7 +15,7 @@ $accessgroup = $_SESSION['accessgroup'];
 if
 ($accessgroup == "admin"
 ) {
-    $sql_query = "select * from users; ";
+    $sql_query = "select * from users order by username; ";
     $statement = $db->prepare($sql_query);
     $statement->execute(array());
     $result = $statement->fetchAll();
