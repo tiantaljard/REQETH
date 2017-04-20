@@ -137,7 +137,7 @@ include 'partials/parseUpload.php';
                     <option>More Info Required</option>
                 </select>
             </div>
-            <div class="form-group" <?php if(isset($admineaogroup) ||((isset($status) &&$status=='assigned' ))){ ?>style="display:none"<?php } ?>>
+            <div class="form-group" <?php if(isset($admineaogroup) ||((isset($status) && $status=='assigned' ))){ ?>style="display:none"<?php } ?>>
                 <label for="fileUploadField">Upload Supporting Documents</label>
                 <input type="hidden" name="MAX_FILE_SIZE" value="20971520">
                 <input name="userfile" type="file" id="fileUploadField">
@@ -203,7 +203,7 @@ include 'partials/parseUpload.php';
                 <td><a href="uploads/<?php echo $row['file'] ?>" target="_blank"><?php echo $row['name'] ?></a></td>
                 <?php
                 echo "<td>" . $row['size'] . "</td>";
-                if (!isset($admineaogroup) ||((isset($status) &&$status!='assigned' )))
+                if (!isset($admineaogroup) &&((isset($status) && $status!='assigned' )))
                     echo '<td>  <form action="" method="post">
                       <input type="hidden" value="' . $row['id'] . '" name="delreqdocid">
                       <input type="hidden" value="' . $row['file'] . '" name="filefile">
