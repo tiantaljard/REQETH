@@ -50,7 +50,7 @@ include 'partials/parseUpload.php';
             </div>
 
             <div class="form-group" <?php if (isset($admineaogroup)){ ?>style="display:none"<?php } ?>>
-                <label for="statusUpdateField">Route Subbmission</label>
+                <label for="statusUpdateField">Route Submission</label>
                 <select class="form-control" name="statusUpdate" id="statusUpdateField"
                         value="<?php if (isset($statusUpdate)) echo $statusUpdate; ?>" class="form-control"
                         id="statusUpdateField">
