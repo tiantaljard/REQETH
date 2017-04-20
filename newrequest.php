@@ -65,7 +65,7 @@ include 'partials/parseNewRequest.php';
 
         <div class="form-group" <?php if (!isset($rowrequestid)){ ?>style="display:none"<?php } ?>
 
-    <?php echo "<p><a href='upload.php?urlid=$urlid'>Upload Doc</a></p>"; ?>
+
 
 </div>
 
