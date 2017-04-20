@@ -59,7 +59,7 @@ if ($accessgroup == "student") {
       from users u, requests 
       left outer join users u1 on eao1 = u1.username
       left outer join users u2 on eao2 = u2.username
-      where u1.username=requestor and status='assigned' 
+      where u.username=requestor and status='assigned' 
       and (eao1=:username or eao2=:username) and not exists (select 1 from comments where comments.username=:username and status='Approve' and comments.request=requests.request); ";
     $statement = $db->prepare($sql_query);
     $statement->execute(array(':username' => $username));
