@@ -139,7 +139,7 @@ include 'partials/parseUpload.php';
             </div>
             <div class="form-group" <?php if (isset($admineaogroup)){ ?>style="display:none"<?php } ?>>
                 <label for="fileUploadField">Upload Supporting Documents</label>
-                <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+                <input type="hidden" name="MAX_FILE_SIZE" value="20971520">
                 <input name="userfile" type="file" id="fileUploadField">
             </div>
             <input type="hidden" name="token" value="<?php if (function_exists('_token')) echo _token(); ?>">
