@@ -61,14 +61,14 @@ include 'partials/parseUpload.php';
             </div>
             <div class="form-group">
                 <label for="descriptionField">Experiment Description</label>
-                <textarea <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="description"
+                <textarea <? if (isset($admineaogroup) ||((isset($status) &&$status=='assigned' ))) echo $readonly; ?> type="text" name="description"
                                                                            class="form-control"
                                                                            id="descriptionField"><?php if (isset($description)) echo $description; ?></textarea>
             </div>
 
             <div class="form-group">
                 <label for="ethicsField">Ethics</label>
-                <textarea <? if (isset($admineaogroup)) echo $readonly; ?> type="text" name="ethics"
+                <textarea <? if (isset($admineaogroup) ||((isset($status) &&$status=='assigned' ))) echo $readonly; ?> type="text" name="ethics"
                                                                            class="form-control"
                                                                            id="ethicsField"><?php if (isset($ethics)) echo $ethics; ?></textarea>
             </div>
@@ -137,7 +137,7 @@ include 'partials/parseUpload.php';
                     <option>More Info Required</option>
                 </select>
             </div>
-            <div class="form-group" <?php if (isset($admineaogroup)){ ?>style="display:none"<?php } ?>>
+            <div class="form-group" <?php if(isset($admineaogroup) ||((isset($status) &&$status=='assigned' ))){ ?>style="display:none"<?php } ?>>
                 <label for="fileUploadField">Upload Supporting Documents</label>
                 <input type="hidden" name="MAX_FILE_SIZE" value="20971520">
                 <input name="userfile" type="file" id="fileUploadField">
