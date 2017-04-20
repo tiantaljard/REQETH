@@ -203,7 +203,7 @@ include 'partials/parseUpload.php';
                 <td><a href="uploads/<?php echo $row['file'] ?>" target="_blank"><?php echo $row['name'] ?></a></td>
                 <?php
                 echo "<td>" . $row['size'] . "</td>";
-                if (!isset($admineaogroup))
+                if (!isset($admineaogroup) ||((isset($status) &&$status!='assigned' )))
                     echo '<td>  <form action="" method="post">
                       <input type="hidden" value="' . $row['id'] . '" name="delreqdocid">
                       <input type="hidden" value="' . $row['file'] . '" name="filefile">
