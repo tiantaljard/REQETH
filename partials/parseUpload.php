@@ -100,12 +100,13 @@ if (isset($_POST['delreqdocid'])) {
 
         if ($delstatement->rowCount() == 1) {
 
-            $sql_query = "select * from uploads where request=:requestid; ";
-            $statement = $db->prepare($sql_query);
-            $statement->execute(array(':requestid' => $requestid));
-            $sqlresult = $statement->fetchAll();
+            $sql_uploaddocquery = "select * from uploads where request=:requestid; ";
+            $uploaddocstatement = $db->prepare($sql_uploaddocquery);
+            $uploaddocstatement->execute(array(':requestid' => $requestid));
+            $uploaddocsqlresult = $uploaddocstatement->fetchAll();
 
-            if ($statement->rowCount() > 0) {
+            if ($uploaddocstatement->rowCount() > 0) {
+
                 $displayheaders = "displayFUheaders";
             } else $displayheaders = null;
 
