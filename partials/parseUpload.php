@@ -40,11 +40,11 @@ if ((isset($_POST['uploadDocBtn']) || isset($_POST['updateRequestBtn'])) && $_FI
         if (move_uploaded_file($file_loc, $folder . $file)) {
             try {
                 //create SQL insert statement
-                $sqlInsert = "INSERT INTO uploads(request,file,name,type,size,fileloc,content) VALUES(:request,:file,:filename,:file_type,:file_size,:file_loc,:content)";
+                $sqlInsert = "INSERT INTO uploads(request,file,name,type,size,fileloc,content) VALUES(:request,:file,:filename,:file_type,:file_size,:file_loc)";
                 //use PDO prepared to sanitize data
                 $insStatement = $db->prepare($sqlInsert);
                 //add the data into the database
-                $insStatement->execute(array(':request' => $requestid, ':file' => $file, ':filename' => $file_name, ':file_type' => $file_type, ':file_size' => $file_size, ':file_loc' => $file_loc, ':content' => $content));
+                $insStatement->execute(array(':request' => $requestid, ':file' => $file, ':filename' => $file_name, ':file_type' => $file_type, ':file_size' => $file_size, ':file_loc' => $file_loc));
                 //check if one new row was created
                 if ($insStatement->rowCount() == 1) {
 

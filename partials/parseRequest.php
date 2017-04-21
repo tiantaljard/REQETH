@@ -107,11 +107,10 @@ if ((isset($_SESSION['id'])) && !isset($_POST['updateRequestBtn'])) {
     if ((isset($admingroup)) && $status == 'submit' && strlen($eao1) > 2 && strlen($eao2) > 2 && $eao1 != 'unassigned' && $eao2 != 'unassigned') {
         $status = 'assigned';
     }
-
-
     if ((isset($admingroup)) && $status == 'assigned' && ($eao1 == 'unassigned' || $eao2 == 'unassigned')) {
         $status = 'submit';
     }
+
 
 
     $ethics = $_POST['ethics'];
