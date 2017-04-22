@@ -468,6 +468,6 @@ class PHP_CRUD_UI {
 
 session_start();
 $ui = new PHP_CRUD_UI(array(
-    'url' => 'http://localhost/~TianTaljard/REQETH/api.php/',
+    'url' => 'http://reqeth.azurewebsites.net/api.php/',
 ));
 echo $ui->executeCommand();
