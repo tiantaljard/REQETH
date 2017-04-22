@@ -1,7 +1,7 @@
 <?php
 // Code adopted from:
 // https://www.apptha.com/blog/how-to-build-a-rest-api-using-php/
-// as on 22 April 20:00 please sync. would you.
+// as on 22 April 20:00 please sync. try again.
 
 
 // Connect to database
