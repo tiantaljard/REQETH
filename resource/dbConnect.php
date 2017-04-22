@@ -24,6 +24,8 @@ if (!$connectstr_dbhost) {
     $connectstr_dbpassword = 'Zppsit0!';
 }
 
+$connection=mysqli_connect($connectstr_dbhost,$connectstr_dbusername,$connectstr_dbpassword,$connectstr_dbname);
+
 // Build strings for creating PHP Database Object - PDO
 $dsn = "mysql:host=$connectstr_dbhost; dbname=$connectstr_dbname";
 $password = $connectstr_dbpassword;
