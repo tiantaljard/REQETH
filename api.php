@@ -2718,7 +2718,7 @@ foreach ($_SERVER as $key => $value) {
 if (!$connectstr_dbhost) {
     $connectstr_dbhost = 'localhost';
     $connectstr_dbname = 'reqlocaldb';
-    $connectstr_dbusername = 'rooot';
+    $connectstr_dbusername = 'root';
     $connectstr_dbpassword = 'Zppsit0!';
 }
 
