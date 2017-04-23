@@ -12,12 +12,12 @@
         <rewrite>
             <rules>
                 <rule name="rule 1A" stopProcessing="true">
-                    <match url="^api/requests/?$" ignoreCase="true" />
-                    <action type="Rewrite" url="/api/requests.php"  />
+                    <match url="^requests/?$"  ignoreCase="true" />
+                    <action type="Rewrite" url="/requests.php"  />
                 </rule>
                 <rule name="rule 2A" stopProcessing="true">
-                    <match url="^api/requests/([0-9]+)/?$" ignoreCase="true" />
-                    <action type="Rewrite" url="/api/requests.php?request_id={R:1}"  />
+                    <match url="^requests/([0-9]+)/?$"  ignoreCase="true" />
+                    <action type="Rewrite" url="/requests.php?request_id={R:1}"  />
                 </rule>
             </rules>
         </rewrite>
