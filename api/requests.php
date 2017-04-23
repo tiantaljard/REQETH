@@ -52,7 +52,7 @@ switch($request_method)
 function get_requests($request=0)
 {
     global $connection;
-    $query="SELECT request FROM requests ";
+    $query="SELECT request,requestor,status FROM requests ";
     if($request != 0)
     {
         $query.=" WHERE request=".$request." LIMIT 1";
