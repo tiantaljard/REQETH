@@ -5,17 +5,24 @@
 
 
 // Connect to database
+
 include_once '../resource/dbConnect.php';
 
 $request_method=$_SERVER["REQUEST_METHOD"];
+
 switch($request_method)
+
 {
+
     case 'GET':
         // Retrive requests
-        if(!empty($_GET["request_id"]))
+        if(!empty($_GET["request"]))
+
+
         {
-            $request_id=intval($_GET["request_id"]);
-            get_requests($request_id);
+            $request=intval($_GET["request"]);
+            get_requests($request);
+
         }
         else
         {
@@ -28,13 +35,13 @@ switch($request_method)
         break;
     case 'PUT':
         // Update request
-        $request_id=intval($_GET["request_id"]);
-        update_request($request_id);
+        $request=intval($_GET["request"]);
+        update_request($request);
         break;
     case 'DELETE':
         // Delete request
-        $request_id=intval($_GET["request_id"]);
-        delete_request($request_id);
+        $request=intval($_GET["request"]);
+        delete_request($request);
         break;
     default:
         // Invalid Request Method
@@ -44,13 +51,13 @@ switch($request_method)
 
 
 
-function get_requests($request_id=0)
+function get_requests($request=0)
 {
     global $connection;
     $query="SELECT * FROM requests";
-    if($request_id != 0)
+    if($request != 0)
     {
-        $query.=" WHERE request=".$request_id." LIMIT 1";
+        $query.=" WHERE request=".$request." LIMIT 1";
     }
     $response=array();
     $result=mysqli_query($connection, $query);
@@ -62,12 +69,12 @@ function get_requests($request_id=0)
     echo json_encode($response);
 }
 
-function update_request($request_id)
+function update_request($request)
 {
     global $connection;
     parse_str(file_get_contents("php://input"),$post_vars);
     $description=$post_vars["description"];
-    $query="UPDATE requests SET desription='{$description}' WHERE request=".$request_id;
+    $query="UPDATE requests SET desription='{$description}' WHERE request=".$request;
     if(mysqli_query($connection, $query))
     {
         $response=array(
@@ -85,10 +92,10 @@ function update_request($request_id)
     header('Content-Type: application/json');
     echo json_encode($response);
 }
-function delete_request($request_id)
+function delete_request($request)
 {
     global $connection;
-    $query="DELETE FROM requests WHERE request=".$request_id;
+    $query="DELETE FROM requests WHERE request=".$request;
     if(mysqli_query($connection, $query))
     {
         $response=array(
