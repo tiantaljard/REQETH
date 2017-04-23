@@ -1,6 +1,6 @@
 <?php
 $page_title = "E A E R  - TEST API";
-include_once 'partials/header.php';
+
 
 $url = 'http://reqeth.azurewebsites.net/api/requests/4';
 $ch = curl_init($url);
@@ -9,21 +9,16 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response_json = curl_exec($ch);
 curl_close($ch);
 $response=json_decode($response_json, true);
+//echo var_dump($response);
 echo var_dump($response);
+
+
+
 ?>
+
+
+
 <div class="container">
-
-    <div>
-        <?php if (isset($result)) echo $result; ?>
-        <?php if (!empty($form_errors)) echo show_errors($form_errors); ?>
-    </div>
-    <div class="clearfix"></div>
-
-    <?php if (!isset($_SESSION['username'])): ?>
-        <p class="lead">You are not authorized to view this page <a href="login.php">Login</a>
-            Not yet registered? <a href="signup.php">Signup</a></p>
-    <?php else: ?>
-
         <p>
             <?php
             print "<table class='requestlist'>";
@@ -42,7 +37,7 @@ echo var_dump($response);
 //                    $rowrequestid = $rowrequestid * 3;
 //                    $urlid = base64_encode("649{$rowrequestid}");
 //                    echo "<tr class ='reqlistrow'>";
-//                    echo "<td class ='reqlistTRID'><a href='editrequest.php?urlid=$urlid'>" . $row['request'] . "</a></td>";
+   //                echo "<td >" . $row['request'] . "</a></td>";
 //                    echo "<td>" . $row['description'] . "</td>";
 //                    echo "<td>" . $row['firstname'] . " " . $row['lastname'] . "</td>";
 //                    echo "<td class ='reqlistStatus'>" . $row['status'] . "</td>";
@@ -57,8 +52,6 @@ echo var_dump($response);
 
             ?>
         </p>
-    <?php endif ?>
 </div>
-<?php include_once 'partials/footer.php'; ?>
 </body>
 </html>
