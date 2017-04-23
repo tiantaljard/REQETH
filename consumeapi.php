@@ -1,5 +1,5 @@
 <?php
-$url = 'http://reqeth.azurewebsites.net/api/requests';
+$url = 'http://reqeth.azurewebsites.net/api/requests/4';
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_HTTPGET, true);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
