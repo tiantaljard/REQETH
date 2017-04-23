@@ -1,7 +1,6 @@
 <?php
 $page_title = "E A E R  - TEST API";
 include_once 'partials/header.php';
-include_once 'partials/parseRequestList.php';
 
 $url = 'http://reqeth.azurewebsites.net/api/requests/4';
 $ch = curl_init($url);
@@ -37,24 +36,24 @@ echo var_dump($response);
             print " <th>1st EAO</th> ";
             print " <th>2nd EAO</th> ";
             print " </tr> ";
-            if ($statement->rowCount() > 0) {
-                foreach ($accessresult as $row) {
-                    $rowrequestid = $row['request'];
-                    $rowrequestid = $rowrequestid * 3;
-                    $urlid = base64_encode("649{$rowrequestid}");
-                    echo "<tr class ='reqlistrow'>";
-                    echo "<td class ='reqlistTRID'><a href='editrequest.php?urlid=$urlid'>" . $row['request'] . "</a></td>";
-                    echo "<td>" . $row['description'] . "</td>";
-                    echo "<td>" . $row['firstname'] . " " . $row['lastname'] . "</td>";
-                    echo "<td class ='reqlistStatus'>" . $row['status'] . "</td>";
-                    echo "<td>" . $row['submitdate'] . "</td>";
-                    echo "<td>" . $row['e1firstname'] . " " . $row['e1lastname'] . "</td>";
-                    echo "<td>" . $row['e2firstname'] . " " . $row['e2lastname'] . "</td>";
-                    echo "</tr>";
-                }
-            } else $noRecords = "No requests exists that meets the criteria to be included in this list";
-            print "</table> ";
-            echo "<br><br>" . $noRecords;
+//            if ($statement->rowCount() > 0) {
+//                foreach ($accessresult as $row) {
+//                    $rowrequestid = $row['request'];
+//                    $rowrequestid = $rowrequestid * 3;
+//                    $urlid = base64_encode("649{$rowrequestid}");
+//                    echo "<tr class ='reqlistrow'>";
+//                    echo "<td class ='reqlistTRID'><a href='editrequest.php?urlid=$urlid'>" . $row['request'] . "</a></td>";
+//                    echo "<td>" . $row['description'] . "</td>";
+//                    echo "<td>" . $row['firstname'] . " " . $row['lastname'] . "</td>";
+//                    echo "<td class ='reqlistStatus'>" . $row['status'] . "</td>";
+//                    echo "<td>" . $row['submitdate'] . "</td>";
+//                    echo "<td>" . $row['e1firstname'] . " " . $row['e1lastname'] . "</td>";
+//                    echo "<td>" . $row['e2firstname'] . " " . $row['e2lastname'] . "</td>";
+//                    echo "</tr>";
+//                }
+//            } else $noRecords = "No requests exists that meets the criteria to be included in this list";
+//            print "</table> ";
+//            echo "<br><br>" . $noRecords;
 
             ?>
         </p>
