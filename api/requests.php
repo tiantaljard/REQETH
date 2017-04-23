@@ -9,7 +9,6 @@
 include_once '../resource/dbConnect.php';
 
 $request_method=$_SERVER["REQUEST_METHOD"];
-
 switch($request_method)
 
 {
@@ -20,7 +19,6 @@ switch($request_method)
         {
             $request=intval($_GET["request"]);
             get_requests($request);
-
         }
         else
         {
@@ -29,12 +27,14 @@ switch($request_method)
         break;
     case 'POST':
         // Insert request
-        insert_request();
+        //insert_request();
+        header("HTTP/1.0 405 Method Not Allowed");
         break;
     case 'PUT':
         // Update request
-        $request=intval($_GET["request"]);
-        update_request($request);
+        //$request=intval($_GET["request"]);
+        //update_request($request);
+        header("HTTP/1.0 405 Method Not Allowed");
         break;
     case 'DELETE':
         // Delete request
@@ -67,33 +67,10 @@ function get_requests($request=0)
     echo json_encode($response);
 }
 
-function update_request($request)
-{
-    global $connection;
-    parse_str(file_get_contents("php://input"),$post_vars);
-    $description=$post_vars["description"];
-    $query="UPDATE requests SET desription='{$description}' WHERE request=".$request;
-    if(mysqli_query($connection, $query))
-    {
-        $response=array(
-            'status' => 1,
-            'status_message' =>'request Updated Successfully.'
-        );
-    }
-    else
-    {
-        $response=array(
-            'status' => 0,
-            'status_message' =>'request Updation Failed.'
-        );
-    }
-    header('Content-Type: application/json');
-    echo json_encode($response);
-}
 function delete_request($request)
 {
     global $connection;
-    $query="DELETE FROM requests WHERE request=".$request;
+    $query="DELETE FROM requests WHERE id=".$request;
     if(mysqli_query($connection, $query))
     {
         $response=array(
@@ -111,6 +88,7 @@ function delete_request($request)
     header('Content-Type: application/json');
     echo json_encode($response);
 }
+
 ?>
 
 
