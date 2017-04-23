@@ -16,7 +16,7 @@ switch($request_method)
 
     case 'GET':
         // Retrive requests
-        if(!empty($_GET["requestf"]))
+        if(!empty($_GET["reques"]))
         {
             $request=intval($_GET["request"]);
             get_requests($request);
