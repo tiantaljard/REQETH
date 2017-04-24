@@ -1,72 +1,82 @@
+
+
 <?php
 $page_title = "E A E R  - TEST API";
 
+if (isset($_POST['request'])){
+    $url = $_POST['request'];
+} else {$url = 'http://reqeth.azurewebsites.net/api/requests/';}
+//} else {$url = 'http://localhost/~TianTaljard/REQETH/api/requests/';}
 
-$url = 'http://reqeth.azurewebsites.net/api/requests/4';
+
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_HTTPGET, true);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response_json = curl_exec($ch);
 curl_close($ch);
 $response=json_decode($response_json,true);
-echo var_dump($response);
-//echo var_dump($response);
-
-print "<br>";
-print "<br>";
-
-echo $response[0][0]."A";
-echo $response[0][1]."B";
-echo $response[1][0]."C";
-//
-//// Result: object(stdClass)#1 (2) { ["foo"]=> string(3) "bar" ["cool"]=> string(4) "attr" }
-//var_dump($result);
-//
-//// Prints "bar"
-//echo $result->foo;
-//
-//// Prints "attr"
-//echo $result->cool;
-//
-
-
-//array(1) { [0]=> object(stdClass)#1 (2) { ["0"]=> string(1) "4" ["request"]=> string(1) "4" } }
 
 
 ?>
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title><?php if (isset($page_title)) echo $page_title; ?></title>
+    <!-- Bootstrap -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/custom.css" rel="stylesheet">
+    <link href="../assets/css/upload.css" rel="stylesheet">
+    <script src="../js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/css/sweetalert.css">
+
+</head>
+<body>
+
+
+<form method="post" action="" enctype="multipart/form-data">
+    <div style="width: 50%">
+        <H2 class='docuheader'>API test returned values</H2>
+        <label for="requestField">URL to test</label>
+        <H5 class='docuheader'>Enter the request # of a single record, or leave blank to retrieve the complete list.</H5>
+        <input  type="text" name="request"
+                                                          value="http://reqeth.azurewebsites.net/api/requests"
+                                                          class="form-control" id="requestField">
+        <button type="submit" name="updateProfileBtn" class="btn btn-primary">
+            Test API Call
+        </button>
+    </div>
+    <label for="requestField">HTTP Status Code: <?php echo (http_response_code()) ?> </label>
+</form>
+
 <div class="container">
-        <p>
-            <?php
-            print "<table class='requestlist'>";
-            print " <tr> ";
-            print " <th>Request#</th> ";
-//            print " <th>Experiment Description</th> ";
-            print " <th>Requestor</th> ";
-            print " <th>Status</th> ";
-  //          print " <th>Date Submitted</th> ";
-    //        print " <th>1st EAO</th> ";
-      //      print " <th>2nd EAO</th> ";
-            print " </tr> ";
 
-                    echo "<tr >";
-                    echo "<td >" . $response[0][0] . "</a></td>";
-//                    echo "<td>" . $row['description'] . "</td>";
-                    echo "<td>" . $response[1][0] . " " . $row['lastname'] . "</td>";
-                    echo "<td >" . $response[0][2] . "</td>";
-//                    echo "<td>" . $row['submitdate'] . "</td>";
-//                    echo "<td>" . $row['e1firstname'] . " " . $row['e1lastname'] . "</td>";
-//                    echo "<td>" . $row['e2firstname'] . " " . $row['e2lastname'] . "</td>";
-//                    echo "</tr>";
-//                }
-//            } else $noRecords = "No requests exists that meets the criteria to be included in this list";
-//            print "</table> ";
-//            echo "<br><br>" . $noRecords;
 
-            ?>
-        </p>
+    <p>
+        <?php
+        print "<table class='apilist'>";
+        print " <tr> ";
+        print " <th>Request#</th> ";
+        print " <th>Requestor</th> ";
+        print " <th>Status</th> ";
+
+        print " </tr> ";
+        foreach($response as $item) {
+            echo "<tr >";
+            echo "<td >" . $item[0] . "</td>";
+            echo "<td>"  . $item[1] . "</td>";
+            echo "<td >" . $item[2] . "</td>";
+            echo "</tr>";
+        }
+        print "</table>";
+        ?>
+    </p>
 </div>
 </body>
 </html>

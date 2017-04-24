@@ -1,3 +1,0 @@
-RewriteEngine On # Turn on the rewriting engine
-RewriteRule ^versoeke/?$ versoeke.php [NC,L]
-RewriteRule ^versoeke/([0-9]+)/?$ versoeke.php?versoek_id=$1 [NC,L]

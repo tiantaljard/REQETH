@@ -39,7 +39,7 @@ switch($request_method)
     case 'DELETE':
         // Delete request
         $request=intval($_GET["request"]);
-        delete_request($request);
+        header("HTTP/1.0 405 Method Not Allowed");
         break;
     default:
         // Invalid Request Method
@@ -58,37 +58,20 @@ function get_requests($request=0)
         $query.=" WHERE request=".$request." LIMIT 1";
     }
     $response=array();
-    $result=mysqli_query($connection, $query);
-    while($row=mysqli_fetch_array($result))
+
+    if (!mysqli_query($connection,$query))
     {
-        $response[]=$row;
+        $apiQueryError=("Error description: " . mysqli_error($connection));
+    } else {
+        $result=mysqli_query($connection, $query);
+
+        while($row=mysqli_fetch_array($result))
+        {
+            $response[]=$row;
+        }
+        header('Content-Type: application/json');
+        echo json_encode($response);
     }
-    header('Content-Type: application/json');
-    echo json_encode($response);
+
+
 }
-
-function delete_request($request)
-{
-    global $connection;
-    $query="DELETE FROM requests WHERE id=".$request;
-    if(mysqli_query($connection, $query))
-    {
-        $response=array(
-            'status' => 1,
-            'status_message' =>'request Deleted Successfully.'
-        );
-    }
-    else
-    {
-        $response=array(
-            'status' => 0,
-            'status_message' =>'request Deletion Failed.'
-        );
-    }
-    header('Content-Type: application/json');
-    echo json_encode($response);
-}
-
-?>
-
-

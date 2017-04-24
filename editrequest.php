@@ -145,7 +145,6 @@ include 'partials/parseUpload.php';
             <input type="hidden" name="token" value="<?php if (function_exists('_token')) echo _token(); ?>">
             <button type="submit" name="updateRequestBtn" class="btn btn-primary pull-right">
                 Update Request Record
-
     </div>
     <br/>
     <br/>

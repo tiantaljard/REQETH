@@ -137,3 +137,20 @@ textarea#ethicsField {
     height: 100px;
 }
 
+.apilist {
+    width: 50%;
+}
+.apilist td{
+    padding: 5px;
+}
+
+.apilist th{
+    padding: 5px;
+}
+.apilist th{
+
+}
+
+.apilist  tr:nth-child(even) {
+    background-color: #e5e5e5;
+}
