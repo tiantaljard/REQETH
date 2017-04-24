@@ -63,14 +63,18 @@ function get_requests($request=0)
     {
         $apiQueryError=("Error description: " . mysqli_error($connection));
     } else {
-        $result=mysqli_query($connection, $query);
+        if ($result=mysqli_query($connection, $query)){
+            $result=mysqli_query($connection, $query);
+            while($row=mysqli_fetch_array($result))
+            {
+                $response[]=$row;
+            }
+            header('Content-Type: application/json');
+            echo json_encode($response);
 
-        while($row=mysqli_fetch_array($result))
-        {
-            $response[]=$row;
-        }
-        header('Content-Type: application/json');
-        echo json_encode($response);
+
+        } else $apiQueryError=("Error description: " . mysqli_error($connection));;
+
     }
 
 
