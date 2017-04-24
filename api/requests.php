@@ -8,20 +8,15 @@
 
 include_once '../resource/dbConnect.php';
 
-$request_method=$_SERVER["REQUEST_METHOD"];
-switch($request_method)
-
-{
+$request_method = $_SERVER["REQUEST_METHOD"];
+switch ($request_method) {
 
     case 'GET':
         // Retrive requests
-        if(!empty($_GET["request"]))
-        {
-            $request=intval($_GET["request"]);
+        if (!empty($_GET["request"])) {
+            $request = intval($_GET["request"]);
             get_requests($request);
-        }
-        else
-        {
+        } else {
             get_requests();
         }
         break;
@@ -38,7 +33,7 @@ switch($request_method)
         break;
     case 'DELETE':
         // Delete request
-        $request=intval($_GET["request"]);
+        $request = intval($_GET["request"]);
         header("HTTP/1.0 405 Method Not Allowed");
         break;
     default:
@@ -48,34 +43,25 @@ switch($request_method)
 }
 
 
-
-function get_requests($request=0)
+function get_requests($request = 0)
 {
     global $connection;
-    $query="SELECT request,requestor,status FROM requests ";
-    if($request != 0)
-    {
-        $query.=" WHERE request=".$request." LIMIT 1";
+    $query = "SELECT request,requestor,status FROM requests ";
+    if ($request != 0) {
+        $query .= " WHERE request=" . $request . " LIMIT 1";
     }
-    $response=array();
-
-    if (!mysqli_query($connection,$query))
-    {
-        $apiQueryError=("Error description: " . mysqli_error($connection));
+    if (mysqli_error(mysqli_query($connection, $query))) {
+        echo "sql error";
     } else {
-        if ($result=mysqli_query($connection, $query)){
-            $result=mysqli_query($connection, $query);
-            while($row=mysqli_fetch_array($result))
-            {
-                $response[]=$row;
-            }
-            header('Content-Type: application/json');
-            echo json_encode($response);
 
+        $response = array();
 
-        } else $apiQueryError=("Error description: " . mysqli_error($connection));;
+        $result = mysqli_query($connection, $query);
 
+        while ($row = mysqli_fetch_array($result)) {
+            $response[] = $row;
+        }
+        header('Content-Type: application/json');
+        echo json_encode($response);
     }
-
-
 }

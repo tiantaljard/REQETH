@@ -57,4 +57,32 @@
 //}
 //
 //
-//?>
+//
+
+//
+//{
+//global $connection;
+//$query = "SELECT request,requestor,status FROM requests ";
+//if ($request != 0) {
+//$query .= " WHERE request=" . $request . " LIMIT 1";
+//}
+//
+//$response = array();
+//
+//if (mysqli_error(mysqli_query($connection, $query))) {
+//echo "sql error";
+//} else {
+//$result = mysqli_query($connection, $query);
+//while ($row = mysqli_fetch_array($result)) {
+//echo
+//$response[] = $row;
+//}
+//header('Content-Type: application/json');
+//echo json_encode($response);
+//}
+//else {
+//$apiQueryError = ("Error description: " . mysqli_error($connection));
+//}
+//}
+
+?>
