@@ -52,7 +52,7 @@ $response=json_decode($response_json,true);
             Test API Call
         </button>
     </div>
-    <label for="requestField">HTTP Status Code: <?php echo (http_response_code()) ?> </label>
+    <label for="requestField">HTTP Status Code: <?php echo get_headers($url, 1) ?> </label>
 </form>
 
 <div class="container">
