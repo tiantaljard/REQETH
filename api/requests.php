@@ -47,10 +47,6 @@ function get_requests($request = 0)
     $response = array();
     $result = mysqli_query($connection, $query);
 
-    //echo mysqli_num_rows($result);
-
-
-
     while ($row = mysqli_fetch_array($result))
     {
             $response[] = $row;
