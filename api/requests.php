@@ -58,7 +58,7 @@ function get_requests($request = 0)
         echo json_encode($response);
 
     } catch (e $jsonerror) {
-        header("HTTP/1.0 400 Bad Request");
+        // header("HTTP/1.0 400 Bad Request");
     }
 }
 
