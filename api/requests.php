@@ -17,8 +17,6 @@ switch ($request_method) {
             $request = intval($_GET["request"]);
 
         } else {
-
-
             get_requests();
         }
         break;
