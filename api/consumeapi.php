@@ -70,12 +70,12 @@ $response=json_decode($response_json,true);
     <label for="requestField">HTTP Status Code: <?php echo $http_status ?> </label>
 </form>
 
-<div class="container">
 
 
-
+<div class="container" >
     <p>
         <?php
+        if ((strpos($_POST[request], 'request') !== false) ) {
         print "<table class='apilist'>";
         print " <tr> ";
         print " <th>Request#</th> ";
@@ -91,8 +91,33 @@ $response=json_decode($response_json,true);
             echo "</tr>";
         }
         print "</table>";
+        }
         ?>
     </p>
 </div>
+
+
+<div class="container" >
+    <p>
+        <?php
+        print "<table class='apilist'>";
+        print " <tr> ";
+        print " <th>UID#</th> ";
+        print " <th>User Name</th> ";
+        print " <th>First Name </th> ";
+
+        print " </tr> ";
+        foreach($response as $item) {
+            echo "<tr >";
+            echo "<td >" . $item[0] . "</td>";
+            echo "<td>"  . $item[1] . "</td>";
+            echo "<td >" . $item[2] . "</td>";
+            echo "</tr>";
+        }
+        print "</table>";
+        ?>
+    </p>
+</div>
+
 </body>
 </html>
