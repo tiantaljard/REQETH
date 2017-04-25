@@ -39,7 +39,7 @@ switch ($request_method) {
 function get_users($user = 0)
 {
     global $connection;
-    $query = "SELECT username,firstname,lastname,email,accessgroup FROM users ";
+    $query = "SELECT uid,username,firstname,lastname,email,accessgroup FROM users ";
     if ($user != 0)
     {
         $query .= " WHERE uid=" . $user . " LIMIT 1";
