@@ -46,6 +46,7 @@ function get_requests($request = 0)
     }
     $response = array();
     $result = mysqli_query($connection, $query);
+
     try {
     while ($row = mysqli_fetch_array($result))
     {
