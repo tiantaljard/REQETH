@@ -43,9 +43,6 @@ function get_requests($request = 0)
     $query = "SELECT request,requestor,status FROM requests ";
     if ($request != 0) {
         $query .= " WHERE request=" . $request . " LIMIT 1";
-    }
-    if (mysqli_error(mysqli_query($connection, $query))) {
-        echo header("HTTP/1.0 405 Method Not Allowed");
     } else {
         $response = array();
         $result = mysqli_query($connection, $query);
