@@ -20,9 +20,11 @@ switch ($request_method) {
 //             } else
 //            get_requests($request);
             header("HTTP/1.0 416 Method Not Allowed");
-
         } else {
-            get_requests();
+            header("HTTP/1.0 416 Method Not Allowed");
+
+//
+//            get_requests();
         }
         break;
     case 'POST':
