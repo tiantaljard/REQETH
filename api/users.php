@@ -36,13 +36,13 @@ switch ($request_method) {
         header("HTTP/1.0 405 Method Not Allowed");
         break;
 }
-function get_requests($request = 0)
+function get_users($user = 0)
 {
     global $connection;
-    $query = "SELECT request,requestor,status FROM requests ";
-    if ($request != 0)
+    $query = "SELECT username,firstname,lastname,email,accessgroup FROM users ";
+    if ($user != 0)
     {
-        $query .= " WHERE request=" . $request . " LIMIT 1";
+        $query .= " WHERE user=" . $user . " LIMIT 1";
     }
 
     $response = array();
@@ -60,4 +60,3 @@ function get_requests($request = 0)
         header("HTTP/1.0 204 No Content Found");
     }
 }
-
