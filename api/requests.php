@@ -7,13 +7,14 @@ include_once '../resource/dbConnect.php';
 $request_method = $_SERVER["REQUEST_METHOD"];
 switch ($request_method) {
     case 'GET':
-        // Retrive requests
-        if (!empty($_GET["request"])) {
-            $request = intval($_GET["request"]);
-            get_requests($request);
-        } else {
-            get_requests();
-        }
+        header("HTTP/1.0 400 Bad Request Not JSON code")
+//        // Retrive requests
+//        if (!empty($_GET["request"])) {
+//            $request = intval($_GET["request"]);
+//            get_requests($request);
+//        } else {
+//            get_requests();
+//        }
         break;
     case 'POST':
         // Insert request
@@ -55,7 +56,7 @@ function get_requests($request = 0)
     if (is_array($response)){
         header('Content-Type: application/json');
         echo json_encode($response);
-    } else header("HTTP/1.0 400 Bad Request");
+    } else header("HTTP/1.0 400 Bad Request Not JSON code");
 
 }
 
