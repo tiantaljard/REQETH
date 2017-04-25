@@ -75,7 +75,7 @@ $response=json_decode($response_json,true);
 <div class="container" >
     <p>
         <?php
-        if ((strpos($_POST[request], 'request') !== false) ) {
+        if ((strpos($_POST['request'], 'request') !== false) ) {
         print "<table class='apilist'>";
         print " <tr> ";
         print " <th>Request#</th> ";
