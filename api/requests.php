@@ -45,7 +45,6 @@ function get_requests($request = 0)
     {
         $query .= " WHERE request=" . $request . " LIMIT 1";
     }
-
     $response = array();
     $result = mysqli_query($connection, $query);
     while ($row = mysqli_fetch_array($result))
@@ -54,5 +53,4 @@ function get_requests($request = 0)
     }
     header('Content-Type: application/json');
     echo json_encode($response);
-
 }
