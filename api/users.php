@@ -10,7 +10,7 @@ switch ($request_method) {
         // Retrive users
         if (!empty($_GET["user"])) {
                 $user = ($_GET["user"]);
-            echo $user."THIS IS ECHO BEF";
+            echo "THIS IS ECHO BEF";
 
                 get_users($user);
         } else {
