@@ -10,7 +10,7 @@ switch ($request_method) {
         // Retrive users
         if (!empty($_GET["user"])) {
                 $user = intval($_GET["user"]);
-                echo $user;
+               // echo $user;
                 get_users($user);
         } else {
             get_users();
