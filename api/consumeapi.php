@@ -12,6 +12,7 @@ if (isset($_POST['request'])){
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_HTTPGET, true);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 $response_json = curl_exec($ch);
 curl_close($ch);
 $response=json_decode($response_json,true);
@@ -52,7 +53,7 @@ $response=json_decode($response_json,true);
             Test API Call
         </button>
     </div>
-    <label for="requestField">HTTP Status Code: <?php echo get_headers($url, 1) ?> </label>
+    <label for="requestField">HTTP Status Code: <?php echo $httpcode ?> </label>
 </form>
 
 <div class="container">
