@@ -57,6 +57,6 @@ function get_users($user = 0)
         echo json_encode($response);
 
     } else {
-        header("HTTP/1.0 204 No Content Found");
+        header("HTTP/1.0 204 NoContent Found");
     }
 }
