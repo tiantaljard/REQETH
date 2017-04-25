@@ -52,13 +52,7 @@ function get_requests($request = 0)
             $response[] = $row;
     }
 
-    try {
-        JSON.parse(str);
-        header('Content-Type: application/json');
-        echo json_encode($response);
-
-    } catch (e $jsonerror) {
-        // header("HTTP/1.0 400 Bad Request");
-    }
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }
 
