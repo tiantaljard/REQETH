@@ -9,7 +9,11 @@ switch ($request_method) {
     case 'GET':
         // Retrive requests
         if (!empty($_GET["request"])) {
-            $request = intval($_GET["request"]);
+
+            try {
+                $request = intval($_GET["request"]);
+            } catch (reqeustException $ex) {header("HTTP/1.0 204 That Content Other not Found");}
+
             get_requests($request);
         } else {
             get_requests();
