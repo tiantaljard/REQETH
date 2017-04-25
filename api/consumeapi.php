@@ -20,7 +20,7 @@ $http = curl_init($url);
 $result = curl_exec($http);
 $http_status = curl_getinfo($http, CURLINFO_HTTP_CODE);
 curl_close($http);
-echo $http_status;
+//echo $http_status;
 
 
 
