@@ -10,7 +10,7 @@ switch ($request_method) {
         // Retrive users
         if (!empty($_GET["user"])) {
                 $user = intval($_GET["user"]);
-               // echo $user;
+
                 get_users($user);
         } else {
             get_users();
@@ -56,6 +56,7 @@ function get_users($user = 0)
         }
         header('Content-Type: application/json');
         echo json_encode($response);
+        echo $user."THIS IS ECHO";
 
     } else {
         header("HTTP/1.0 204 No Content Found");
