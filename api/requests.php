@@ -46,12 +46,14 @@ function get_requests($request = 0)
     }
     $response = array();
     $result = mysqli_query($connection, $query);
-
+    try {
     while ($row = mysqli_fetch_array($result))
     {
             $response[] = $row;
     }
         header('Content-Type: application/json');
         echo json_encode($response);
+    } catch (reqeustException $ex)
+        {header("HTTP/1.0 204 No Content Found");}
 }
 
