@@ -12,6 +12,11 @@ $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_HTTPGET, true);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response_json = curl_exec($ch);
+
+
+// do your curl thing here
+$http_status = curl_getinfo($http, CURLINFO_HTTP_CODE);
+
 curl_close($ch);
 $response=json_decode($response_json,true);
 
@@ -53,7 +58,7 @@ $response=json_decode($response_json,true);
             Test API Call
         </button>
     </div>
-    <label for="requestField">HTTP Status Code: <?php echo $httpcode ?> </label>
+    <label for="requestField">HTTP Status Code: <?php echo $http_status ?> </label>
 </form>
 
 <div class="container">
@@ -62,7 +67,6 @@ $response=json_decode($response_json,true);
 
     <p>
         <?php
-        echo var_dump($response);
         print "<table class='apilist'>";
         print " <tr> ";
         print " <th>Request#</th> ";
