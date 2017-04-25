@@ -2,20 +2,16 @@
 // Code adopted from:
 // https://www.apptha.com/blog/how-to-build-a-rest-api-using-php/
 // as on 22 April 20:00 please sync. try again.
-
-
 // Connect to database
-
 include_once '../resource/dbConnect.php';
-
 $request_method = $_SERVER["REQUEST_METHOD"];
 switch ($request_method) {
-
     case 'GET':
         // Retrive requests
         if (!empty($_GET["request"])) {
             $request = intval($_GET["request"]);
-
+            echo $request;
+            get_requests($request);
         } else {
             get_requests();
         }
@@ -41,8 +37,6 @@ switch ($request_method) {
         header("HTTP/1.0 405 Method Not Allowed");
         break;
 }
-
-
 function get_requests($request = 0)
 {
     global $connection;
@@ -53,17 +47,12 @@ function get_requests($request = 0)
     if (mysqli_error(mysqli_query($connection, $query))) {
         echo header("HTTP/1.0 405 Method Not Allowed");
     } else {
-
         $response = array();
-
         $result = mysqli_query($connection, $query);
-
         while ($row = mysqli_fetch_array($result)) {
             $response[] = $row;
-
         }
         header('Content-Type: application/json');
         echo json_encode($response);
-
     }
 }
