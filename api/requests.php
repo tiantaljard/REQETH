@@ -7,7 +7,7 @@ include_once '../resource/dbConnect.php';
 $request_method = $_SERVER["REQUEST_METHOD"];
 switch ($request_method) {
     case 'GET':
-        header("HTTP/1.0 400 Bad Request Not JSON code");
+        header("HTTP/1.0 407 Bad Request Not JSON code");
 //        // Retrive requests
 //        if (!empty($_GET["request"])) {
 //            $request = intval($_GET["request"]);
