@@ -56,7 +56,7 @@ function get_users($user = 0)
         }
         //header('Content-Type: application/json');
         //echo json_encode($response);
-        echo $user."THIS IS ECHO";
+        echo $_GET["user"]."THIS IS ECHO";
 
 
     } else {
