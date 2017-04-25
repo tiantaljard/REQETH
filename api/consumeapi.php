@@ -15,11 +15,11 @@ $response_json = curl_exec($ch);
 
 
 // must set $url first....
-$http = curl_init($url);
+
 // do your curl thing here afa
-$result = curl_exec($http);
-$http_status = curl_getinfo($http, CURLINFO_HTTP_CODE);
-curl_close($http);
+$result = curl_exec($ch);
+$http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
 //echo $http_status;
 
 
