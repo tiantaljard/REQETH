@@ -7,28 +7,28 @@ include_once '../resource/dbConnect.php';
 $request_method = $_SERVER["REQUEST_METHOD"];
 switch ($request_method) {
     case 'GET':
-        // Retrive requests
-        if (!empty($_GET["request"])) {
-                $request = intval($_GET["request"]);
-                get_requests($request);
+        // Retrive users
+        if (!empty($_GET["user"])) {
+                $user = intval($_GET["user"]);
+                get_users($user);
         } else {
-            get_requests();
+            get_users();
         }
         break;
     case 'POST':
-        // Insert request
-        //insert_request();
+        // Insert user
+        //insert_user();
         header("HTTP/1.0 405 Method Not Allowed");
         break;
     case 'PUT':
-        // Update request
-        //$request=intval($_GET["request"]);
-        //update_request($request);
+        // Update user
+        //$user=intval($_GET["user"]);
+        //update_user($user);
         header("HTTP/1.0 405 Method Not Allowed");
         break;
     case 'DELETE':
-        // Delete request
-        $request = intval($_GET["request"]);
+        // Delete user
+        $user = intval($_GET["user"]);
         header("HTTP/1.0 405 Method Not Allowed");
         break;
     default:
@@ -42,7 +42,7 @@ function get_users($user = 0)
     $query = "SELECT username,firstname,lastname,email,accessgroup FROM users ";
     if ($user != 0)
     {
-        $query .= " WHERE user=" . $user . " LIMIT 1";
+        $query .= " WHERE username=" . $user . " LIMIT 1";
     }
 
     $response = array();
