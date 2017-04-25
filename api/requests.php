@@ -41,15 +41,18 @@ function get_requests($request = 0)
 {
     global $connection;
     $query = "SELECT request,requestor,status FROM requests ";
-    if ($request != 0) {
+    if ($request != 0)
+    {
         $query .= " WHERE request=" . $request . " LIMIT 1";
-    } else {
-        $response = array();
-        $result = mysqli_query($connection, $query);
-        while ($row = mysqli_fetch_array($result)) {
-            $response[] = $row;
-        }
-        header('Content-Type: application/json');
-        echo json_encode($response);
     }
+
+    $response = array();
+    $result = mysqli_query($connection, $query);
+    while ($row = mysqli_fetch_array($result))
+    {
+            $response[] = $row;
+    }
+    header('Content-Type: application/json');
+    echo json_encode($response);
+
 }

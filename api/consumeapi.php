@@ -5,7 +5,6 @@ $page_title = "E A E R  - TEST API";
 
 if (isset($_POST['request'])){
     $url = $_POST['request'];
-//} else {$url = 'http://reqeth.azurewebsites.net/api/requests/';}
 } else {$url = 'http://localhost/~TianTaljard/REQETH/api/requests/';}
 
 
@@ -46,8 +45,8 @@ $response=json_decode($response_json,true);
         <label for="requestField">URL to test</label>
         <H5 class='docuheader'>Enter the request # of a single record, or leave blank to retrieve the complete list.</H5>
         <input  type="text" name="request"
-<!--                                                          value="http://reqeth.azurewebsites.net/api/requests"-->
-                                                                  value="http://localhost/~TianTaljard/REQETH/api/requests/"
+                value="http://reqeth.azurewebsites.net/api/requests"
+
 
                                                           class="form-control" id="requestField">
         <button type="submit" name="updateProfileBtn" class="btn btn-primary">
