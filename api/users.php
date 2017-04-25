@@ -10,8 +10,6 @@ switch ($request_method) {
         // Retrive users
         if (!empty($_GET["user"])) {
                 $user = ($_GET["user"]);
-            echo "THIS IS ECHO BEF";
-
                 get_users($user);
         } else {
             get_users();
@@ -38,7 +36,7 @@ switch ($request_method) {
         header("HTTP/1.0 405 Method Not Allowed");
         break;
 }
-function get_users($user = 0)
+function get_users($user)
 {
     global $connection;
     $query = "SELECT uid,username,firstname,lastname,email,accessgroup FROM users ";
