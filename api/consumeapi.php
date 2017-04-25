@@ -58,8 +58,10 @@ $response=json_decode($response_json,true);
 <div class="container">
 
 
+
     <p>
         <?php
+        echo var_dump($response);
         print "<table class='apilist'>";
         print " <tr> ";
         print " <th>Request#</th> ";

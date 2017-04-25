@@ -15,6 +15,7 @@ switch ($request_method) {
         // Retrive requests
         if (!empty($_GET["request"])) {
             $request = intval($_GET["request"]);
+            echo $request;
             get_requests($request);
         } else {
             get_requests();
@@ -51,7 +52,7 @@ function get_requests($request = 0)
         $query .= " WHERE request=" . $request . " LIMIT 1";
     }
     if (mysqli_error(mysqli_query($connection, $query))) {
-        echo "sql error";
+        echo header("HTTP/1.0 405 Method Not Allowed");
     } else {
 
         $response = array();
@@ -60,8 +61,10 @@ function get_requests($request = 0)
 
         while ($row = mysqli_fetch_array($result)) {
             $response[] = $row;
+
         }
         header('Content-Type: application/json');
         echo json_encode($response);
+
     }
 }
