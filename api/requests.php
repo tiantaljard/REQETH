@@ -19,9 +19,9 @@ switch ($request_method) {
 //                 header("HTTP/1.0 416 Method Not Allowed");
 //             } else
 //            get_requests($request);
-            header("HTTP/1.0 416 Method Not Allowed");
+            header("HTTP/1.0 413 your non blank end point is wrong");
         } else {
-            header("HTTP/1.0 416 Method Not Allowed");
+            header("HTTP/1.0 413 Your End Point is Wrong");
 
 //
 //            get_requests();
