@@ -19,6 +19,7 @@ $response_json = curl_exec($ch);
 // do your curl thing here afa
 $result = curl_exec($ch);
 $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
 //echo $http_status;
 
