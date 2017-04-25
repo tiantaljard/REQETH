@@ -52,7 +52,10 @@ function get_requests($request = 0)
             $response[] = $row;
     }
 
-    header('Content-Type: application/json');
-    echo json_encode($response);
+    if (is_array($response)){
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    } else header("HTTP/1.0 400 Bad Request");
+
 }
 
