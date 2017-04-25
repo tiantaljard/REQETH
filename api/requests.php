@@ -61,3 +61,27 @@ function get_requests($request = 0)
     }
 }
 
+function get_users($user = 0)
+{
+    global $connection;
+    $query = "SELECT username,firstname,lastname,email,accessgroup FROM users ";
+    if ($user != 0)
+    {
+        $query .= " WHERE user=" . $user . " LIMIT 1";
+    }
+
+    $response = array();
+    $result = mysqli_query($connection, $query);
+    $row_cnt = $result->num_rows;
+    if ($row_cnt >0) {
+        while ($row = mysqli_fetch_array($result))
+        {
+            $response[] = $row;
+        }
+        header('Content-Type: application/json');
+        echo json_encode($response);
+
+    } else {
+        header("HTTP/1.0 204 No Content Found");
+    }
+}
