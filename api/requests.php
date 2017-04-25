@@ -14,17 +14,12 @@ switch ($request_method) {
     case 'GET':
         // Retrive requests
         if (!empty($_GET["request"])) {
-//            $request = intval($_GET["request"]);
-//             if (count($request)>0){
-//                 header("HTTP/1.0 416 Method Not Allowed");
-//             } else
-//            get_requests($request);
-            header("HTTP/1.0 413 your non blank end point is wrong");
-        } else {
-            header("HTTP/1.0 413 Your End Point is Wrong");
+            $request = intval($_GET["request"]);
 
-//
-//            get_requests();
+        } else {
+
+
+            get_requests();
         }
         break;
     case 'POST':
