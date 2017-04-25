@@ -10,7 +10,6 @@ switch ($request_method) {
         // Retrive requests
         if (!empty($_GET["request"])) {
             $request = intval($_GET["request"]);
-            echo $request;
             get_requests($request);
         } else {
             get_requests();
@@ -47,6 +46,7 @@ function get_requests($request = 0)
     }
     $response = array();
     $result = mysqli_query($connection, $query);
+
     while ($row = mysqli_fetch_array($result))
     {
             $response[] = $row;

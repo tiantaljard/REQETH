@@ -5,7 +5,7 @@ $page_title = "E A E R  - TEST API";
 
 if (isset($_POST['request'])){
     $url = $_POST['request'];
-} else {$url = 'http://localhost/~TianTaljard/REQETH/api/requests/';}
+} else {$url = 'http://reqeth.azurewebsites.net/api/requests/';}
 
 
 $ch = curl_init($url);
