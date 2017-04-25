@@ -14,8 +14,16 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response_json = curl_exec($ch);
 
 
+// must set $url first....
+$http = curl_init($url);
 // do your curl thing here
+$result = curl_exec($http);
 $http_status = curl_getinfo($http, CURLINFO_HTTP_CODE);
+curl_close($http);
+echo $http_status;
+
+
+
 
 curl_close($ch);
 $response=json_decode($response_json,true);
