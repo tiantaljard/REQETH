@@ -15,7 +15,7 @@ switch ($request_method) {
         // Retrive requests
         if (!empty($_GET["request"])) {
             $request = intval($_GET["request"]);
-             if (count($request)>1){
+             if (count($request)>0){
                  header("HTTP/1.0 416 Method Not Allowed");
              } else
             get_requests($request);
