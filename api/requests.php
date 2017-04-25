@@ -44,6 +44,11 @@ function get_requests($request = 0)
     {
         $query .= " WHERE request=" . $request . " LIMIT 1";
     }
+    try {
+        $response = array();
+
+    } catch (reqeustException $ex) {header("HTTP/1.0 204 That Content not Found");}
+
     $response = array();
     $result = mysqli_query($connection, $query);
 
