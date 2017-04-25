@@ -12,9 +12,10 @@ switch ($request_method) {
 
             try {
                 $request = intval($_GET["request"]);
+                get_requests($request);
             } catch (reqeustException $ex) {header("HTTP/1.0 204 That Content Other not Found");}
 
-            get_requests($request);
+
         } else {
             get_requests();
         }
