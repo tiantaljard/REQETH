@@ -42,7 +42,7 @@ function get_users($user = 0)
     $query = "SELECT username,firstname,lastname,email,accessgroup FROM users ";
     if ($user != 0)
     {
-        $query .= " WHERE username=" . $user . " LIMIT 1";
+        $query .= " WHERE uid=" . $user . " LIMIT 1";
     }
 
     $response = array();
