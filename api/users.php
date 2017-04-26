@@ -58,7 +58,7 @@ function get_users($user)
         echo json_encode($response);
 
 
-     //   echo   'WHERE username="' . $user . '" LIMIT 1';
+     // blabla  echo   'WHERE username="' . $user . '" LIMIT 1';
 
 
     } else {
