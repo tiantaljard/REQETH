@@ -54,11 +54,11 @@ function get_users($user)
         {
             $response[] = $row;
         }
-      //  header('Content-Type: application/json');
-//        echo json_encode($response);
+        header('Content-Type: application/json');
+        echo json_encode($response);
 
 
-        echo   'WHERE username="' . $user . '" LIMIT 1';
+     //   echo   'WHERE username="' . $user . '" LIMIT 1';
 
 
     } else {
