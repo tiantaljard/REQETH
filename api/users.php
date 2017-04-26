@@ -56,6 +56,7 @@ function get_users($user)
       //  header('Content-Type: application/json');
 //        echo json_encode($response);
         echo $user;
+       echo  " WHERE username=" . $user . " LIMIT 1";
 
 
     } else {
