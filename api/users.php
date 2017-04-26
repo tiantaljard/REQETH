@@ -9,7 +9,7 @@ switch ($request_method) {
     case 'GET':
         // Retrive users
         if (!empty($_GET["user"])) {
-                $user = ($_GET["user"]);
+                $user = '"'.($_GET["user"]).'""';
                 get_users($user);
         } else {
             get_users();
@@ -42,7 +42,7 @@ function get_users($user)
     $query = "SELECT uid,username,firstname,lastname,email,accessgroup FROM users ";
     if (strlen($user)>0)
     {
-        $query .= " WHERE username='" . $user . "' LIMIT 1";
+        $query .= " WHERE username=" . $user . " LIMIT 1";
     }
 
     $response = array();
