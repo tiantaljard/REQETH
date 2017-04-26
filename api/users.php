@@ -9,7 +9,7 @@ switch ($request_method) {
     case 'GET':
         // Retrive users
         if (!empty($_GET["user"])) {
-                $user = '"'.($_GET["user"]).'""';
+                $user = '"'.($_GET["user"]).'"';
                 get_users($user);
         } else {
             get_users();
