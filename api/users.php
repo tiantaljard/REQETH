@@ -41,6 +41,7 @@ function get_users($user)
     global $connection;
     $query = "SELECT uid,username,firstname,lastname,email,accessgroup FROM users ";
     if (strlen($user)>0)
+    echo $user;
     {
         //$query .= " WHERE username=" . $user . " LIMIT 1";
     }
