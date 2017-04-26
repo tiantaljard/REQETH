@@ -56,7 +56,7 @@ function get_users($user)
         }
       //  header('Content-Type: application/json');
 //        echo json_encode($response);
-        //fsdfaf
+
 
         echo   'WHERE username="' . $user . '" LIMIT 1';
 
