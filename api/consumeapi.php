@@ -28,7 +28,7 @@ if (isset($_POST['updateAPI'])) {
     $data=array(
         'status' =>$_Post['statusAPI']);
     echo $url;
-    echo "wewsdfsgd";
+    echo "wewsdfsgdjhgjhgjg";
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
@@ -77,7 +77,7 @@ if (isset($_POST['updateAPI'])) {
         <button type="submit" name="getAPI" class="btn btn-primary">
             Test GET API
         </button>
-        <button type="submit" name="updateaAPI" class="btn btn-primary">
+        <button type="submit" name="updateAPI" class="btn btn-primary">
             Test UPDATE API
         </button>
     </div>
