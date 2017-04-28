@@ -22,9 +22,9 @@ switch ($request_method) {
         break;
     case 'PUT':
         // Update request
-        //$request=intval($_GET["request"]);
-        //update_request($request);
-        header("HTTP/1.0 405 Method Not Allowed");
+        $request=intval($_GET["request"]);
+        update_request($request);
+        //header("HTTP/1.0 405 Method Not Allowed");
         break;
     case 'DELETE':
         // Delete request
@@ -61,3 +61,26 @@ function get_requests($request = 0)
     }
 }
 
+function update_request($request)
+{
+    global $connection;
+    parse_str(file_get_contents("php://input"),$post_vars);
+    $status=$post_vars["status"];
+    $query="UPDATE requests SET status='{$status}' WHERE id=".$request;
+    if(mysqli_query($connection, $query))
+    {
+        $response=array(
+            'status' => 1,
+            'status_message' =>'request Updated Successfully.'
+        );
+    }
+    else
+    {
+        $response=array(
+            'status' => 0,
+            'status_message' =>'request Updation Failed.'
+        );
+    }
+    header('Content-Type: application/json');
+    echo json_encode($response);
+}
