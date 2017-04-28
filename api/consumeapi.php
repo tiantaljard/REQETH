@@ -57,6 +57,10 @@ if (isset($_POST['updateAPI'])) {
         <input  type="text" name="request"
                 value="http://reqeth.azurewebsites.net/api/requests"
                                                           class="form-control" id="requestField">
+        <H5 class='docuheader'>(For Status Udate Test Only) Enter new Status:</H5>
+        <input  type="text" name="statusAPI"
+                value="apiTest"
+                class="form-control" id="requestField">
         <button type="submit" name="getAPI" class="btn btn-primary">
             Test GET API
         </button>
