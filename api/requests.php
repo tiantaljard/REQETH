@@ -85,6 +85,7 @@ function update_request($request)
         );
         header("HTTP/1.0 204 No Content Found");
     }
-    header('Content-Type: application/json');
-    echo json_encode($response);
+    header("HTTP/1.0 204 No Content Found")
+    //header('Content-Type: application/json');
+    //echo json_encode($response);
 }
