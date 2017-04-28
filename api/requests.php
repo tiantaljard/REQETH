@@ -66,7 +66,7 @@ function update_request($request)
     global $connection;
     parse_str(file_get_contents("php://input"),$post_vars);
     $status=$post_vars["status"];
-    $query="UPDATE requests SET status='{$status}' WHERE id=".$request;
+    $query="UPDATE requests SET status='{$status}' WHERE request=".$request;
     if(mysqli_query($connection, $query))
     {
         $response=array(
