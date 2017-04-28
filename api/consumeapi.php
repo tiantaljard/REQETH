@@ -25,6 +25,8 @@ if (isset($_POST['getAPI'])) {
 if (isset($_POST['updateAPI'])) {
     $data=array(
         'status' =>$_Post['statusAPI']);
+    echo "wewsdfsgd";
+    echo $url;
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
