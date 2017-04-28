@@ -21,12 +21,14 @@ if (isset($_POST['getAPI'])) {
     curl_close($ch);
     $response = json_decode($response_json, true);
 }
+echo $url;
+echo "wewsdfsgd";
 
 if (isset($_POST['updateAPI'])) {
     $data=array(
         'status' =>$_Post['statusAPI']);
-    echo "wewsdfsgd";
     echo $url;
+    echo "wewsdfsgd";
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
