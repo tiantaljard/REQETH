@@ -3,32 +3,28 @@
 <?php
 $page_title = "E A E R  - TEST API";
 
-if (isset($_POST['request'])){
+if (isset($_POST['getAPI']) || isset($_POST['updateAPI'])){
     $url = $_POST['request'];
 } else {$url = 'http://reqeth.azurewebsites.net/api/requests/';}
 
-
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_HTTPGET, true);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$response_json = curl_exec($ch);
-
-
+if (isset($_POST['getAPI'])) {
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_HTTPGET, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response_json = curl_exec($ch);
 // must set $url first....
-
 // do your curl thing here afa
-$result = curl_exec($ch);
-$http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-$http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
+    $result = curl_exec($ch);
+    $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 //echo $http_status;
+    curl_close($ch);
+    $response = json_decode($response_json, true);
+}
 
+if (isset($_POST['updateAPI'])) {
 
-
-
-curl_close($ch);
-$response=json_decode($response_json,true);
-
+}
 
 ?>
 
@@ -60,11 +56,12 @@ $response=json_decode($response_json,true);
         <H5 class='docuheader'>Enter the request # of a single record, or leave blank to retrieve the complete list.</H5>
         <input  type="text" name="request"
                 value="http://reqeth.azurewebsites.net/api/requests"
-
-
                                                           class="form-control" id="requestField">
-        <button type="submit" name="updateProfileBtn" class="btn btn-primary">
-            Test API Call
+        <button type="submit" name="getAPI" class="btn btn-primary">
+            Test GET API
+        </button>
+        <button type="submit" name="updateaAPI" class="btn btn-primary">
+            Test UPDATE API
         </button>
     </div>
     <label for="requestField">HTTP Status Code: <?php echo $http_status ?> </label>
