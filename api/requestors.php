@@ -62,6 +62,6 @@ function get_requestors($requestor)
 
 
     } else {
-        header("HTTP/1.0 204 No Content Found");
+        header("HTTP/1.1 204 No Content Found");
     }
 }

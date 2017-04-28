@@ -60,33 +60,3 @@ function get_requests($request = 0)
         header("HTTP/1.0 204 No Content Found");
     }
 }
-
-function update_request($request)
-{
-    global $connection;
-    parse_str(file_get_contents("php://input"),$post_vars);
-    echo var_dump($post_vars);
-    $status=$post_vars["status"];
-    $query="UPDATE requests SET status='{$status}' WHERE request=".$request;
-    if(mysqli_query($connection, $query))
-    {
-        $response=array(
-            'status' => 1,
-            'status_message' =>'request Updated Successfully.'
-
-        );
-
-    }
-    else
-    {
-        $response=array(
-            'status' => 0,
-            'status_message' =>'request Updation Failed.'
-
-        );
-
-    }
-    header("HTTP/1.0 204 No Content Found");
-    //header('Content-Type: application/json');
-    //echo json_encode($response);
-}
