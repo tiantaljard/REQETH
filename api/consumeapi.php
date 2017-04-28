@@ -45,8 +45,11 @@ if (isset($_POST['getAPI'])) {
 <form method="post" action="" enctype="multipart/form-data">
     <div style="width: 50%">
         <H2 class='docuheader'>API Test</H2>
-        <label for="requestField">URL to test</label>
-        <H5 class='docuheader'>Enter the request # of a single record, or leave blank to retrieve the complete list.</H5>
+        <H5 class='docuheader'>Enter the key/ID of a single record, or leave blank to retrieve the complete list.</H5>
+        <H5 class='docuheader'>API URL's:.</H5>
+        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requests/  [key=request]</H5>
+        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requestors/  [key=requesto login]</H5>
+        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/users/  [key=user login]</H5>
         <input  type="text" name="request"
                 value="http://reqeth.azurewebsites.net/api/requests"
                                                           class="form-control" id="requestField">
