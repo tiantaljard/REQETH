@@ -21,8 +21,7 @@ if (isset($_POST['getAPI'])) {
     curl_close($ch);
     $response = json_decode($response_json, true);
 }
-echo $url;
-echo "wewsdfsgd";
+
 
 if (isset($_POST['updateAPI'])) {
     $data=array(
