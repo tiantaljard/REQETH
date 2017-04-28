@@ -72,14 +72,18 @@ function update_request($request)
         $response=array(
             'status' => 1,
             'status_message' =>'request Updated Successfully.'
+
         );
+        header("HTTP/1.0 200 Update Success");
     }
     else
     {
         $response=array(
             'status' => 0,
             'status_message' =>'request Updation Failed.'
+
         );
+        header("HTTP/1.0 204 No Content Found");
     }
     header('Content-Type: application/json');
     echo json_encode($response);

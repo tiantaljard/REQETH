@@ -26,8 +26,7 @@ if (isset($_POST['getAPI'])) {
 if (isset($_POST['updateAPI'])) {
     $data=array(
         'status' =>$_Post['statusAPI']);
-    echo $url;
-    echo "wewsdfsgdjhgjhgjg";
+
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
@@ -35,6 +34,7 @@ if (isset($_POST['updateAPI'])) {
     $response_json = curl_exec($ch);
     curl_close($ch);
     $response=json_decode($response_json, true);
+
 
 }
 
