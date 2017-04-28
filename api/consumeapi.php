@@ -44,7 +44,7 @@ if (isset($_POST['getAPI'])) {
 
 <form method="post" action="" enctype="multipart/form-data">
     <div style="width: 50%">
-        <H2 class='docuheader'>API test returned values</H2>
+        <H2 class='docuheader'>API Test</H2>
         <label for="requestField">URL to test</label>
         <H5 class='docuheader'>Enter the request # of a single record, or leave blank to retrieve the complete list.</H5>
         <input  type="text" name="request"
@@ -87,21 +87,23 @@ if (isset($_POST['getAPI'])) {
 <div class="container" >
     <p>
         <?php
-        print "<table class='apilist'>";
-        print " <tr> ";
-        print " <th>UID#</th> ";
-        print " <th>User Name</th> ";
-        print " <th>First Name </th> ";
+        if ((strpos($_POST['request'], 'request') == false) ) {
+            print "<table class='apilist'>";
+            print " <tr> ";
+            print " <th>UID#</th> ";
+            print " <th>User Name</th> ";
+            print " <th>First Name </th> ";
 
-        print " </tr> ";
-        foreach($response as $item) {
-            echo "<tr >";
-            echo "<td >" . $item[0] . "</td>";
-            echo "<td>"  . $item[1] . "</td>";
-            echo "<td >" . $item[2] . "</td>";
-            echo "</tr>";
+            print " </tr> ";
+            foreach ($response as $item) {
+                echo "<tr >";
+                echo "<td >" . $item[0] . "</td>";
+                echo "<td>" . $item[1] . "</td>";
+                echo "<td >" . $item[2] . "</td>";
+                echo "</tr>";
+            }
+            print "</table>";
         }
-        print "</table>";
         ?>
     </p>
 </div>
