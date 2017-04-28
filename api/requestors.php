@@ -43,7 +43,7 @@ function get_requestors($requestor)
     if (strlen($requestor)>0)
 
     {
-        $query .= ' WHERE requestor="' . $requestor . '" LIMIT 1';
+        $query .= ' WHERE requestor="' . $requestor . '"';
     }
 
     $response = array();
