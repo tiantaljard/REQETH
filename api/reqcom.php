@@ -59,6 +59,7 @@ function get_requests($request)
         echo json_encode($response);
 
     } else {
-        header("HTTP/1.0 204 No Content Found");
+        echo $query." here ";
+     //   header("HTTP/1.0 204 No Content Found");
     }
 }
