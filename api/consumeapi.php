@@ -46,12 +46,15 @@ if (isset($_POST['getAPI'])) {
     <div style="width: 50%">
         <H2 class='docuheader'>API Test</H2>
         <H5 class='docuheader'>Enter the key/ID of a single record, or leave blank to retrieve the complete list.</H5>
-        <H5 class='docuheader'>API URL's:.</H5>
-        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requests/  [key=request]</H5>
-        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requestors/  [key=requesto login]</H5>
-        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/users/  [key=user login]</H5>
+        <H5 class='docuheader'>Available API end points:</H5>
+        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requests/</H5>
+        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requests/:request</H5>
+        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requestors/</H5>
+        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requestors/:requestor</H5>
+        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/users/</H5>
+        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/users/:user</H5>
         <input  type="text" name="request"
-                value="http://reqeth.azurewebsites.net/api/requests"
+                value="http://reqeth.azurewebsites.net/api/"
                                                           class="form-control" id="requestField">
         <button type="submit" name="getAPI" class="btn btn-primary">
             Test GET API
