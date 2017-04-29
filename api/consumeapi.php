@@ -97,6 +97,9 @@ if (isset($_POST['getAPI'])) {
             print " <th>UID#</th> ";
             print " <th>User Name</th> ";
             print " <th>First Name </th> ";
+            print " <th>Last Name </th> ";
+            print " <th>Email </th> ";
+            print " <th>Access Group</th> ";
 
             print " </tr> ";
             foreach ($response as $item) {
