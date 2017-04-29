@@ -12,7 +12,7 @@ switch ($request_method) {
                 $request = intval($_GET["request"]);
                 get_requests($request);
         } else {
-            header("HTTP/1.0 418 I am a teapot");
+            header("HTTP/1.0 422 Request parameter required");
         }
         break;
     case 'POST':
