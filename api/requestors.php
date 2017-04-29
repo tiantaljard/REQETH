@@ -52,7 +52,7 @@ function get_requestors($requestor)
     if ($row_cnt >0) {
         while ($row = mysqli_fetch_array($result))
         {
-            $response = $row;
+            $response[] = $row;
         }
         header('Content-Type: application/json');
         echo json_encode($response);
