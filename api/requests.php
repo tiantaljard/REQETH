@@ -49,7 +49,7 @@ function get_requests($request = 0)
     $result = mysqli_query($connection, $query);
     $row_cnt = $result->num_rows;
     if ($row_cnt >0) {
-        while ($row = mysqli_fetch_array($result))
+        while ($row = mysqli_fetch_assoc($result))
         {
             $response[] = $row;
         }
