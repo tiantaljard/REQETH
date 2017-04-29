@@ -44,7 +44,7 @@ function get_requests($request)
                 and c.username=au.username ";
     if (strlen($request) >0)
     {
-        $query .= " AND request=" . $request . " ";
+        $query .= " AND c.request=" . $request . " ";
     }
 
     $response = array();
