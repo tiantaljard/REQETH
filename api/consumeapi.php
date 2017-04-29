@@ -78,9 +78,9 @@ if (isset($_POST['getAPI'])) {
         print " </tr> ";
         foreach($response as $item) {
             echo "<tr >";
-            echo "<td >" . $item[0] . "</td>";
-            echo "<td>"  . $item[1] . "</td>";
-            echo "<td >" . $item[2] . "</td>";
+            echo "<td >" . $item['request'] . "</td>";
+            echo "<td>"  . $item['requestor'] . "</td>";
+            echo "<td >" . $item['status'] . "</td>";
             echo "</tr>";
         }
         print "</table>";
@@ -103,9 +103,9 @@ if (isset($_POST['getAPI'])) {
             print " </tr> ";
             foreach ($response as $item) {
                 echo "<tr >";
-                echo "<td >" . $item[0] . "</td>";
-                echo "<td>" . $item[1] . "</td>";
-                echo "<td >" . $item[2] . "</td>";
+                echo "<td >" . $item['uid'] . "</td>";
+                echo "<td>" . $item['username'] . "</td>";
+                echo "<td >" . $item['firstname'] . "</td>";
                 echo "</tr>";
             }
             print "</table>";
