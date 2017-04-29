@@ -93,7 +93,7 @@ if (isset($_POST['getAPI'])) {
 <div class="container" >
     <p>
         <?php
-        if ((strpos($_POST['request'], 'request') == false) ) {
+        if ((strpos($_POST['request'], 'user') !== false) ) {
             print "<table class='apilist'>";
             print " <tr> ";
             print " <th>UID#</th> ";
@@ -106,6 +106,9 @@ if (isset($_POST['getAPI'])) {
                 echo "<td >" . $item['uid'] . "</td>";
                 echo "<td>" . $item['username'] . "</td>";
                 echo "<td >" . $item['firstname'] . "</td>";
+                echo "<td >" . $item['lastname'] . "</td>";
+                echo "<td >" . $item['email'] . "</td>";
+                echo "<td >" . $item['accessgroup'] . "</td>";
                 echo "</tr>";
             }
             print "</table>";
