@@ -45,14 +45,14 @@ if (isset($_POST['getAPI'])) {
 <form method="post" action="" enctype="multipart/form-data">
     <div style="width: 50%">
         <H2 class='docuheader'>API Test</H2>
-        <H5 class='docuheader'>Enter the key/ID of a single record, or leave blank to retrieve the complete list.</H5>
+        <H5 class='docuheader'>Root URL: http://reqeth.azurewebsites.net</H5>
         <H5 class='docuheader'>Available API end points:</H5>
-        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requests/</H5>
-        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requests/:request</H5>
-        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requestors/</H5>
-        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/requestors/:requestor</H5>
-        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/users/</H5>
-        <H5 class='docuheader'>http://reqeth.azurewebsites.net/api/users/:user</H5>
+        <H5 class='docuheader'>/api/requests/</H5>
+        <H5 class='docuheader'>/api/requests/:request</H5>
+        <H5 class='docuheader'>/api/requestors/</H5>
+        <H5 class='docuheader'>/api/requestors/:requestor</H5>
+        <H5 class='docuheader'>/net/api/users/</H5>
+        <H5 class='docuheader'>/api/users/:user</H5>
         <input  type="text" name="request"
                 value="http://reqeth.azurewebsites.net/api/"
                                                           class="form-control" id="requestField">
