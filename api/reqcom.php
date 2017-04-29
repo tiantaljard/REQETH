@@ -36,15 +36,15 @@ switch ($request_method) {
         header("HTTP/1.0 405 Method Not Allowed");
         break;
 }
-function get_requests($request = 0)
+function get_requests($request)
 {
     global $connection;
     $query = "SELECT ru.lastname as requestorlastname,au.lastname as apprvlastname,c.comment,c.commentdate,c.status
                 FROM requests r, comments c, users ru, users au  where r.request=c.request and r.requestor=ru.username
                 and c.username=au.username ";
-    if ($request != 0)
+    if (strlen($request) >0)
     {
-        $query .= " AND request=" . $request . " LIMIT 1";
+        $query .= " AND request=" . $request . " ";
     }
 
     $response = array();
