@@ -45,8 +45,8 @@ if (isset($_POST['getAPI'])) {
 <form method="post" action="" enctype="multipart/form-data">
     <div style="width: 50%">
         <H2 class='docuheader'>API Test</H2>
-        <H4 class='docuheader'>Root URL: http://reqeth.azurewebsites.net</H4>
-        <H5 class='docuheader'>Available API end points:</H5>
+        <H3 class='docuheader'>Root URL: http://reqeth.azurewebsites.net</H3>
+        <H4 class='docuheader'>Available API end points:</H4>
         <H5 class='docuheader'>/api/requests/</H5>
         <H5 class='docuheader'>/api/requests/:request</H5>
         <H5 class='docuheader'>/api/requestors/</H5>
