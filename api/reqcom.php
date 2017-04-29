@@ -1,7 +1,7 @@
 <?php
 // Code adopted from:
 // https://www.apptha.com/blog/how-to-build-a-rest-api-using-php/
-// as on 22 April 20:00 please sync. try again.
+// as on 22 April 20:00
 // Connect to database
 include_once '../resource/dbConnect.php';
 $request_method = $_SERVER["REQUEST_METHOD"];

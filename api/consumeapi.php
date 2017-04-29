@@ -1,4 +1,7 @@
 <?php
+// Code adopted from:
+// https://www.apptha.com/blog/how-to-build-a-rest-api-using-php/
+// as on 22 April 20:00
 $page_title = "E A E R  - API Testing";
 
 if (isset($_POST['getAPI'])){
@@ -13,7 +16,6 @@ if (isset($_POST['getAPI'])) {
 // must set $url first....
 // do your curl thing here afa
     $result = curl_exec($ch);
-    $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 //echo $http_status;
     curl_close($ch);
@@ -41,7 +43,7 @@ if (isset($_POST['getAPI'])) {
 </head>
 <body>
 
-
+<div class="container" >
 <form method="post" action="" enctype="multipart/form-data">
     <div style="width: 50%">
         <H3 class='docuheader'>Test [GET] API end points:</H3><!--!-->
@@ -65,10 +67,8 @@ if (isset($_POST['getAPI'])) {
         </button>
     </div>
     <label for="requestField">HTTP Status Code: <?php echo $http_status ?> </label>
-    <label for="requestField">HTTP Status Code: <?php echo $http_status ?> </label>
 </form>
-
-
+</div>
 
 <div class="container" >
     <p>
