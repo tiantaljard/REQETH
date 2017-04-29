@@ -125,5 +125,36 @@ if (isset($_POST['getAPI'])) {
     </p>
 </div>
 
+<div class="container" >
+    <p>
+        <?php
+        if ((strpos($_POST['request'], 'reqcom') !== false) ) {
+            print "<table class='apilist'>";
+            print " <tr> ";
+            print " <th>Requestor Last Name</th> ";
+            print " <th>Approver Name</th> ";
+            print " <th>Reuest </th> ";
+            print " <th>Comment </th> ";
+            print " <th>Status</th> ";
+            print " <th>Comment Date</th> ";
+
+            print " </tr> ";
+            foreach ($response as $item) {
+                echo "<tr >";
+                echo "<td >" . $item['requestorlastname'] . "</td>";
+                echo "<td>" . $item['apprvlastname'] . "</td>";
+                echo "<td >" . $item['request'] . "</td>";
+                echo "<td >" . $item['comment'] . "</td>";
+                echo "<td >" . $item['status'] . "</td>";
+                echo "<td >" . $item['commentdate'] . "</td>";
+                echo "</tr>";
+            }
+            print "</table>";
+        }
+        ?>
+    </p>
+</div>
+
+
 </body>
 </html>
