@@ -12,7 +12,7 @@ switch ($request_method) {
                 $request = intval($_GET["request"]);
                 get_requests($request);
         } else {
-            header("HTTP/1.0 422 record :request key required");
+            header("HTTP/1.0 400 Missing Required Query Parameter :request");
         }
         break;
     case 'POST':
@@ -60,6 +60,6 @@ function get_requests($request)
 
     } else {
         echo $query." here ";
-     //   header("HTTP/1.0 204 No Content Found");
+        header("HTTP/1.0 204 No Content Found");
     }
 }
