@@ -51,7 +51,7 @@ if (isset($_POST['getAPI'])) {
         <H5 class='docuheader'>/api/reqcom/:request         [e.g. 3333]</H5>
         <br>
         <H5 class='docuheader'>/api/requests/</H5>
-        <H5 class='docuheader'>/api/requests/:request</H5>  [e.g. 3333]
+        <H5 class='docuheader'>/api/requests/:request       [e.g. 3333]</H5>
         <br>
         <H5 class='docuheader'>/api/requestors/</H5>
         <H5 class='docuheader'>/api/requestors/:requestor   [e.g. STU1]</H5>
