@@ -45,12 +45,18 @@ if (isset($_POST['getAPI'])) {
 <form method="post" action="" enctype="multipart/form-data">
     <div style="width: 50%">
         <H3 class='docuheader'>Test [GET] API end points:</H3><!--!-->
+        <br>
+        <H5 class='docuheader'>/api/reqcom/:request</H5>
+        <br>
         <H5 class='docuheader'>/api/requests/</H5>
         <H5 class='docuheader'>/api/requests/:request</H5>
+        <br>
         <H5 class='docuheader'>/api/requestors/</H5>
         <H5 class='docuheader'>/api/requestors/:requestor</H5>
+        <br>
         <H5 class='docuheader'>/net/api/users/</H5>
         <H5 class='docuheader'>/api/users/:user</H5>
+        <br>
         <input  type="text" name="request"
                 value="http://reqeth.azurewebsites.net/api/"
                                                           class="form-control" id="requestField">
@@ -58,6 +64,7 @@ if (isset($_POST['getAPI'])) {
             Test GET API
         </button>
     </div>
+    <label for="requestField">HTTP Status Code: <?php echo $http_status ?> </label>
     <label for="requestField">HTTP Status Code: <?php echo $http_status ?> </label>
 </form>
 
