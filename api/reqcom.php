@@ -39,7 +39,7 @@ switch ($request_method) {
 function get_requests($request)
 {
     global $connection;
-    $query = "SELECT ru.lastname as requestorlastname,au.lastname as apprvlastname,c.comment,c.commentdate,c.status
+    $query = "SELECT ru.lastname as requestorlastname,au.lastname as apprvlastname,c.request,c.comment,c.commentdate,c.status
                 FROM requests r, comments c, users ru, users au  where r.request=c.request and r.requestor=ru.username
                 and c.username=au.username ";
     if (strlen($request) >0)
