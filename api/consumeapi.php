@@ -133,7 +133,6 @@ if (isset($_POST['getAPI'])) {
             print " <tr> ";
             print " <th>Requestor Last Name</th> ";
             print " <th>Approver Name</th> ";
-            print " <th>Reuest </th> ";
             print " <th>Comment </th> ";
             print " <th>Status</th> ";
             print " <th>Comment Date</th> ";
@@ -143,7 +142,6 @@ if (isset($_POST['getAPI'])) {
                 echo "<tr >";
                 echo "<td >" . $item['requestorlastname'] . "</td>";
                 echo "<td>" . $item['apprvlastname'] . "</td>";
-                echo "<td >" . $item['request'] . "</td>";
                 echo "<td >" . $item['comment'] . "</td>";
                 echo "<td >" . $item['status'] . "</td>";
                 echo "<td >" . $item['commentdate'] . "</td>";
